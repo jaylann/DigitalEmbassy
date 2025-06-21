@@ -48,6 +48,50 @@ const restrictionZone: FeatureCollection = {
   ]
 };
 
+const cautionZone: FeatureCollection = {
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      properties: { name: "Caution Zone" },
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [51.36, 35.72],
+            [51.37, 35.73],
+            [51.38, 35.72],
+            [51.37, 35.71],
+            [51.36, 35.72],
+          ],
+        ],
+      },
+    },
+  ],
+};
+
+const safeZone: FeatureCollection = {
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      properties: { name: "Safe Zone" },
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [51.32, 35.715],
+            [51.33, 35.715],
+            [51.33, 35.705],
+            [51.32, 35.705],
+            [51.32, 35.715],
+          ],
+        ],
+      },
+    },
+  ],
+};
+
 const sampleLandmarks: Landmark[] = [
   {
     id: "checkpoint-a",
@@ -81,6 +125,18 @@ const sampleAreas: Area[] = [
     name: "Restriction Zones",
     geometry: restrictionZone,
     category: "no_go",
+  },
+  {
+    id: "caution",
+    name: "Caution Area",
+    geometry: cautionZone,
+    category: "caution",
+  },
+  {
+    id: "safe",
+    name: "Safe Area",
+    geometry: safeZone,
+    category: "safe",
   },
 ];
 
