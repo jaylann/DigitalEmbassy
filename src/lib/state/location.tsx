@@ -2,7 +2,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 import type { Location } from "@/lib/types";
 
-const defaultLocation: Location = { lat: 52.52, lng: 13.405 };
+const defaultLocation: Location = { lat: 35.688, lng: 51.334 };
 
 interface LocationContextType {
     lastKnownLocation: Location;
