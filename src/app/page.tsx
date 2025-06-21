@@ -52,17 +52,17 @@ export default function Home(): React.ReactElement {
     const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
 
     React.useEffect(() => {
-      if (status !== 'Crisis') {
-        setIsCrisisAcknowledged(false);
-      }
+        if (status !== 'Crisis') {
+            setIsCrisisAcknowledged(false);
+        }
     }, [status]);
 
     return (
         <main className="relative h-screen w-screen overflow-hidden bg-black">
             <AnimatePresence>
-              {status === 'Crisis' && !isCrisisAcknowledged && (
-                <CrisisWarningOverlay onAcknowledge={() => setIsCrisisAcknowledged(true)} />
-              )}
+                {status === 'Crisis' && !isCrisisAcknowledged && (
+                    <CrisisWarningOverlay onAcknowledge={() => setIsCrisisAcknowledged(true)} />
+                )}
             </AnimatePresence>
             {/*
         This div is a dedicated layer for the glow effect.
