@@ -1,4 +1,6 @@
-// src/components/map-marker.tsx
+/**
+ * Thin wrapper around map markers.
+ */
 
 "use client";
 

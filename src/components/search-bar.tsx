@@ -1,4 +1,6 @@
-// src/components/search-bar.tsx
+/**
+ * Location and area search bar component.
+ */
 
 "use client";
 

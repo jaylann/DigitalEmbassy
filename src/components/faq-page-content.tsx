@@ -1,4 +1,6 @@
-// src/components/faq-page-content.tsx
+/**
+ * Interactive FAQ content component.
+ */
 
 "use client"; // This directive now lives here.
 

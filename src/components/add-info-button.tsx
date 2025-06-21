@@ -1,4 +1,6 @@
-// src/components/add-info-button.tsx
+/**
+ * Floating button to submit new map information.
+ */
 
 "use client";
 

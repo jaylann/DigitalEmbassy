@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import { MapOverlay } from "@/components/map-overlay";
-import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay";
+import { CrisisWarningOverlay } from "@/components/crisis-warning-overlay";
 import { LandmarkMarker } from "@/components/landmark-marker";
 import { AnimatedRoute } from "@/components/animated-route";
 import { RoutePath } from "@/components/route-path";

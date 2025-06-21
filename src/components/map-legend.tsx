@@ -1,4 +1,6 @@
-// src/components/map-legend.tsx
+/**
+ * Collapsible legend explaining map area categories.
+ */
 
 "use client";
 

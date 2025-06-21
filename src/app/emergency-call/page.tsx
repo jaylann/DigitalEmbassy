@@ -1,4 +1,6 @@
-// src/app/emergency-call/page.tsx
+/**
+ * Page providing emergency call instructions.
+ */
 
 "use client";
 

@@ -1,4 +1,8 @@
-// src/utils/landmarkAdapters.ts
+/**
+ * Convert a Google Places result to a Landmark record.
+ * @param place Raw result from Google Places.
+ * @returns Simplified landmark data.
+ */
 import { RawPlaceResult } from '../services/googlePlaces';
 import { Landmark } from '../lib/types/landmarks';
 

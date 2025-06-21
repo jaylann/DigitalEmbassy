@@ -1,4 +1,6 @@
-// src/components/route-popup.tsx
+/**
+ * Popup showing details about a route.
+ */
 "use client";
 
 import * as React from "react";

@@ -1,4 +1,3 @@
-// src/components/crisis-warning-overlay.tsx
 
 "use client";
 

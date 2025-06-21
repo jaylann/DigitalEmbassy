@@ -1,4 +1,6 @@
-// src/components/status-indicator.tsx
+/**
+ * Visual indicator for system status.
+ */
 
 "use client";
 
