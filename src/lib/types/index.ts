@@ -18,9 +18,9 @@ export type GeminiApiResponse = ApiResponse<AssistantResponse>;
 // --- Core Data & Domain Types ---
 
 /**
- * **THE MISSING TYPE IS HERE.**
- * Represents a generic JSON document provided as context to the AI. This is used
- * in getGeminiResponse to allow for a flexible mix of structured and unstructured data.
+ * Represents a generic JSON document used as context for the AI engine.
+ * This allows for a flexible mix of structured and unstructured data in
+ * the {@link getGeminiResponse} function.
  */
 export type ContextDocument = Record<string, unknown>;
 

@@ -15,16 +15,13 @@ import clsx from "clsx";
 
 // --- UI Component Imports ---
 import {Avatar, AvatarFallback} from "@/components/ui/avatar";
-// --- UI Component Imports ---
 import {Button} from "@/components/ui/button";
 import {Input} from "@/components/ui/input";
 import {ScrollArea} from "@/components/ui/scroll-area";
-import {SelectMap} from "@/components/select-map"; // Updated Import
-// --- Logic and Type Imports ---
-// --- Logic and Type Imports ---
+import {SelectMap} from "@/components/select-map";
 import {getGeminiResponse} from "@/lib/actions/gemini";
 import {saveReportToMesh} from "@/lib/actions/mesh";
-import type { Location, Message, ReportPayload } from "@/lib/types"; // Ensure Location type is exported
+import type { Location, Message, ReportPayload } from "@/lib/types";
 import {cn} from "@/lib/utils";
 import {useLocation} from "@/lib/state/location";
 import { useLandmarks } from "@/lib/state/landmarks";
