@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { MessageCircle, ListChecks, Rss, Settings, Home, Wallet } from 'lucide-react';
+import { ListChecks, Rss, Settings, Home, Wallet } from 'lucide-react';
 import { cn } from "@/lib/utils"; // shadcn/ui utility
 
 interface NavItem {

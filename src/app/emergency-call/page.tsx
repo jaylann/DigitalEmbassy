@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { Phone } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import MobileLayout from '../../components/MobileLayout'
+import MobileLayout from '@/components/layout/MobileLayout'
 
 export default function EmergencyCallPage() {
   const [status, setStatus] = useState<'idle' | 'dialing' | 'connected'>('idle')

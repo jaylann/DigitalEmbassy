@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import MobileLayout from '../../components/MobileLayout'
+import MobileLayout from '@/components/layout/MobileLayout'
 
 interface NewsItem {
   id: number;

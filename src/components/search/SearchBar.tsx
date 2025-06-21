@@ -1,4 +1,4 @@
-// src/components/map-layout/search-bar.tsx
+// src/components/search/SearchBar.tsx
 
 "use client";
 

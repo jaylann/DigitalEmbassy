@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import MobileLayout from '../../components/MobileLayout'
+import MobileLayout from '@/components/layout/MobileLayout'
 
 export default function DebugPage() {
   return (

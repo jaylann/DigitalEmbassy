@@ -1,4 +1,4 @@
-// src/components/map-layout/crisis-warning-overlay.tsx
+// src/components/overlay/CrisisWarningOverlay.tsx
 
 "use client";
 
