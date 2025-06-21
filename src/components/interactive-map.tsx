@@ -12,8 +12,8 @@ import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay";
 import { LandmarkMarker } from "@/components/landmark-marker";
 import { AnimatedRoute } from "@/components/animated-route";
 import { SystemStatus } from "@/types/status";
-import type { Landmark } from "@/types/landmarks";
 import type { Area } from "@/types/areas";
+import {Landmark} from "@/lib/types";
 
 interface InteractiveMapProps {
     landmarks?: Landmark[];

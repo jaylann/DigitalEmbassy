@@ -81,14 +81,22 @@ const sampleAreas: Area[] = [
   },
 ];
 
+// --- REVISED AND IMPROVED ROUTE ---
 const sampleRoute: LineString = {
   type: "LineString",
   coordinates: [
-    [51.33, 35.72],
-    [51.335, 35.723],
-    [51.34, 35.726],
-    [51.345, 35.729],
-    [51.35, 35.732],
+    // 1. Start southwest of the main area of interest
+    [51.325, 35.715],
+    // 2. Head northeast towards the checkpoint
+    [51.330, 35.720],
+    // 3. Pass directly through "Checkpoint A" landmark
+    [51.335, 35.722],
+    // 4. Make a sharp turn east to avoid the western edge of the "No-Go Zone"
+    [51.338, 35.723],
+    // 5. Curve northwards on a final approach to the destination
+    [51.339, 35.7245],
+    // 6. Arrive precisely at the "Medical Center" landmark
+    [51.340, 35.725],
   ],
 };
 
