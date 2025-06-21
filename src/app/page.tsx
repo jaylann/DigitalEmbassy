@@ -4,12 +4,11 @@
 
 import * as React from "react";
 import { InteractiveMap } from "@/components/interactive-map";
-import { Button } from "@/components/ui/button";
 import type { Area } from "@/types/areas";
 import { Landmark } from "@/lib/types";
 import type { Route } from "@/types/routes";
 import importedLandmarks from "../../data/landmarks.json";
-import type { LineString } from "geojson";
+import { useDebug } from "@/lib/state/debug";
 import checkpoint from "../../data/checkpoint.json";
 import communication from "../../data/communication.json";
 import dangerousSpots from "../../data/dangerous_spot.json";
@@ -19,8 +18,6 @@ import safeSpaces from "../../data/safe_space.json";
 
 import defaultAreas from "../../data/areas.json";
 import defaultRoutes from "../../data/routes.json";
-import animatedRouteA from "../../data/animated_route.json";
-import animatedRouteB from "../../data/animated_route_alt.json";
 
 const defaultLandmarks: Landmark[] = [
   ...(importedLandmarks as Landmark[]),
@@ -39,7 +36,7 @@ export default function Home() {
   const [landmarks, setLandmarks] = React.useState<Landmark[]>([]);
   const [areas, setAreas] = React.useState<Area[]>([]);
   const [routes, setRoutes] = React.useState<Route[]>([]);
-  const [route, setRoute] = React.useState<LineString | null>(null);
+  const { route } = useDebug();
 
   // Load default data and any stored user data on first render
   React.useEffect(() => {
@@ -76,16 +73,6 @@ export default function Home() {
       setRoutes(defaultRoutes as Route[]);
     }
 
-    try {
-      const storedRoute = localStorage.getItem('animatedRoute');
-      if (storedRoute) {
-        setRoute(JSON.parse(storedRoute));
-      } else {
-        setRoute(animatedRouteA as LineString);
-      }
-    } catch {
-      setRoute(animatedRouteA as LineString);
-    }
   }, []);
 
   // Persist landmarks and areas whenever they change
@@ -108,11 +95,6 @@ export default function Home() {
     }
   }, [routes]);
 
-  React.useEffect(() => {
-    if (route) {
-      localStorage.setItem('animatedRoute', JSON.stringify(route));
-    }
-  }, [route]);
 
 
   return (
@@ -123,21 +105,7 @@ export default function Home() {
         routes={routes}
         route={route ?? undefined}
       />
-      <div className="absolute bottom-4 left-4 z-20">
-        <Button
-          onClick={() =>
-            setRoute((current) =>
-              current && JSON.stringify(current) === JSON.stringify(animatedRouteA)
-                ? (animatedRouteB as LineString)
-                : (animatedRouteA as LineString)
-            )
-          }
-          variant="secondary"
-          size="sm"
-        >
-          Change Route
-        </Button>
-      </div>
+
     </>
   );
 }

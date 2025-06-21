@@ -1,6 +1,11 @@
 "use client";
-import { useEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
+import { useDebug } from "@/lib/state/debug";
+import animatedRouteA from "../../data/animated_route.json";
+import animatedRouteB from "../../data/animated_route_alt.json";
+import type { LineString } from "geojson";
+import type { SystemStatus } from "@/types/status";
 
 interface DebugAction {
   key: string;
@@ -8,28 +13,34 @@ interface DebugAction {
   handler: () => void;
 }
 
-const actions: DebugAction[] = [
-  {
-    key: "1",
-    label: "Action One",
-    handler: () => console.log("Action one executed"),
-  },
-  {
-    key: "2",
-    label: "Action Two",
-    handler: () => console.log("Action two executed"),
-  },
-  {
-    key: "3",
-    label: "Action Three",
-    handler: () => console.log("Action three executed"),
-  },
-];
-
 export default function DebugMenu() {
   const [open, setOpen] = useState(false);
+  const { setStatus, setRoute } = useDebug();
 
   const toggle = useCallback(() => setOpen((o) => !o), []);
+
+  const actions = useMemo<DebugAction[]>(
+    () => [
+      {
+        key: "r",
+        label: "Toggle Route (R)",
+        handler: () =>
+          setRoute((current) =>
+            current && JSON.stringify(current) === JSON.stringify(animatedRouteA)
+              ? (animatedRouteB as LineString)
+              : (animatedRouteA as LineString)
+          ),
+      },
+      ...(["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]).map(
+        (s, idx) => ({
+          key: String(idx + 1),
+          label: `Set Status: ${s}`,
+          handler: () => setStatus(s),
+        })
+      ),
+    ],
+    [setRoute, setStatus]
+  );
 
   const handleKey = useCallback(
     (e: KeyboardEvent) => {
@@ -45,7 +56,7 @@ export default function DebugMenu() {
         }
       });
     },
-    [toggle]
+    [toggle, actions]
   );
 
   useEffect(() => {
