@@ -5,36 +5,15 @@
 import * as React from "react";
 import { InteractiveMap } from "@/components/interactive-map";
 import type { Area } from "@/types/areas";
-import { Landmark } from "@/lib/types";
+import { useLandmarks } from "@/lib/state/landmarks";
 import type { Route } from "@/types/routes";
 import { useDebug } from "@/lib/state/debug";
-import checkpoint from "../../data/checkpoint.json";
-import communication from "../../data/communication.json";
-import dangerousSpots from "../../data/dangerous_spot.json";
-import explosions from "../../data/explosion.json";
-import attacks from "../../data/attack.json";
-import disasters from "../../data/disaster.json";
-import hospitals from "../../data/hospitals.json";
-import medical from "../../data/medical.json";
-import safeSpaces from "../../data/safe_space.json";
 
 import defaultAreas from "../../data/areas.json";
 import defaultRoutes from "../../data/routes.json";
 
-const staticLandmarks: Landmark[] = [
-  ...(checkpoint as Landmark[]),
-  ...(communication as Landmark[]),
-  ...(dangerousSpots as Landmark[]),
-  ...(explosions as Landmark[]),
-  ...(attacks as Landmark[]),
-  ...(disasters as Landmark[]),
-  ...(hospitals as Landmark[]),
-  ...(medical as Landmark[]),
-  ...(safeSpaces as Landmark[]),
-];
-
 export default function Home() {
-  const [landmarks, setLandmarks] = React.useState<Landmark[]>([]);
+  const { landmarks } = useLandmarks();
   const [areas, setAreas] = React.useState<Area[]>([]);
   const [routes, setRoutes] = React.useState<Route[]>([]);
   const { route } = useDebug();
@@ -60,6 +39,18 @@ export default function Home() {
     setAreas(defaultAreas as Area[]);
     setRoutes(defaultRoutes as Route[]);
   }, []);
+
+  React.useEffect(() => {
+    if (areas.length) {
+      localStorage.setItem("areas", JSON.stringify(areas));
+    }
+  }, [areas]);
+
+  React.useEffect(() => {
+    if (routes.length) {
+      localStorage.setItem("routes", JSON.stringify(routes));
+    }
+  }, [routes]);
 
 
   return (

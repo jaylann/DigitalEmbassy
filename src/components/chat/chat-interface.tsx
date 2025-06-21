@@ -32,6 +32,7 @@ import { saveReportToMesh } from "@/lib/actions/mesh";
 import type { Message, ReportPayload } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { useLocation } from "@/lib/state/location";
+import { useLandmarks } from "@/lib/state/landmarks";
 import { SelectMap } from "@/components/select-map";
 
 const MemoizedMarkdown = memo(({ content }: { content: string }) => (
@@ -53,6 +54,7 @@ export function ChatInterface() {
   const [input, setInput] = useState<string>("");
   const [isPending, startTransition] = useTransition();
   const { lastKnownLocation } = useLocation();
+  const { addLandmark } = useLandmarks();
   const [showLocationPicker, setShowLocationPicker] = useState(false);
   const [pendingReport, setPendingReport] = useState<ReportPayload | null>(
     null,
@@ -113,7 +115,7 @@ export function ChatInterface() {
                 lastKnownLocation,
               );
               if (result.success && result.landmark) {
-                // Landmark saved successfully
+                addLandmark(result.landmark);
               }
 
               finalAssistantMessage = {
@@ -197,7 +199,7 @@ export function ChatInterface() {
             if (pendingReport) {
               const result = await saveReportToMesh(pendingReport, loc);
               if (result.success && result.landmark) {
-                // Landmark saved successfully
+                addLandmark(result.landmark);
               }
               setMessages((prev) => [
                 ...prev,
