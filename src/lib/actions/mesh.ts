@@ -20,7 +20,7 @@ export async function saveReportToMesh(
             name: reportPayload.name,
             description: reportPayload.description,
             location: userLocation,
-            category: 'danger_zone',
+            category: 'dangerous_spot',
             trustLevel: 'low',
             isVerified: false,
             addedBy: 'user_report',

@@ -8,8 +8,25 @@ import type { Area } from "@/types/areas";
 import { Landmark } from "@/lib/types";
 import type { Route } from "@/types/routes";
 import defaultLandmarks from "../../data/landmarks.json";
+import type { LineString } from "geojson";
+import checkpoint from "../../data/checkpoint.json";
+import communication from "../../data/communication.json";
+import dangerousSpots from "../../data/dangerous_spot.json";
+import hospitals from "../../data/hospitals.json";
+import medical from "../../data/medical.json";
+import safeSpaces from "../../data/safe_space.json";
+
 import defaultAreas from "../../data/areas.json";
 import defaultRoutes from "../../data/routes.json";
+
+const defaultLandmarks: Landmark[] = [
+  ...(checkpoint as Landmark[]),
+  ...(communication as Landmark[]),
+  ...(dangerousSpots as Landmark[]),
+  ...(hospitals as Landmark[]),
+  ...(medical as Landmark[]),
+  ...(safeSpaces as Landmark[]),
+];
 
 
 
@@ -26,10 +43,10 @@ export default function Home() {
       if (storedLandmarks) {
         setLandmarks(JSON.parse(storedLandmarks));
       } else {
-        setLandmarks(defaultLandmarks as Landmark[]);
+        setLandmarks(defaultLandmarks);
       }
     } catch {
-      setLandmarks(defaultLandmarks as Landmark[]);
+      setLandmarks(defaultLandmarks);
     }
 
     try {
@@ -67,6 +84,7 @@ export default function Home() {
       localStorage.setItem('areas', JSON.stringify(areas));
     }
   }, [areas]);
+
 
   React.useEffect(() => {
     if (routes.length) {

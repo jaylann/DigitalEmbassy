@@ -54,9 +54,9 @@ const landmarkConfig: Record<
             badge: "bg-green-500/20 text-green-300 border-green-400/30",
         },
     },
-    danger_zone: {
+    dangerous_spot: {
         icon: Siren,
-        label: "Danger Zone",
+        label: "Dangerous Spot",
         styles: {
             bg: "bg-red-600",
             text: "text-red-100",
@@ -84,9 +84,9 @@ const landmarkConfig: Record<
             badge: "bg-yellow-500/20 text-yellow-300 border-yellow-400/30",
         },
     },
-    satellite_phone: {
+    communication: {
         icon: RadioTower,
-        label: "Satellite Phone",
+        label: "Communication",
         styles: {
             bg: "bg-indigo-600",
             text: "text-indigo-100",
