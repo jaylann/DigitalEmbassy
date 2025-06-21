@@ -1,11 +1,11 @@
-// src/components/map-layout/search-bar.tsx
+// src/components/search-bar.tsx
 
 "use client";
 
 import * as React from "react";
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
-import { Input } from "@/components/ui/input"; // Assuming you have shadcn Input component
+import { Input } from "@/components/ui/input";
 
 /**
  * A round search bar component designed for the map overlay.

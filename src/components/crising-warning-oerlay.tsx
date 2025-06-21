@@ -1,4 +1,4 @@
-// src/components/map-layout/crisis-warning-overlay.tsx
+// src/components/crisis-warning-overlay.tsx
 
 "use client";
 
@@ -40,7 +40,7 @@ export function CrisisWarningOverlay({ onAcknowledge }: CrisisWarningOverlayProp
                 initial={{ scale: 0.9, y: 20 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.9, y: 20 }}
-                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }} // A nice "overshoot" easing
+                transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }} // Smooth overshoot easing
             >
                 <motion.div
                     animate={{ scale: [1, 1.1, 1], rotate: [-5, 5, -5, 0] }}

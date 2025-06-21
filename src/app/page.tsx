@@ -123,7 +123,7 @@ export default function Home(): React.ReactElement {
             {/* The UI Overlay sits on top of the map and the glow effect layer */}
             <MapOverlay status={status} />
 
-            {/* DEV CONTROLS: For demonstrating status changes. Remove in production. */}
+            {/* Development controls for testing status changes. Remove in production. */}
             <div className="absolute bottom-24 right-4 z-20 flex flex-col gap-2">
                 {(["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]).map((s) => (
                     <Button key={s} onClick={() => setStatus(s)} size="sm" variant="secondary">

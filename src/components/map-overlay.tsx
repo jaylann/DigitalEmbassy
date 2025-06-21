@@ -1,4 +1,4 @@
-// src/components/map-layout/map-overlay.tsx
+// src/components/map-overlay.tsx
 
 import * as React from "react";
 import { AddInfoButton } from "./add-info-button";

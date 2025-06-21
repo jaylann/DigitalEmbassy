@@ -44,4 +44,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Emergency Call Page
 
-Visit `/emergency-call` to view a mock emergency dialing interface. The page is optimized for mobile with a large call button and uses a simple animation while connecting.
+Visit `/emergency-call` to view a demo emergency dialing interface optimized for mobile. The page features a large call button and displays a brief animation while connecting.

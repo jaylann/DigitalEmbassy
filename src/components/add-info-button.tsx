@@ -1,4 +1,4 @@
-// src/components/map-layout/add-info-button.tsx
+// src/components/add-info-button.tsx
 
 "use client";
 
