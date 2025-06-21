@@ -1,8 +1,7 @@
 
-// components/RouteLayer.tsx
-'use client';
+"use client";
 import { useState, useEffect } from 'react';
-import Map, { Source, Layer } from 'react-map-gl/maplibre'; // works identically with Mapbox
+import Map, { Source, Layer } from 'react-map-gl/maplibre';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import * as GeoJSON from 'geojson';
 
@@ -26,7 +25,7 @@ export default function RouteLayer() {
     return (
         <Map
             initialViewState={{ longitude: 13.42, latitude: 52.52, zoom: 12 }}
-            mapStyle="https://demotiles.maplibre.org/style.json" // or any Mapbox style
+            mapStyle="https://demotiles.maplibre.org/style.json"
         >
             {routeGeoJSON && (
                 <Source id="route" type="geojson" data={routeGeoJSON}>

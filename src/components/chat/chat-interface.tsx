@@ -1,7 +1,6 @@
 /**
  * @file A fully interactive and self-contained chat interface component.
- * This version includes fixes for layout overflow, text wrapping, and adds Markdown rendering.
- * @author [Your Name]
+ * Includes fixes for layout overflow, text wrapping and Markdown rendering.
  */
 
 "use client";
@@ -10,10 +9,10 @@ import { useState, useTransition, useRef, useEffect, type FormEvent, memo } from
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { motion } from "framer-motion";
-import { ArrowUp, Bot, Loader2 } from "lucide-react"; // Removed 'Plus' from imports
+import { ArrowUp, Bot, Loader2 } from "lucide-react";
 import clsx from "clsx";
 
-// --- shadcn/ui Component Imports ---
+// UI component imports
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
@@ -89,7 +88,6 @@ export function ChatInterface() {
 
     return (
         <Card className="w-full max-w-2xl h-[85vh] flex flex-col bg-black border-zinc-800 shadow-2xl shadow-zinc-900/50">
-            {/* --- The '+' button has been removed from the header --- */}
             <CardHeader className="flex flex-row items-center border-b border-zinc-800 p-4">
                 <div className="flex items-center space-x-4">
                     <Avatar>

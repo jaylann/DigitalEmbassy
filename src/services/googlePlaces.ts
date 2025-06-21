@@ -28,7 +28,12 @@ export async function getGermanEmbassiesNearby(city: string, country: string): P
       return [];
     }
 
-    return data.results.map((place: any) => ({
+    return data.results.map((place: {
+      name: string;
+      formatted_address: string;
+      geometry: { location: { lat: number; lng: number } };
+      place_id: string;
+    }) => ({
       name: place.name,
       formatted_address: place.formatted_address,
       geometry: {

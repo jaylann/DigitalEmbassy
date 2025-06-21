@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { MapPin, MessageCircle, ListChecks, Rss, Settings, Home } from 'lucide-react'; // Example icons
-import { cn } from "@/lib/utils"; // shadcn/ui utility
+import { MessageCircle, ListChecks, Rss, Settings, Home } from 'lucide-react';
+import { cn } from "@/lib/utils";
 
 interface NavItem {
     href: string;
@@ -12,7 +12,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-    { href: '/', label: 'Map', icon: Home }, // Assuming Map is the home page
+    { href: '/', label: 'Map', icon: Home },
     { href: '/faq', label: 'FAQ', icon: ListChecks },
     { href: '/chatbot', label: 'Chat', icon: MessageCircle },
     { href: '/liveticker', label: 'Ticker', icon: Rss },
@@ -21,8 +21,6 @@ const navItems: NavItem[] = [
 
 interface MobileLayoutProps {
     children: React.ReactNode;
-    // You can add a prop for the page title if needed
-    // pageTitle?: string;
 }
 
 export default function MobileLayout({ children }: MobileLayoutProps) {
@@ -30,12 +28,6 @@ export default function MobileLayout({ children }: MobileLayoutProps) {
 
     return (
         <div className="flex flex-col min-h-screen bg-background">
-            {/* Optional: A simple top bar for page title or back button */}
-            {/* <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 items-center">
-          <span className="font-semibold">{pageTitle || "Euromesh"}</span>
-        </div>
-      </header> */}
 
             <main className="flex-1 overflow-y-auto pb-20">
                 {/* pb-20 to ensure content doesn't get hidden behind the fixed bottom bar */}

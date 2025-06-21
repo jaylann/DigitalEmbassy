@@ -1,5 +1,3 @@
-// src/components/map-layout/add-info-button.tsx
-
 "use client";
 
 import * as React from "react";

@@ -1,17 +1,15 @@
-// src/components/map-layout/chatbot-button.tsx
-
 "use client";
 
 import * as React from "react";
 import { motion } from "framer-motion";
 import { Bot } from "lucide-react";
-import { Button } from "@/components/ui/button"; // Assuming shadcn Button
+import { Button } from "@/components/ui/button";
 import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from "@/components/ui/tooltip"; // Assuming shadcn Tooltip
+} from "@/components/ui/tooltip";
 
 /**
  * An icon button to open a chatbot interface, with a tooltip for accessibility.

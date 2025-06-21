@@ -2,7 +2,7 @@
 import { QRCodeSVG } from 'qrcode.react'
 
 export default function WalletPage() {
-  const name = "John Doe"; // placeholder name
+  const name = "John Doe"; // replace with authenticated user name
   const qrValue = `passport-${Math.random().toString(36).slice(2)}`;
 
   return (

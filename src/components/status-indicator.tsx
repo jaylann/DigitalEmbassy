@@ -1,5 +1,3 @@
-// src/components/map-layout/status-indicator.tsx
-
 "use client";
 
 import * as React from "react";

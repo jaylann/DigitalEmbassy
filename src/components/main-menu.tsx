@@ -1,6 +1,4 @@
 
-// src/components/map-layout/main-menu.tsx
-
 "use client";
 
 import * as React from "react";

@@ -1,4 +1,3 @@
-// src/utils/landmarkAdapter.ts
 import { RawPlaceResult } from '../services/googlePlaces';
 import { Landmark } from '../types/landmarks';
 

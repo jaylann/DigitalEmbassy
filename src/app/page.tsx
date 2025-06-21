@@ -1,5 +1,3 @@
-// src/app/page.tsx
-
 "use client";
 
 import * as React from "react";
@@ -9,9 +7,9 @@ import type { FeatureCollection } from "geojson";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import { Button } from "@/components/ui/button";
-import {SystemStatus} from "@/types/status";
-import {CrisisWarningOverlay} from "@/components/crising-warning-oerlay";
-import {MapOverlay} from "@/components/map-overlay";
+import { SystemStatus } from "@/types/status";
+import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay";
+import { MapOverlay } from "@/components/map-overlay";
 
 // Retrieve MapTiler key from environment variables
 const MAPTILER_KEY = process.env.NEXT_PUBLIC_MAPTILER_KEY_LOCAL;
@@ -19,7 +17,7 @@ if (!MAPTILER_KEY) {
     throw new Error("Missing NEXT_PUBLIC_MAPTILER_KEY environment variable.");
 }
 
-// Example restriction zone (Berlin LEZ rectangle)
+// Example restriction zone (Berlin low‑emission area)
 const restrictionZone: FeatureCollection = {
     type: "FeatureCollection",
     features: [
@@ -64,19 +62,13 @@ export default function Home(): React.ReactElement {
                     <CrisisWarningOverlay onAcknowledge={() => setIsCrisisAcknowledged(true)} />
                 )}
             </AnimatePresence>
-            {/*
-        This div is a dedicated layer for the glow effect.
-        - `absolute inset-0`: Covers the entire parent.
-        - `z-10`: Sits above the map (default z-index 0).
-        - `pointer-events-none`: Allows clicks to pass through to the map below.
-        - `MapOverlay` has a `z-index` of 10, so this glow will be layered correctly.
-      */}
+            {/* Glow layer for transmission status */}
             <motion.div
                 className="pointer-events-none absolute inset-0 z-10"
                 animate={{
                     boxShadow:
                         status === "Transmitting"
-                            ? "inset 0px 0px 20px 5px rgba(59, 130, 246, 0.6)" // blue-500
+                            ? "inset 0px 0px 20px 5px rgba(59, 130, 246, 0.6)"
                             : "inset 0px 0px 0px 0px rgba(59, 130, 246, 0)",
                 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
@@ -104,7 +96,7 @@ export default function Home(): React.ReactElement {
             {/* The UI Overlay sits on top of the map and the glow effect layer */}
             <MapOverlay status={status} />
 
-            {/* DEV CONTROLS: For demonstrating status changes. Remove in production. */}
+            {/* Development controls for demonstrating status changes */}
             <div className="absolute bottom-24 right-4 z-20 flex flex-col gap-2">
                 {(["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]).map((s) => (
                     <Button key={s} onClick={() => setStatus(s)} size="sm" variant="secondary">
