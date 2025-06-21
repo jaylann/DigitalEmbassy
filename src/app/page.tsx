@@ -1,103 +1,117 @@
-import Image from "next/image";
+// src/app/page.tsx
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+"use client";
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+import * as React from "react";
+import Map, { Source, Layer } from "react-map-gl/maplibre";
+import { motion, AnimatePresence } from "framer-motion";
+import type { FeatureCollection } from "geojson";
+import "maplibre-gl/dist/maplibre-gl.css";
+
+import { Button } from "@/components/ui/button";
+import {SystemStatus} from "@/types/status";
+import {CrisisWarningOverlay} from "@/components/crising-warning-oerlay";
+import {MapOverlay} from "@/components/map-overlay";
+
+// Retrieve MapTiler key from environment variables
+const MAPTILER_KEY = process.env.NEXT_PUBLIC_MAPTILER_KEY_LOCAL;
+if (!MAPTILER_KEY) {
+    throw new Error("Missing NEXT_PUBLIC_MAPTILER_KEY environment variable.");
+}
+
+// Example restriction zone (Berlin LEZ rectangle)
+const restrictionZone: FeatureCollection = {
+    type: "FeatureCollection",
+    features: [
+        {
+            type: "Feature",
+            properties: { name: "No‑Go" },
+            geometry: {
+                type: "Polygon",
+                coordinates: [
+                    [
+                        [13.376, 52.513], [13.454, 52.513],
+                        [13.454, 52.55], [13.376, 52.55],
+                        [13.376, 52.513]
+                    ]
+                ]
+            }
+        }
+    ]
+};
+
+/**
+ * The main page component, featuring a full-screen map and a sleek UI overlay.
+ * It manages the application's system status and applies conditional effects.
+ *
+ * @returns {React.ReactElement} The rendered home page.
+ */
+export default function Home(): React.ReactElement {
+    const [status, setStatus] = React.useState<SystemStatus>("Online");
+
+    const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
+
+    React.useEffect(() => {
+      if (status !== 'Crisis') {
+        setIsCrisisAcknowledged(false);
+      }
+    }, [status]);
+
+    return (
+        <main className="relative h-screen w-screen overflow-hidden bg-black">
+            <AnimatePresence>
+              {status === 'Crisis' && !isCrisisAcknowledged && (
+                <CrisisWarningOverlay onAcknowledge={() => setIsCrisisAcknowledged(true)} />
+              )}
+            </AnimatePresence>
+            {/*
+        This div is a dedicated layer for the glow effect.
+        - `absolute inset-0`: Covers the entire parent.
+        - `z-10`: Sits above the map (default z-index 0).
+        - `pointer-events-none`: Allows clicks to pass through to the map below.
+        - `MapOverlay` has a `z-index` of 10, so this glow will be layered correctly.
+      */}
+            <motion.div
+                className="pointer-events-none absolute inset-0 z-10"
+                animate={{
+                    boxShadow:
+                        status === "Transmitting"
+                            ? "inset 0px 0px 20px 5px rgba(59, 130, 246, 0.6)" // blue-500
+                            : "inset 0px 0px 0px 0px rgba(59, 130, 246, 0)",
+                }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+
+            <Map
+                initialViewState={{ longitude: 13.405, latitude: 52.53, zoom: 12 }}
+                mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}
+                style={{ position: "absolute", inset: 0, width: '100%', height: '100%' }}
+            >
+                <Source id="zone-source" type="geojson" data={restrictionZone}>
+                    <Layer
+                        id="zone-fill"
+                        type="fill"
+                        paint={{ "fill-color": "#DC2626", "fill-opacity": 0.25 }}
+                    />
+                    <Layer
+                        id="zone-outline"
+                        type="line"
+                        paint={{ "line-color": "#DC2626", "line-width": 2 }}
+                    />
+                </Source>
+            </Map>
+
+            {/* The UI Overlay sits on top of the map and the glow effect layer */}
+            <MapOverlay status={status} />
+
+            {/* DEV CONTROLS: For demonstrating status changes. Remove in production. */}
+            <div className="absolute bottom-24 right-4 z-20 flex flex-col gap-2">
+                {(["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]).map((s) => (
+                    <Button key={s} onClick={() => setStatus(s)} size="sm" variant="secondary">
+                        Set: {s}
+                    </Button>
+                ))}
+            </div>
+        </main>
+    );
 }
