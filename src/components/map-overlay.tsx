@@ -1,14 +1,16 @@
 // src/components/map-layout/map-overlay.tsx
 
 import * as React from "react";
-import { SearchBar } from "./search-bar";
+import { AddInfoButton } from "./add-info-button";
 import { ChatbotButton } from "./chatbot-button";
+import { MainMenu } from "./main-menu";
+import { SearchBar } from "./search-bar";
 import { StatusIndicator } from "./status-indicator";
 import {SystemStatus} from "@/types/status";
 
 /**
  * @interface MapOverlayProps
- * @property {SystemStatus} status - The current system status, passed to the StatusIndicator.
+ * @property {SystemStatus} status - The current system status.
  */
 interface MapOverlayProps {
     status: SystemStatus;
@@ -25,18 +27,30 @@ interface MapOverlayProps {
 export function MapOverlay({ status }: MapOverlayProps): React.ReactElement {
     return (
         <div
-            className="pointer-events-none fixed inset-0 z-10 flex flex-col justify-between p-4 sm:p-6"
-            aria-hidden="true" // Hide from screen readers as it's a visual overlay
+            className="pointer-events-none fixed inset-0 z-20 flex flex-col justify-between p-4 sm:p-6"
+            aria-hidden="true"
         >
-            {/* Top section: Status Indicator */}
-            <header className="flex justify-start">
-                <StatusIndicator status={status} />
+            {/* Top section: Status Indicator and Main Menu */}
+            <header className="relative flex w-full items-start justify-center">
+                {/* Centered Status Indicator */}
+                <div className="pt-1">
+                    <StatusIndicator status={status} />
+                </div>
+
+                {/* Absolute positioned Main Menu on the right */}
+                <div className="absolute right-0 top-0">
+                    <MainMenu />
+                </div>
             </header>
 
             {/* Bottom section: Search and Actions */}
-            <footer className="flex items-center justify-center gap-4">
-                <SearchBar />
-                <ChatbotButton />
+            <footer className="flex w-full items-center justify-center">
+                {/* Wrapper to group and center the bottom controls */}
+                <div className="flex items-center justify-center gap-2 sm:gap-4">
+                    <AddInfoButton />
+                    <SearchBar />
+                    <ChatbotButton />
+                </div>
             </footer>
         </div>
     );
