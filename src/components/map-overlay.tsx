@@ -49,33 +49,25 @@ export function MapOverlay({ status, landmarks, areas }: MapOverlayProps): React
             className="pointer-events-none fixed inset-0 z-20 flex flex-col justify-between p-4 sm:p-6"
             aria-hidden="true"
         >
-            {!searchActive && (
-                <header className="relative flex w-full items-start justify-center">
-                    <div className="absolute left-0 top-0">
-                        <MapLegend />
-                    </div>
-                    <div className="pt-1">
-                        <StatusIndicator status={status} />
-                    </div>
-                    <div className="absolute right-0 top-0">
-                        <MainMenu />
-                    </div>
-                </header>
-            )}
-
-            {searchActive ? (
-                <div className="pointer-events-auto absolute left-0 right-0 top-4 flex flex-col items-center gap-2">
-                    {searchBar}
+            <header className="relative flex w-full items-start justify-center">
+                <div className="absolute left-0 top-0">
+                    <MapLegend />
                 </div>
-            ) : (
-                <footer className="flex w-full items-center justify-center">
-                    <div className="flex items-center justify-center gap-2 sm:gap-4">
-                        <AddInfoButton />
-                        {searchBar}
-                        <ChatbotButton />
-                    </div>
-                </footer>
-            )}
+                <div className="pt-1">
+                    <StatusIndicator status={status} />
+                </div>
+                <div className="absolute right-0 top-0">
+                    <MainMenu />
+                </div>
+            </header>
+
+            <footer className="flex w-full items-center justify-center">
+                <div className="flex items-center justify-center gap-2 sm:gap-4">
+                    <AddInfoButton />
+                    {searchBar}
+                    <ChatbotButton />
+                </div>
+            </footer>
         </div>
     );
 }

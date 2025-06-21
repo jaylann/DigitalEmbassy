@@ -118,31 +118,38 @@ export function SearchBar({
                 className="h-12 w-full rounded-full border-none bg-black/50 pl-11 pr-4 text-white shadow-lg backdrop-blur-sm placeholder:text-gray-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-0"
             />
             {active && (
-                <div className="absolute left-0 right-0 top-full z-10 mt-2 flex flex-col gap-2">
-                    <Select value={filter} onValueChange={(v: string) => onFilterChange?.(v as "all" | "landmarks" | "areas")}>
-                        <SelectTrigger className="w-full">
-                            <SelectValue placeholder="Filter" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="all">All</SelectItem>
-                            <SelectItem value="landmarks">Landmarks</SelectItem>
-                            <SelectItem value="areas">Areas</SelectItem>
-                        </SelectContent>
-                    </Select>
+                <>
+                    <div className="absolute left-0 right-0 bottom-full z-10 mb-2">
+                        <Select
+                            value={filter}
+                            onValueChange={(v: string) => onFilterChange?.(v as "all" | "landmarks" | "areas")}
+                        >
+                            <SelectTrigger className="w-full">
+                                <SelectValue placeholder="Filter" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">All</SelectItem>
+                                <SelectItem value="landmarks">Landmarks</SelectItem>
+                                <SelectItem value="areas">Areas</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </div>
                     {results.length > 0 && (
-                        <ScrollArea className="max-h-40 rounded-md bg-black/80 text-white shadow-lg backdrop-blur-sm">
-                            {results.map((r) => (
-                                <button
-                                    key={`${r.type}-${r.id}`}
-                                    onClick={() => handleSelect(r)}
-                                    className="block w-full px-3 py-2 text-left hover:bg-black/60"
-                                >
-                                    {r.name}
-                                </button>
-                            ))}
-                        </ScrollArea>
+                        <div className="absolute left-0 right-0 top-full z-10 mt-2">
+                            <ScrollArea className="max-h-40 rounded-md bg-black/80 text-white shadow-lg backdrop-blur-sm">
+                                {results.map((r) => (
+                                    <button
+                                        key={`${r.type}-${r.id}`}
+                                        onClick={() => handleSelect(r)}
+                                        className="block w-full px-3 py-2 text-left hover:bg-black/60"
+                                    >
+                                        {r.name}
+                                    </button>
+                                ))}
+                            </ScrollArea>
+                        </div>
                     )}
-                </div>
+                </>
             )}
         </motion.div>
     );
