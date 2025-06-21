@@ -40,6 +40,15 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
     const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
 
     const { lastKnownLocation } = useLocation();
+    const [viewState, setViewState] = React.useState({
+        longitude: lastKnownLocation.lng,
+        latitude: lastKnownLocation.lat,
+        zoom: 12,
+    });
+
+    React.useEffect(() => {
+        setViewState((vs) => ({ ...vs, longitude: lastKnownLocation.lng, latitude: lastKnownLocation.lat }));
+    }, [lastKnownLocation]);
     const [selectedArea, setSelectedArea] = React.useState<{
         area: Area;
         coordinates: { lng: number; lat: number };
@@ -124,7 +133,8 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
             />
 
             <Map
-                initialViewState={{ longitude: lastKnownLocation.lng, latitude: lastKnownLocation.lat, zoom: 12 }}
+                viewState={viewState}
+                onMove={(e) => setViewState(e.viewState)}
                 mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
                 onClick={handleMapClick}
@@ -185,7 +195,7 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
                 )}
             </Map>
 
-            <MapOverlay status={status} />
+            <MapOverlay status={status} landmarks={landmarks} areas={areas} />
 
             <div className="absolute bottom-24 right-4 z-20 flex flex-col gap-2">
                 {(["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]).map((s) => (
