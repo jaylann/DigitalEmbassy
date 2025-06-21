@@ -27,6 +27,7 @@ import {saveReportToMesh} from "@/lib/actions/mesh";
 import type { Location, Message, ReportPayload } from "@/lib/types"; // Ensure Location type is exported
 import {cn} from "@/lib/utils";
 import {useLocation} from "@/lib/state/location";
+import { useLandmarks } from "@/lib/state/landmarks";
 import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
 
 // --- Main Controller Component ---
@@ -123,6 +124,7 @@ export function ChatPanelContent(): React.ReactElement {
     const [input, setInput] = React.useState("");
     const [isPending, startTransition] = React.useTransition();
     const {lastKnownLocation, setLastKnownLocation} = useLocation();
+    const { addLandmark } = useLandmarks();
 
     // State to control the visibility of the new SelectMap overlay
     const [isLocationPickerOpen, setLocationPickerOpen] = React.useState(false);
@@ -201,14 +203,7 @@ export function ChatPanelContent(): React.ReactElement {
         if (pendingReport) {
             const result = await saveReportToMesh(pendingReport, location);
             if (result.success && result.landmark) {
-                try {
-                    const stored = localStorage.getItem('landmarks');
-                    const landmarks = stored ? JSON.parse(stored) : [];
-                    landmarks.push(result.landmark);
-                    localStorage.setItem('landmarks', JSON.stringify(landmarks));
-                } catch {
-                    /* ignore */
-                }
+                addLandmark(result.landmark);
             }
             setMessages(prev => [
                 ...prev,

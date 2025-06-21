@@ -1,7 +1,6 @@
 // src/components/map-layout/map-overlay.tsx
 
 import * as React from "react";
-import { AddInfoButton } from "./add-info-button";
 import { ChatbotButton } from "./chatbot-button";
 import { MainMenu } from "./main-menu";
 import { SearchBar } from "./search-bar";

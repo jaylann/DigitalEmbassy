@@ -1,5 +1,11 @@
 "use client";
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
 import type { SystemStatus } from "@/types/status";
 import type { LineString } from "geojson";
 import animatedRouteA from "../../../data/animated_route.json";
@@ -8,7 +14,7 @@ interface DebugContextType {
   status: SystemStatus;
   setStatus: (s: SystemStatus) => void;
   route: LineString | null;
-  setRoute: (r: LineString | null) => void;
+  setRoute: React.Dispatch<React.SetStateAction<LineString | null>>;
 }
 
 const DebugContext = createContext<DebugContextType | undefined>(undefined);
