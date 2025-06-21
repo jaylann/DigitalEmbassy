@@ -1,70 +1,58 @@
-// src/components/interactive-map.tsx
 "use client";
 
 import * as React from "react";
-import Map, { Source, Layer, MapRef, MapLayerMouseEvent, Marker } from "react-map-gl/maplibre";
+import Map, { Source, Layer } from "react-map-gl/maplibre";
+import type maplibregl from "maplibre-gl";
 import type { LineString } from "geojson";
 import { motion, AnimatePresence } from "framer-motion";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { MapPin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { MapOverlay } from "@/components/map-overlay";
-import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay"; // Check typo if it's 'crisis-warning-overlay'
+import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay";
 import { LandmarkMarker } from "@/components/landmark-marker";
 import { AnimatedRoute } from "@/components/animated-route";
-import { useLocation as useAppLocationHook } from "@/lib/state/location"; // Aliased to avoid conflict
+import { RoutePath } from "@/components/route-path";
+import { useLocation } from "@/lib/state/location";
 import { AreaPopup } from "@/components/area-popup";
+import { RoutePopup } from "@/components/route-popup";
 import { SystemStatus } from "@/types/status";
 import type { Area, AreaCategory } from "@/types/areas";
-import { Landmark, Location as LandmarkLocation, LandmarkCategory as LMCategory } from "@/lib/types"; // Using types from lib
-
 const CATEGORY_COLORS: Record<AreaCategory, { fill: string; border: string }> = {
-    no_go: { fill: "#DC2626", border: "#b91c1c" }, // Red-600, Red-700
-    caution: { fill: "#FACC15", border: "#CA8A04" }, // Yellow-400, Yellow-600
-    safe: { fill: "#16A34A", border: "#15803D" }, // Green-600, Green-700
+    no_go: { fill: "#DC2626", border: "#b91c1c" },
+    caution: { fill: "#FACC15", border: "#CA8A04" },
+    safe: { fill: "#16A34A", border: "#15803D" },
 };
+import { Landmark } from "@/lib/types";
+import type { Route } from "@/types/routes";
 
 interface InteractiveMapProps {
     landmarks?: Landmark[];
     areas?: Area[];
+    /** Array of full routes to display */
+    routes?: Route[];
+    /** Optional route to display and animate */
     route?: LineString;
-    mapRef?: React.RefObject<MapRef>;
-
-    // "Add Info" related props from parent (HomePage)
-    isAddingInfoMode: boolean;
-    onMapInteractionClick: (event: MapLayerMouseEvent) => void; // Parent's unified click handler
-    temporaryMarkerLocation?: LandmarkLocation | null;
-    onTemporaryMarkerClick?: () => void;
-
-    // Callback for AddInfoButton, to be passed to MapOverlay
-    onAddInfoButtonClickCallback: () => void;
 }
 
-export function InteractiveMap({
-                                   landmarks = [],
-                                   areas = [],
-                                   route,
-                                   mapRef,
-                                   isAddingInfoMode,
-                                   onMapInteractionClick,
-                                   temporaryMarkerLocation,
-                                   onTemporaryMarkerClick,
-                                   onAddInfoButtonClickCallback
-                               }: InteractiveMapProps): React.ReactElement {
-    const localMapRefInternal = React.useRef<MapRef>(null);
-    const resolvedMapRef = mapRef || localMapRefInternal;
-
+export function InteractiveMap({ landmarks = [], areas = [], routes = [], route }: InteractiveMapProps): React.ReactElement {
     const [status, setStatus] = React.useState<SystemStatus>("Online");
     const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
-    const { lastKnownLocation } = useAppLocationHook();
+
+    const { lastKnownLocation } = useLocation();
     const [selectedArea, setSelectedArea] = React.useState<{
         area: Area;
         coordinates: { lng: number; lat: number };
     } | null>(null);
+    const [selectedRoute, setSelectedRoute] = React.useState<{
+        route: Route;
+        coordinates: { lng: number; lat: number };
+    } | null>(null);
 
     React.useEffect(() => {
-        if (status !== "Crisis") setIsCrisisAcknowledged(false);
+        if (status !== "Crisis") {
+            setIsCrisisAcknowledged(false);
+        }
     }, [status]);
 
     const MAPTILER_KEY = process.env.NEXT_PUBLIC_MAPTILER_KEY_LOCAL;
@@ -72,32 +60,52 @@ export function InteractiveMap({
         throw new Error("Missing NEXT_PUBLIC_MAPTILER_KEY environment variable.");
     }
 
-    const interactiveAreaLayers = React.useMemo(
-        () => areas.flatMap((a) => [`area-fill-${a.id}`, `area-outline-${a.id}`]),
-        [areas]
+    const interactiveLayers = React.useMemo(
+        () => [
+            ...areas.flatMap((a) => [`area-fill-${a.id}`, `area-outline-${a.id}`]),
+            ...routes.map((r) => `route-line-${r.id}`),
+        ],
+        [areas, routes]
     );
 
-    // This component's internal click handler now just calls the parent's handler
-    const handleMapClick = (event: MapLayerMouseEvent) => {
-        if (onMapInteractionClick) {
-            onMapInteractionClick(event);
-        }
-    };
+    const handleMapClick = React.useCallback(
+        (e: maplibregl.MapLayerMouseEvent) => {
+            if (!e.features || e.features.length === 0) {
+                setSelectedArea(null);
+                setSelectedRoute(null);
+                return;
+            }
+            const layerId = e.features[0].layer.id;
+            const areaMatch = layerId.match(/^area-(?:fill|outline)-(.*)$/);
+            if (areaMatch) {
+                const id = areaMatch[1];
+                const area = areas.find((a) => a.id === id);
+                if (area) {
+                    setSelectedArea({ area, coordinates: e.lngLat });
+                    setSelectedRoute(null);
+                    return;
+                }
+            }
 
-    const getLandmarkMarkerColor = (category: LMCategory): string => {
-        switch (category) {
-            case 'safe_space': return 'bg-green-500';
-            case 'danger_zone': return 'bg-red-600';
-            case 'medical': return 'bg-pink-500';
-            case 'checkpoint': return 'bg-yellow-500';
-            case 'satellite_phone': return 'bg-orange-500';
-            case 'trusted_contact': return 'bg-blue-500';
-            default: return 'bg-gray-500';
-        }
-    };
+            const routeMatch = layerId.match(/^route-line-(.*)$/);
+            if (routeMatch) {
+                const id = routeMatch[1];
+                const routeObj = routes.find((r) => r.id === id);
+                if (routeObj) {
+                    setSelectedRoute({ route: routeObj, coordinates: e.lngLat });
+                    setSelectedArea(null);
+                    return;
+                }
+            }
+
+            setSelectedArea(null);
+            setSelectedRoute(null);
+        },
+        [areas, routes]
+    );
 
     return (
-        <main className="relative h-screen w-screen overflow-hidden bg-black"> {/* Original main tag */}
+        <main className="relative h-screen w-screen overflow-hidden bg-black">
             <AnimatePresence>
                 {status === "Crisis" && !isCrisisAcknowledged && (
                     <CrisisWarningOverlay onAcknowledge={() => setIsCrisisAcknowledged(true)} />
@@ -116,13 +124,11 @@ export function InteractiveMap({
             />
 
             <Map
-                ref={resolvedMapRef}
                 initialViewState={{ longitude: lastKnownLocation.lng, latitude: lastKnownLocation.lat, zoom: 12 }}
                 mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
                 onClick={handleMapClick}
-                interactiveLayerIds={isAddingInfoMode ? [] : interactiveAreaLayers}
-                cursor={isAddingInfoMode ? 'crosshair' : 'grab'}
+                interactiveLayerIds={interactiveLayers}
             >
                 {areas.map((area) => {
                     const colors = CATEGORY_COLORS[area.category];
@@ -149,23 +155,18 @@ export function InteractiveMap({
                 })}
 
                 {landmarks.map((lm) => (
-                    <LandmarkMarker key={lm.id} landmark={lm}>
-                        <div title={lm.name} className={`h-4 w-4 -translate-y-1 rounded-full border-2 border-white ${getLandmarkMarkerColor(lm.category)} shadow-md`} />
-                    </LandmarkMarker>
+                    <LandmarkMarker key={lm.id} landmark={lm} />
                 ))}
 
-                {/* RENDER TEMPORARY MARKER based on props from parent */}
-                {isAddingInfoMode && temporaryMarkerLocation && (
-                    <Marker longitude={temporaryMarkerLocation.lng} latitude={temporaryMarkerLocation.lat} anchor="bottom">
-                        <div
-                            className="flex flex-col items-center cursor-pointer p-2 bg-background rounded-md shadow-lg hover:bg-muted"
-                            onClick={onTemporaryMarkerClick}
-                        >
-                            <MapPin className="h-8 w-8 text-primary animate-pulse" />
-                            <span className="text-xs text-foreground mt-1">Add here?</span>
-                        </div>
-                    </Marker>
-                )}
+                {routes.map((r) => (
+                    <RoutePath
+                        key={r.id}
+                        id={r.id}
+                        path={r.path}
+                        color={r.lineColor}
+                        width={r.lineWidth}
+                    />
+                ))}
 
                 {route && <AnimatedRoute route={route} />}
                 {selectedArea && (
@@ -175,15 +176,18 @@ export function InteractiveMap({
                         onClose={() => setSelectedArea(null)}
                     />
                 )}
+                {selectedRoute && (
+                    <RoutePopup
+                        route={selectedRoute.route}
+                        coordinates={selectedRoute.coordinates}
+                        onClose={() => setSelectedRoute(null)}
+                    />
+                )}
             </Map>
 
-            <MapOverlay
-                status={status}
-                onAddInfoClick={onAddInfoButtonClickCallback}
-                isAddInfoModeActive={isAddingInfoMode}
-            />
+            <MapOverlay status={status} />
 
-            <div className="absolute bottom-24 right-4 z-20 flex flex-col gap-2 pointer-events-auto">
+            <div className="absolute bottom-24 right-4 z-20 flex flex-col gap-2">
                 {(["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]).map((s) => (
                     <Button key={s} onClick={() => setStatus(s)} size="sm" variant="secondary">
                         Set: {s}

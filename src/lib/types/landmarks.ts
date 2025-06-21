@@ -1,7 +1,7 @@
 export type LandmarkCategory =
     | 'safe_space'
-    | 'danger_zone'
-    | 'satellite_phone'
+    | 'dangerous_spot'
+    | 'communication'
     | 'trusted_contact'
     | 'medical'
     | 'checkpoint';
