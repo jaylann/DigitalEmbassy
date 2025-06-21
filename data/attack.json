@@ -3,12 +3,16 @@
     "id": "attack-example",
     "name": "Checkpoint Alpha",
     "description": "Site of armed attack",
-    "location": { "lat": 35.71, "lng": 51.41 },
+    "location": {
+      "lat": 35.71,
+      "lng": 51.41
+    },
     "category": "attack",
     "trustLevel": "high",
     "lastUpdated": "2025-06-21T14:53:39.836Z",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   }
 ]
