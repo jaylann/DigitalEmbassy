@@ -23,8 +23,10 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 // --- Logic and Type Imports ---
 import { getGeminiResponse } from "@/lib/actions/gemini";
 import { saveReportToMesh } from "@/lib/actions/mesh";
-import type { Message, Location } from "@/lib/types";
+import type { Message } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { SelectMap } from "@/components/select-map";
+import { useLocation } from "@/lib/state/location";
 
 // --- Main Controller Component ---
 
@@ -126,6 +128,8 @@ function ChatPanelContent(): React.ReactElement {
     ]);
     const [input, setInput] = React.useState("");
     const [isPending, startTransition] = React.useTransition();
+    const { lastKnownLocation } = useLocation();
+    const [showLocationPicker, setShowLocationPicker] = React.useState(false);
     const scrollAreaRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
@@ -145,7 +149,6 @@ function ChatPanelContent(): React.ReactElement {
         setInput("");
 
         startTransition(async () => {
-            const mockUserLocation: Location = { lat: 52.5200, lng: 13.4050 };
             const result = await getGeminiResponse(newMessages);
 
             if (result.success) {
@@ -158,8 +161,13 @@ function ChatPanelContent(): React.ReactElement {
                         setMessages(prev => [...prev, finalAssistantMessage]);
                         break;
                     case 'report':
-                        saveReportToMesh(assistantResponse.payload, mockUserLocation);
+                        saveReportToMesh(assistantResponse.payload, lastKnownLocation);
                         finalAssistantMessage = { id: crypto.randomUUID(), role: 'assistant', content: "Thank you. Your report has been received and will be shared with the network." };
+                        setMessages(prev => [...prev, finalAssistantMessage]);
+                        break;
+                    case 'location_request':
+                        setShowLocationPicker(true);
+                        finalAssistantMessage = { id: crypto.randomUUID(), role: 'assistant', content: assistantResponse.payload.content };
                         setMessages(prev => [...prev, finalAssistantMessage]);
                         break;
                 }
@@ -203,6 +211,11 @@ function ChatPanelContent(): React.ReactElement {
                     )}
                 </div>
             </ScrollArea>
+            {showLocationPicker && (
+                <div className="p-4">
+                    <SelectMap onSave={() => setShowLocationPicker(false)} />
+                </div>
+            )}
 
             {/* Input */}
             <div className="p-4 border-t border-zinc-800 shrink-0 safe-area-bottom">

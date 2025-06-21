@@ -70,7 +70,8 @@ export function ChatInterface() {
                 switch (assistantResponse.type) {
                     case 'message':
                         let content = assistantResponse.payload.content;
-                        if (content.toLowerCase().includes('location')) {
+                        const locationRequestRegex = /(location|where|address|place|map)/i;
+                        if (locationRequestRegex.test(content)) {
                             setShowLocationPicker(true);
                             content = 'Please select the location on the map.';
                         }
@@ -89,6 +90,16 @@ export function ChatInterface() {
                             id: crypto.randomUUID(),
                             role: 'assistant',
                             content: "Thank you. Your report has been received and will be shared with the network.",
+                        };
+                        setMessages(prev => [...prev, finalAssistantMessage]);
+                        break;
+
+                    case 'location_request':
+                        setShowLocationPicker(true);
+                        finalAssistantMessage = {
+                            id: crypto.randomUUID(),
+                            role: 'assistant',
+                            content: assistantResponse.payload.content,
                         };
                         setMessages(prev => [...prev, finalAssistantMessage]);
                         break;
