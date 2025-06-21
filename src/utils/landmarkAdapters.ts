@@ -1,6 +1,6 @@
 // src/utils/landmarkAdapter.ts
 import { RawPlaceResult } from '../services/googlePlaces';
-import { Landmark } from '../types/landmarks';
+import { Landmark } from '../lib/types/landmarks';
 
 export function convertPlaceToLandmark(place: RawPlaceResult): Landmark {
     return {
