@@ -11,24 +11,45 @@ import { NewsCard } from "@/components/news-card";
 const newsItems: NewsItem[] = [
   {
     id: 1,
-    tag: "Update",
-    headline: "Network Status Green",
-    description: "All systems are now online and fully operational following the brief outage. Monitoring will continue.",
-    datetime: new Date(Date.now() - 1000 * 60 * 5).toISOString(), // 5 minutes ago
+    tag: "Alert",
+    headline: "Airstrike Launched on Tehran Outskirts",
+    description: "IDF jets conducted precision strikes targeting military installations near Tehran following confirmed intelligence on missile depots.",
+    datetime: new Date(Date.now() - 1000 * 60 * 2).toISOString(), // 2 minutes ago
   },
   {
     id: 2,
-    tag: "Event",
-    headline: "Crisis Averted in Sector 7G",
-    description: "The crisis situation in Sector 7G has been successfully neutralized. Routes are now clear. Proceed with standard caution.",
-    datetime: new Date(Date.now() - 1000 * 3600 * 2).toISOString(), // 2 hours ago
+    tag: "Alert",
+    headline: "Tehran Air Defenses Engaged",
+    description: "Iranian air defense batteries activated in response to incoming munition trajectories. Anti-aircraft fire detected over northern districts.",
+    datetime: new Date(Date.now() - 1000 * 60 * 45).toISOString(), // 45 minutes ago
   },
   {
     id: 3,
+    tag: "Report",
+    headline: "Civilian Casualties Reported in Shemiran",
+    description: "Local authorities report multiple civilian casualties and infrastructure damage in Shemiran district. Medical teams are en route.",
+    datetime: new Date(Date.now() - 1000 * 3600 * 2).toISOString(), // 2 hours ago
+  },
+  {
+    id: 4,
+    tag: "Response",
+    headline: "UN Security Council Convenes Emergency Session",
+    description: "United Nations Security Council holds an emergency meeting to address escalating tensions following the airstrike.",
+    datetime: new Date(Date.now() - 1000 * 3600 * 6).toISOString(), // 6 hours ago
+  },
+  {
+    id: 5,
     tag: "Info",
-    headline: "New Sympathetic Contact Added",
-    description: "A new trusted contact 'Viper' has been added to the directory for the downtown district. Review their profile in the contacts section.",
-    datetime: "2024-05-28T11:00:00Z",
+    headline: "Humanitarian Corridors Established",
+    description: "Iranian authorities announce temporary humanitarian corridors for civilian evacuation and aid shipments.",
+    datetime: "2025-06-20T14:00:00Z",
+  },
+  {
+    id: 6,
+    tag: "Briefing",
+    headline: "Ceasefire Declared; All-Clear Issued",
+    description: "Military command reports cessation of operations. All-clear issued for resumed civilian and commercial activity.",
+    datetime: "2025-06-20T18:30:00Z",
   },
 ];
 

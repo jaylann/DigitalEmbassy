@@ -76,6 +76,7 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
     }
 
     const landmarkAreas = React.useMemo(() => {
+        const seen = new Set<string>();
         return landmarks
             .filter((lm) => typeof lm.radius === "number")
             .map((lm) => ({
@@ -87,7 +88,12 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
                     { steps: 64, units: "kilometers" }
                 ),
                 category: LANDMARK_AREA_MAP[lm.category],
-            })) as Area[];
+            }))
+            .filter((area) => {
+                if (seen.has(area.id)) return false;
+                seen.add(area.id);
+                return true;
+            }) as Area[];
     }, [landmarks]);
 
     const allAreas = React.useMemo(() => [...areas, ...landmarkAreas], [areas, landmarkAreas]);

@@ -6,9 +6,9 @@ import { useLandmarks } from "@/lib/state/landmarks";
 import animatedRouteA from "../../data/animated_route.json";
 import animatedRouteB from "../../data/animated_route_alt.json";
 import landmarkChange from "../../data/landmark_change.json";
-import type { Landmark } from "@/lib/types";
 import type { LineString } from "geojson";
 import type { SystemStatus } from "@/types/status";
+import {Landmark} from "@/lib/types";
 
 interface DebugAction {
   key: string;
@@ -45,7 +45,9 @@ export default function DebugMenu() {
         label: "Start Landmark Change (W)",
         handler: () => {
           addLandmark(landmarkChange as Landmark);
-          setRoute(animatedRouteB as LineString);
+          setTimeout(() => {
+            setRoute(animatedRouteB as LineString);
+          }, 5000);
         },
       },
       ...(["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]).map(

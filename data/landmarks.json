@@ -30,5 +30,36 @@
     "addedBy": "user-medic-042",
     "isVerified": false,
     "visible": true
-  }
+  },
+  {
+    "id": "17436a31-97e1-4f1a-88d4-479630c50b58",
+    "name": "City of Belin Incident",
+    "description": "Bomb report in city center",
+    "location": {
+      "lat": 52.52173705484944,
+      "lng": 13.41911265726867
+    },
+    "category": "explosion",
+    "trustLevel": "low",
+    "isVerified": false,
+    "addedBy": "user_report",
+    "lastUpdated": "2025-06-21T18:08:25.186Z",
+    "visible": true
+  },
+  {
+    "id": "26ea2690-2aa2-427c-8b52-df3cf2a2924a",
+    "name": "Belin",
+    "description": "bomb threat in the city center",
+    "location": {
+      "lat": 35.7579216169879,
+      "lng": 51.46980995928902
+    },
+    "category": "explosion",
+    "trustLevel": "low",
+    "isVerified": false,
+    "addedBy": "user_report",
+    "lastUpdated": "2025-06-21T18:32:23.730Z",
+    "visible": true
+  },
+
 ]
