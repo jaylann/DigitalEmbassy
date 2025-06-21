@@ -8,6 +8,8 @@ import { SearchBar } from "./search-bar";
 import { StatusIndicator } from "./status-indicator";
 import { MapLegend } from "./map-legend"; // Import the legend component
 import { SystemStatus } from "@/types/status";
+import type { Landmark } from "@/lib/types";
+import type { Area } from "@/types/areas";
 
 /**
  * @interface MapOverlayProps
@@ -15,6 +17,8 @@ import { SystemStatus } from "@/types/status";
  */
 interface MapOverlayProps {
     status: SystemStatus;
+    landmarks: Landmark[];
+    areas: Area[];
 }
 
 /**
@@ -25,41 +29,53 @@ interface MapOverlayProps {
  * @param {MapOverlayProps} props - The component props.
  * @returns {React.ReactElement} The rendered map overlay.
  */
-export function MapOverlay({ status }: MapOverlayProps): React.ReactElement {
+export function MapOverlay({ status, landmarks, areas }: MapOverlayProps): React.ReactElement {
+    const [searchActive, setSearchActive] = React.useState(false);
+    const [filter, setFilter] = React.useState<"all" | "landmarks" | "areas">("all");
+
+    const searchBar = (
+        <SearchBar
+            landmarks={landmarks}
+            areas={areas}
+            active={searchActive}
+            filter={filter}
+            onActiveChange={setSearchActive}
+            onFilterChange={setFilter}
+        />
+    );
+
     return (
         <div
             className="pointer-events-none fixed inset-0 z-20 flex flex-col justify-between p-4 sm:p-6"
             aria-hidden="true"
         >
-            {/* Top section: Status Indicator and Main Menu */}
-            <header className="relative flex w-full items-start justify-center">
-                {/* --- ADDITION START --- */}
-                {/* Absolute positioned Map Legend on the left */}
-                <div className="absolute left-0 top-0">
-                    <MapLegend />
-                </div>
-                {/* --- ADDITION END --- */}
+            {!searchActive && (
+                <header className="relative flex w-full items-start justify-center">
+                    <div className="absolute left-0 top-0">
+                        <MapLegend />
+                    </div>
+                    <div className="pt-1">
+                        <StatusIndicator status={status} />
+                    </div>
+                    <div className="absolute right-0 top-0">
+                        <MainMenu />
+                    </div>
+                </header>
+            )}
 
-                {/* Centered Status Indicator */}
-                <div className="pt-1">
-                    <StatusIndicator status={status} />
+            {searchActive ? (
+                <div className="pointer-events-auto absolute left-0 right-0 top-4 flex flex-col items-center gap-2">
+                    {searchBar}
                 </div>
-
-                {/* Absolute positioned Main Menu on the right */}
-                <div className="absolute right-0 top-0">
-                    <MainMenu />
-                </div>
-            </header>
-
-            {/* Bottom section: Search and Actions */}
-            <footer className="flex w-full items-center justify-center">
-                {/* Wrapper to group and center the bottom controls */}
-                <div className="flex items-center justify-center gap-2 sm:gap-4">
-                    <AddInfoButton />
-                    <SearchBar />
-                    <ChatbotButton />
-                </div>
-            </footer>
+            ) : (
+                <footer className="flex w-full items-center justify-center">
+                    <div className="flex items-center justify-center gap-2 sm:gap-4">
+                        <AddInfoButton />
+                        {searchBar}
+                        <ChatbotButton />
+                    </div>
+                </footer>
+            )}
         </div>
     );
 }
