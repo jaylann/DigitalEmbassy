@@ -12,7 +12,6 @@ import {
     PhoneCall,
     Newspaper,
     Wallet,
-    Map as MapIcon,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
