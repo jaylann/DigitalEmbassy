@@ -1,97 +1,117 @@
 /**
- * @file Contains the server-side action for interacting with the Google Gemini API.
- * This module encapsulates the logic for context-aware question answering.
+ * @file Contains the core AI engine for the Euromesh application.
+ * This version includes a more procedural system prompt with few-shot examples
+ * to prevent premature report submission.
  */
 
 "use server";
 
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import type { GeminiResponse } from "@/lib/types";
+import fs from 'fs/promises';
+import path from 'path';
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
+import type { GeminiApiResponse, Message, Landmark, AssistantResponse } from "@/lib/types";
 
-// --- Type Definitions ---
-type ContextDocument = Record<string, unknown>;
-
-// --- API Client Initialization & Validation ---
+const dbPath = path.join(process.cwd(), 'data', 'landmarks.json');
 const apiKey = process.env.GEMINI_API_KEY;
-if (!apiKey) {
-  throw new Error("GEMINI_API_KEY is not defined in environment variables. Set it in .env.local");
-}
+if (!apiKey) throw new Error("FATAL: GEMINI_API_KEY is not defined.");
+
 const genAI = new GoogleGenerativeAI(apiKey);
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+const safetySettings = [{ category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH }];
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest", safetySettings });
 
 /**
  * @constant {string} SYSTEM_PROMPT
- * The core instructions for the AI model. This defines its role, rules, and constraints.
- * It is encapsulated within the server action to ensure security and consistency.
+ * The master prompt, now with explicit rules and examples to guide the AI's
+ * reporting flow and prevent premature completion.
  */
 const SYSTEM_PROMPT = `
-You are the official information assistant for the Euromesh application. Your purpose is to provide critical safety information to European citizens from their embassy during emergencies. Your responses must be precise, calm, and factual.
+You are the AI engine for the Euromesh emergency app. You have two primary modes: ANSWER_MODE and REPORT_MODE. Your entire response MUST be ONLY a single, valid JSON object.
 
-Strict Rules of Operation:
-1.  **Information Source:** Your entire response MUST be derived from the information within the '--- CONTEXT ---' block. This context contains the latest data received by the app, either from a live server or through the P2P mesh network. No other sources are permitted.
+--- MODES ---
 
-2.  **Unavailable Information:** If the user's question cannot be answered from the provided context, you MUST clearly state that the information is not available in the current data update. Do not suggest where to find the information unless that suggestion is explicitly part of the provided context.
+1.  **ANSWER_MODE:**
+    *   **Trigger:** The user asks a question.
+    *   **Action:** Answer based ONLY on the provided JSON '--- MESH CONTEXT ---'.
+    *   **JSON Output:** \`{"type": "message", "payload": {"content": "Your answer here."}}\`
 
-3.  **Knowledge Limitation:** This is a critical safety feature. You MUST NOT use any external knowledge, access the internet, or make assumptions. Your knowledge is strictly limited to the JSON data provided in this query. Do not hallucinate or create information.
+2.  **REPORT_MODE:**
+    *   **Trigger:** The user wants to report a danger.
+    *   **Action:** Your goal is to create a 'danger_zone' landmark by collecting a 'name' and a 'description'. Follow this procedure:
+        1.  Analyze the user's message and the conversation history.
+        2.  Check if you have extracted BOTH a specific 'name' (the place) AND a 'description' (what happened).
+        3.  **If BOTH are present**, return a \`report\` type JSON.
+        4.  **If EITHER 'name' OR 'description' is missing**, you MUST return a \`message\` type JSON to ask the user for the missing information.
+    *   **JSON Output (when complete):** \`{"type": "report", "payload": {"name": "...", "description": "..."}}\`
 
-4.  **Tone and Brevity:** Respond directly and factually. Avoid conversational filler (e.g., 'Of course,' 'I can help with that'). The user's situation may be critical, and clarity is paramount. Brevity is essential.
+--- RULES & EXAMPLES ---
+- Your output must start with \`{\` and end with \`}\`. No markdown fences.
+- Use the conversation history for context.
+- **CRITICAL RULE:** NEVER create a 'report' type JSON unless you have collected ALL required information ('name' and 'description'). Always ask for missing details first.
 
-5.  **Formatting:** Present information for maximum readability. Use lists or short sentences. Do not start your answer with "According to the context..."—the user already understands this is how you operate.
+- **Example 1: Incomplete Report (Vague Initial Request)**
+  - User: "I would like to report something."
+  - Your JSON Response: \`{"type": "message", "payload": {"content": "I can help with that. Please describe the danger."}}\`
+
+- **Example 2: Incomplete Report (Description but no Name)**
+  - User: "A bridge collapsed."
+  - Your JSON Response: \`{"type": "message", "payload": {"content": "Thank you. Can you tell me the location or name of the collapsed bridge?"}}\`
+
+- **Example 3: Complete Report (All details provided over two turns)**
+  - (After the previous exchange)
+  - User: "It's the Tabiat Bridge."
+  - Your JSON Response: \`{"type": "report", "payload": {"name": "Tabiat Bridge", "description": "A bridge collapsed"}}\`
 `.trim();
 
-/**
- * Sends a user query and JSON context to the Gemini API and returns a structured response.
- * The function internally combines the user inputs with a predefined system prompt
- * to ensure the AI behaves in a controlled and predictable manner.
- *
- * @param {ContextDocument[]} documents - An array of JSON objects to be used as context.
- * @param {string} userQuery - The user-provided question.
- * @returns {Promise<GeminiResponse>} A promise that resolves to a GeminiResponse object,
- *          containing either the successful data or a user-friendly error message.
- */
+
 export async function getGeminiResponse(
-    documents: ContextDocument[],
-    userQuery: string
-): Promise<GeminiResponse> {
-  // --- Input Validation ---
-  if (!Array.isArray(documents)) {
-    return { success: false, error: "Invalid context: Documents must be an array." };
-  }
-  if (!userQuery.trim()) {
-    return { success: false, error: "Invalid query: A non-empty string is required." };
+    chatHistory: Message[]
+): Promise<GeminiApiResponse> {
+  let landmarks: Landmark[] = [];
+  try {
+    const fileContent = await fs.readFile(dbPath, 'utf-8');
+    landmarks = JSON.parse(fileContent);
+    console.log(`Loaded ${landmarks.length} landmarks from mesh database.`);
+  } catch (error) {
+    console.log("No mesh database found or it's empty. Starting with a clean context.");
   }
 
-  // --- Prompt Construction ---
-  const serializedContext = JSON.stringify(documents, null, 2);
+  const historyForPrompt = chatHistory
+      .map(msg => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`)
+      .join('\n');
+
   const fullPrompt = `
 ${SYSTEM_PROMPT}
-
---- CONTEXT ---
+--- MESH CONTEXT ---
 \`\`\`json
-${serializedContext}
+${JSON.stringify(landmarks, null, 2)}
 \`\`\`
---- END CONTEXT ---
-
---- USER QUESTION ---
-${userQuery}
---- END USER QUESTION ---
-
-Answer:
+--- END MESH CONTEXT ---
+--- CURRENT CONVERSATION HISTORY ---
+${historyForPrompt}
+--- END CONVERSATION HISTORY ---
   `;
 
   try {
-    console.log("Server Action 'getGeminiResponse': Calling Gemini API with structured prompt.");
     const result = await model.generateContent(fullPrompt);
-    const response = await result.response;
-    const text = response.text();
+    const responseText = result.response.text();
+    console.log("RAW RESPONSE FROM GEMINI:", responseText);
 
-    return { success: true, data: text };
+    const jsonRegex = /```(json)?\s*([\s\S]*?)\s*```/;
+    const match = responseText.match(jsonRegex);
+    const sanitizedText = match ? match[2].trim() : responseText.trim();
 
+    if (!sanitizedText) throw new Error("Sanitized response text is empty.");
+
+    const parsedJson = JSON.parse(sanitizedText) as AssistantResponse;
+    if (!parsedJson.type || !parsedJson.payload) throw new Error("Invalid JSON structure.");
+
+    return { success: true, data: parsedJson };
   } catch (error) {
-    console.error("Server Action 'getGeminiResponse': API Error:", error);
-    return {
-      success: false,
-      error: "An error occurred while communicating with the AI. Please check server logs for details.",
+    console.error("FULL ERROR OBJECT:", error);
+    const errorResponse: AssistantResponse = {
+      type: "message",
+      payload: { content: "I'm having trouble processing that request. Could you please try rephrasing?" }
     };
+    return { success: true, data: errorResponse };
   }
 }
