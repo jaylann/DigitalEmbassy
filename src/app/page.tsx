@@ -51,8 +51,6 @@ const restrictionZone: FeatureCollection = {
 };
 
 
-
-
 // --- REVISED AND IMPROVED ROUTE ---
 const sampleRoute: LineString = {
   type: "LineString",
@@ -134,6 +132,7 @@ export default function Home() {
         name: `Area ${prev.length}`,
         geometry: restrictionZone,
         category: "caution",
+        description: "User added area",
       },
     ]);
   };
@@ -145,20 +144,6 @@ export default function Home() {
         areas={areas}
         route={sampleRoute}
       />
-      <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
-        <button
-          onClick={addLandmark}
-          className="rounded bg-blue-600 px-3 py-2 text-white"
-        >
-          Add Landmark
-        </button>
-        <button
-          onClick={addArea}
-          className="rounded bg-blue-600 px-3 py-2 text-white"
-        >
-          Add Area
-        </button>
-      </div>
     </>
   );
 }
