@@ -1,44 +1,44 @@
+// src/components/map-marker.tsx
+
 "use client";
 
 import * as React from "react";
 import { Marker } from "react-map-gl/maplibre";
 
 /**
+ * Props for the MapMarker component.
  * @interface MapMarkerProps
- * @property {number} latitude - The marker's latitude.
- * @property {number} longitude - The marker's longitude.
+ * @property {number} latitude - The geographical latitude for the marker's position.
+ * @property {number} longitude - The geographical longitude for the marker's position.
  * @property {() => void} [onClick] - Optional click handler for the marker.
- * @property {React.ReactNode} [children] - Optional custom marker content.
+ * @property {React.ReactNode} children - The content to be rendered as the marker. This allows for fully custom marker designs.
  */
 interface MapMarkerProps {
     latitude: number;
     longitude: number;
     onClick?: () => void;
-    children?: React.ReactNode;
+    children: React.ReactNode;
 }
 
 /**
- * A simple map marker component using MapLibre's `Marker`.
- * It renders at the provided coordinates and forwards click events.
+ * A generic, style-agnostic map marker component that wraps react-map-gl's Marker.
+ * It handles positioning and provides a clickable area. The visual representation
+ * is delegated to the `children` prop.
  *
  * @param {MapMarkerProps} props - The component props.
- * @returns {React.ReactElement} The rendered map marker.
+ * @returns {React.ReactElement} The rendered map marker component.
  */
 export function MapMarker({
-    latitude,
-    longitude,
-    onClick,
-    children,
-}: MapMarkerProps): React.ReactElement {
+                              latitude,
+                              longitude,
+                              onClick,
+                              children,
+                          }: MapMarkerProps): React.ReactElement {
     return (
-        <Marker longitude={longitude} latitude={latitude} anchor="bottom">
-            <div
-                onClick={onClick}
-                className="pointer-events-auto cursor-pointer"
-            >
-                {children ?? (
-                    <div className="h-4 w-4 -translate-y-1 rounded-full border-2 border-white bg-blue-600 shadow" />
-                )}
+        <Marker longitude={longitude} latitude={latitude} anchor="center" onClick={onClick}>
+            {/* The wrapper div ensures that DOM events like hover and click are properly handled. */}
+            <div className="pointer-events-auto cursor-pointer">
+                {children}
             </div>
         </Marker>
     );

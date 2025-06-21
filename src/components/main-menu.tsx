@@ -12,7 +12,6 @@ import {
     PhoneCall,
     Newspaper,
     Wallet,
-    Map as MapIcon,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -23,17 +22,6 @@ import {
 } from "@/components/ui/popover";
 
 const menuItems = [
-    {
-        label: "Home",
-        href: "/",
-        icon: <MapIcon className="h-5 w-5" />,
-    },
-    {
-        label: "Emergency Call",
-        href: "/emergency-call",
-        icon: <PhoneCall className="h-5 w-5" />,
-        isEmergency: true,
-    },
     {
         label: "FAQ",
         href: "/faq",
@@ -48,6 +36,12 @@ const menuItems = [
         label: "Wallet",
         href: "/wallet",
         icon: <Wallet className="h-5 w-5" />,
+    },
+    {
+        label: "Emergency Call",
+        href: "/emergency-call",
+        icon: <PhoneCall className="h-5 w-5" />,
+        isEmergency: true,
     },
 ];
 

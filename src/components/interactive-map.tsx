@@ -1,52 +1,70 @@
-// src/components/map/InteractiveMap.tsx
+// src/components/interactive-map.tsx
 "use client";
 
 import * as React from "react";
-import Map, { Source, Layer, MapRef, MapLayerMouseEvent } from "react-map-gl/maplibre";
+import Map, { Source, Layer, MapRef, MapLayerMouseEvent, Marker } from "react-map-gl/maplibre";
+import type { LineString } from "geojson";
 import { motion, AnimatePresence } from "framer-motion";
 import "maplibre-gl/dist/maplibre-gl.css";
-// ... other necessary imports like Button, MapOverlay, CrisisWarningOverlay, MapMarker, types ...
-import { Button } from "@/components/ui/button";
-import { MapOverlay } from "@/components/map-overlay"; // Assuming this path is correct
-import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay"; // Check typo, adjust path
-import { MapMarker } from "@/components/map-marker"; // Assuming this path is correct
-import { SystemStatus } from "@/types/status";
-import type { Landmark, LandmarkCategory, Location as LandmarkLocation } from "@/types/landmarks";
-import type { Area } from "@/types/areas";
+import { MapPin } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import { MapOverlay } from "@/components/map-overlay";
+import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay"; // Check typo if it's 'crisis-warning-overlay'
+import { LandmarkMarker } from "@/components/landmark-marker";
+import { AnimatedRoute } from "@/components/animated-route";
+import { useLocation as useAppLocationHook } from "@/lib/state/location"; // Aliased to avoid conflict
+import { AreaPopup } from "@/components/area-popup";
+import { SystemStatus } from "@/types/status";
+import type { Area, AreaCategory } from "@/types/areas";
+import { Landmark, Location as LandmarkLocation, LandmarkCategory as LMCategory } from "@/lib/types"; // Using types from lib
+
+const CATEGORY_COLORS: Record<AreaCategory, { fill: string; border: string }> = {
+    no_go: { fill: "#DC2626", border: "#b91c1c" }, // Red-600, Red-700
+    caution: { fill: "#FACC15", border: "#CA8A04" }, // Yellow-400, Yellow-600
+    safe: { fill: "#16A34A", border: "#15803D" }, // Green-600, Green-700
+};
 
 interface InteractiveMapProps {
     landmarks?: Landmark[];
     areas?: Area[];
-    mapRef?: React.RefObject<MapRef | null>;
-    onMapClick?: (event: MapLayerMouseEvent) => void;
-    cursor?: string;
-    // Props for temporary add marker if rendered here (alternative to parent rendering it)
-    isAddingInfoMode?: boolean;
+    route?: LineString;
+    mapRef?: React.RefObject<MapRef>;
+
+    // "Add Info" related props from parent (HomePage)
+    isAddingInfoMode: boolean;
+    onMapInteractionClick: (event: MapLayerMouseEvent) => void; // Parent's unified click handler
     temporaryMarkerLocation?: LandmarkLocation | null;
     onTemporaryMarkerClick?: () => void;
+
+    // Callback for AddInfoButton, to be passed to MapOverlay
+    onAddInfoButtonClickCallback: () => void;
 }
 
 export function InteractiveMap({
                                    landmarks = [],
                                    areas = [],
+                                   route,
                                    mapRef,
-                                   onMapClick,
-                                   cursor,
-                                   // isAddingInfoMode, // Uncomment if using these
-                                   // temporaryMarkerLocation,
-                                   // onTemporaryMarkerClick
+                                   isAddingInfoMode,
+                                   onMapInteractionClick,
+                                   temporaryMarkerLocation,
+                                   onTemporaryMarkerClick,
+                                   onAddInfoButtonClickCallback
                                }: InteractiveMapProps): React.ReactElement {
-    const localMapRef = React.useRef<MapRef>(null);
-    const resolvedMapRef = mapRef || localMapRef;
+    const localMapRefInternal = React.useRef<MapRef>(null);
+    const resolvedMapRef = mapRef || localMapRefInternal;
 
     const [status, setStatus] = React.useState<SystemStatus>("Online");
     const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
+    const { lastKnownLocation } = useAppLocationHook();
+    const [selectedArea, setSelectedArea] = React.useState<{
+        area: Area;
+        coordinates: { lng: number; lat: number };
+    } | null>(null);
 
     React.useEffect(() => {
-        if (status !== "Crisis") {
-            setIsCrisisAcknowledged(false);
-        }
+        if (status !== "Crisis") setIsCrisisAcknowledged(false);
     }, [status]);
 
     const MAPTILER_KEY = process.env.NEXT_PUBLIC_MAPTILER_KEY_LOCAL;
@@ -54,7 +72,19 @@ export function InteractiveMap({
         throw new Error("Missing NEXT_PUBLIC_MAPTILER_KEY environment variable.");
     }
 
-    const getMarkerColor = (category: LandmarkCategory): string => { /* ... as defined before ... */
+    const interactiveAreaLayers = React.useMemo(
+        () => areas.flatMap((a) => [`area-fill-${a.id}`, `area-outline-${a.id}`]),
+        [areas]
+    );
+
+    // This component's internal click handler now just calls the parent's handler
+    const handleMapClick = (event: MapLayerMouseEvent) => {
+        if (onMapInteractionClick) {
+            onMapInteractionClick(event);
+        }
+    };
+
+    const getLandmarkMarkerColor = (category: LMCategory): string => {
         switch (category) {
             case 'safe_space': return 'bg-green-500';
             case 'danger_zone': return 'bg-red-600';
@@ -66,16 +96,8 @@ export function InteractiveMap({
         }
     };
 
-    // onLoad callback for map if you need to add images for icons
-    const onMapLoad = React.useCallback(() => {
-        const map = resolvedMapRef.current?.getMap();
-        if (!map) return;
-        // Example: logic to map.addImage('some-icon', ...);
-        // This is where you'd load icons for news items or custom landmark icons if not using MapMarker children
-    }, [resolvedMapRef]);
-
     return (
-        <> {/* Using fragment as this component is now part of a larger page layout */}
+        <main className="relative h-screen w-screen overflow-hidden bg-black"> {/* Original main tag */}
             <AnimatePresence>
                 {status === "Crisis" && !isCrisisAcknowledged && (
                     <CrisisWarningOverlay onAcknowledge={() => setIsCrisisAcknowledged(true)} />
@@ -84,67 +106,59 @@ export function InteractiveMap({
 
             <motion.div
                 className="pointer-events-none absolute inset-0 z-10"
-                animate={{ /* glow */ }}
+                animate={{
+                    boxShadow:
+                        status === "Transmitting"
+                            ? "inset 0px 0px 20px 5px rgba(59, 130, 246, 0.6)"
+                            : "inset 0px 0px 0px 0px rgba(59, 130, 246, 0)",
+                }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
             />
 
             <Map
                 ref={resolvedMapRef}
-                initialViewState={{ longitude: 51.3347, latitude: 35.7219, zoom: 12 }}
+                initialViewState={{ longitude: lastKnownLocation.lng, latitude: lastKnownLocation.lat, zoom: 12 }}
                 mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
-                onClick={onMapClick}
-                cursor={cursor || 'grab'}
-                onLoad={onMapLoad} // Add onLoad if you have icon loading logic
+                onClick={handleMapClick}
+                interactiveLayerIds={isAddingInfoMode ? [] : interactiveAreaLayers}
+                cursor={isAddingInfoMode ? 'crosshair' : 'grab'}
             >
-                {/* Render Areas */}
-                {areas.map((area) => (
-                    <Source key={area.id} id={`area-${area.id}`} type="geojson" data={area.geometry}>
-                        <Layer
-                            id={`area-fill-${area.id}`}
-                            type="fill"
-                            paint={{ /* ... category-based or direct styling ... */
-                                "fill-color": area.fillColor || (
-                                    area.category === 'no_go' ? 'rgba(220, 38, 38, 0.4)' :
-                                        area.category === 'caution' ? 'rgba(245, 158, 11, 0.4)' :
-                                            area.category === 'safe' ? 'rgba(34, 197, 94, 0.3)' :
-                                                'rgba(107, 114, 128, 0.3)'
-                                ),
-                                "fill-opacity": 1,
-                            }}
-                        />
-                        <Layer
-                            id={`area-outline-${area.id}`}
-                            type="line"
-                            paint={{ /* ... category-based or direct styling ... */
-                                "line-color": area.borderColor || (
-                                    area.category === 'no_go' ? 'rgba(220, 38, 38, 0.8)' :
-                                        area.category === 'caution' ? 'rgba(245, 158, 11, 0.8)' :
-                                            area.category === 'safe' ? 'rgba(34, 197, 94, 0.7)' :
-                                                'rgba(107, 114, 128, 0.7)'
-                                ),
-                                "line-width": 2
-                            }}
-                        />
-                    </Source>
-                ))}
+                {areas.map((area) => {
+                    const colors = CATEGORY_COLORS[area.category];
+                    return (
+                        <Source key={area.id} id={`area-${area.id}`} type="geojson" data={area.geometry}>
+                            <Layer
+                                id={`area-fill-${area.id}`}
+                                type="fill"
+                                paint={{
+                                    "fill-color": area.fillColor ?? colors.fill,
+                                    "fill-opacity": 0.25,
+                                }}
+                            />
+                            <Layer
+                                id={`area-outline-${area.id}`}
+                                type="line"
+                                paint={{
+                                    "line-color": area.borderColor ?? colors.border,
+                                    "line-width": 2,
+                                }}
+                            />
+                        </Source>
+                    );
+                })}
 
-                {/* Render Landmarks */}
                 {landmarks.map((lm) => (
-                    <MapMarker
-                        key={lm.id}
-                        latitude={lm.location.lat}
-                        longitude={lm.location.lng}
-                    >
-                        <div title={lm.name} className={`h-4 w-4 -translate-y-1 rounded-full border-2 border-white ${getMarkerColor(lm.category)} shadow-md`} />
-                    </MapMarker>
+                    <LandmarkMarker key={lm.id} landmark={lm}>
+                        <div title={lm.name} className={`h-4 w-4 -translate-y-1 rounded-full border-2 border-white ${getLandmarkMarkerColor(lm.category)} shadow-md`} />
+                    </LandmarkMarker>
                 ))}
 
-                {/* If rendering temporary add marker here (alternative design)
+                {/* RENDER TEMPORARY MARKER based on props from parent */}
                 {isAddingInfoMode && temporaryMarkerLocation && (
                     <Marker longitude={temporaryMarkerLocation.lng} latitude={temporaryMarkerLocation.lat} anchor="bottom">
                         <div
-                            className="flex flex-col items-center cursor-pointer p-2 bg-background rounded-md shadow-lg"
+                            className="flex flex-col items-center cursor-pointer p-2 bg-background rounded-md shadow-lg hover:bg-muted"
                             onClick={onTemporaryMarkerClick}
                         >
                             <MapPin className="h-8 w-8 text-primary animate-pulse" />
@@ -152,13 +166,22 @@ export function InteractiveMap({
                         </div>
                     </Marker>
                 )}
-                */}
+
+                {route && <AnimatedRoute route={route} />}
+                {selectedArea && (
+                    <AreaPopup
+                        area={selectedArea.area}
+                        coordinates={selectedArea.coordinates}
+                        onClose={() => setSelectedArea(null)}
+                    />
+                )}
             </Map>
 
-            {/* Map UI Overlays */}
-            <div className="absolute top-4 right-4 z-20 pointer-events-none">
-                <MapOverlay status={status} />
-            </div>
+            <MapOverlay
+                status={status}
+                onAddInfoClick={onAddInfoButtonClickCallback}
+                isAddInfoModeActive={isAddingInfoMode}
+            />
 
             <div className="absolute bottom-24 right-4 z-20 flex flex-col gap-2 pointer-events-auto">
                 {(["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]).map((s) => (
@@ -167,6 +190,6 @@ export function InteractiveMap({
                     </Button>
                 ))}
             </div>
-        </>
+        </main>
     );
 }
