@@ -7,7 +7,7 @@ import { InteractiveMap } from "@/components/interactive-map";
 import type { Area } from "@/types/areas";
 import { Landmark } from "@/lib/types";
 import type { Route } from "@/types/routes";
-import defaultLandmarks from "../../data/landmarks.json";
+import importedLandmarks from "../../data/landmarks.json";
 import checkpoint from "../../data/checkpoint.json";
 import communication from "../../data/communication.json";
 import dangerousSpots from "../../data/dangerous_spot.json";
@@ -19,6 +19,7 @@ import defaultAreas from "../../data/areas.json";
 import defaultRoutes from "../../data/routes.json";
 
 const defaultLandmarks: Landmark[] = [
+  ...(importedLandmarks as Landmark[]),
   ...(checkpoint as Landmark[]),
   ...(communication as Landmark[]),
   ...(dangerousSpots as Landmark[]),

@@ -101,7 +101,7 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
 
     const interactiveLayers = React.useMemo(
         () => [
-            ...areas.flatMap((a) => [`area-fill-${a.id}`, `area-outline-${a.id}`]),
+            ...allAreas.flatMap((a) => [`area-fill-${a.id}`, `area-outline-${a.id}`]),
             ...routes.map((r) => `route-line-${r.id}`),
         ],
         [allAreas, routes]
@@ -129,7 +129,7 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
             const areaMatch = layerId.match(/^area-(?:fill|outline)-(.*)$/);
             if (areaMatch) {
                 const id = areaMatch[1];
-                const area = areas.find((a) => a.id === id);
+                const area = allAreas.find((a) => a.id === id);
                 if (area) {
                     setSelectedArea({ area, coordinates: e.lngLat });
                     setSelectedRoute(null);
