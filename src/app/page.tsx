@@ -8,7 +8,6 @@ import type { Area } from "@/types/areas";
 import { Landmark } from "@/lib/types";
 import type { Route } from "@/types/routes";
 import defaultLandmarks from "../../data/landmarks.json";
-import type { LineString } from "geojson";
 import checkpoint from "../../data/checkpoint.json";
 import communication from "../../data/communication.json";
 import dangerousSpots from "../../data/dangerous_spot.json";

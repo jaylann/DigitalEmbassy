@@ -68,6 +68,16 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
         [areas, routes]
     );
 
+    // Filter out any duplicate landmarks by ID to avoid React key conflicts
+    const uniqueLandmarks = React.useMemo(() => {
+        const seen = new Set<string>();
+        return landmarks.filter((lm) => {
+            if (seen.has(lm.id)) return false;
+            seen.add(lm.id);
+            return true;
+        });
+    }, [landmarks]);
+
     const handleMapClick = React.useCallback(
         (e: maplibregl.MapLayerMouseEvent) => {
             if (!e.features || e.features.length === 0) {
@@ -154,7 +164,7 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
                     );
                 })}
 
-                {landmarks.map((lm) => (
+                {uniqueLandmarks.map((lm) => (
                     <LandmarkMarker key={lm.id} landmark={lm} />
                 ))}
 
