@@ -10,8 +10,8 @@ import "maplibre-gl/dist/maplibre-gl.css";
 
 import { Button } from "@/components/ui/button";
 import {SystemStatus} from "@/types/status";
-import {CrisisWarningOverlay} from "@/components/crising-warning-oerlay";
-import {MapOverlay} from "@/components/map-overlay";
+import {CrisisWarningOverlay} from "@/components/overlay/CrisisWarningOverlay";
+import {MapOverlay} from "@/components/map/MapOverlay";
 
 // Retrieve MapTiler key from environment variables
 const MAPTILER_KEY = process.env.NEXT_PUBLIC_MAPTILER_KEY_LOCAL;

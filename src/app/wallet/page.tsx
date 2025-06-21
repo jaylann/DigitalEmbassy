@@ -1,6 +1,6 @@
 'use client'
 import { QRCodeSVG } from 'qrcode.react'
-import MobileLayout from '../../components/MobileLayout'
+import MobileLayout from '@/components/layout/MobileLayout'
 
 export default function WalletPage() {
   const name = "Alex Müller";

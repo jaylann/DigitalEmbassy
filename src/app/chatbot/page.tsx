@@ -1,5 +1,5 @@
 'use client'
-import MobileLayout from '../../components/MobileLayout'
+import MobileLayout from '@/components/layout/MobileLayout'
 import { ChatInterface } from '@/components/chat/chat-interface'
 
 export default function ChatbotPage() {

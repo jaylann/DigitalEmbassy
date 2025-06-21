@@ -1,5 +1,5 @@
 import { ChatInterface } from "@/components/chat/chat-interface";
-import MobileLayout from '../../components/MobileLayout'
+import MobileLayout from '@/components/layout/MobileLayout'
 
 /**
  * The main page of the Euromesh application.

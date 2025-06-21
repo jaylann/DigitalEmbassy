@@ -1,11 +1,11 @@
-// src/components/map-layout/map-overlay.tsx
+// src/components/map/MapOverlay.tsx
 
 import * as React from "react";
-import { AddInfoButton } from "./add-info-button";
-import { ChatbotButton } from "./chatbot-button";
-import { MainMenu } from "./main-menu";
-import { SearchBar } from "./search-bar";
-import { StatusIndicator } from "./status-indicator";
+import { AddInfoButton } from "../buttons/AddInfoButton";
+import { ChatbotButton } from "../buttons/ChatbotButton";
+import { MainMenu } from "../menu/MainMenu";
+import { SearchBar } from "../search/SearchBar";
+import { StatusIndicator } from "../status/StatusIndicator";
 import {SystemStatus} from "@/types/status";
 
 /**

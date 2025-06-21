@@ -1,5 +1,5 @@
 'use client'
-import MobileLayout from '../../components/MobileLayout'
+import MobileLayout from '@/components/layout/MobileLayout'
 
 export default function LiveTickerPage() {
   return (

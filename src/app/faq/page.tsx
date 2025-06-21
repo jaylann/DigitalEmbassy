@@ -6,7 +6,7 @@
 
 //import { useState } from 'react'; // Behalten, falls noch andere interaktive Elemente kommen
 import Head from 'next/head';
-import MobileLayout from '../../components/MobileLayout'; // Dein Mobile-Layout
+import MobileLayout from '@/components/layout/MobileLayout'; // Dein Mobile-Layout
 import {
   Accordion,
   AccordionContent,

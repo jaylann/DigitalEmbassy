@@ -1,30 +1,29 @@
-// src/components/map-layout/add-info-button.tsx
+// src/components/buttons/ChatbotButton.tsx
 
 "use client";
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Bot } from "lucide-react";
+import { Button } from "@/components/ui/button"; // Assuming shadcn Button
 import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@/components/ui/tooltip"; // Assuming shadcn Tooltip
 
 /**
- * An icon button to allow users to add new information to the map.
- * Includes a tooltip for better user experience.
+ * An icon button to open a chatbot interface, with a tooltip for accessibility.
  *
- * @returns {React.ReactElement} The rendered "Add Info" button.
+ * @returns {React.ReactElement} The rendered chatbot button.
  */
-export function AddInfoButton(): React.ReactElement {
+export function ChatbotButton(): React.ReactElement {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut", delay: 0.1 }}
+            transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
             className="pointer-events-auto"
         >
             <TooltipProvider delayDuration={150}>
@@ -34,13 +33,13 @@ export function AddInfoButton(): React.ReactElement {
                             variant="default"
                             size="icon"
                             className="h-12 w-12 rounded-full bg-black/50 shadow-lg backdrop-blur-sm hover:bg-black/70"
-                            aria-label="Add Information to Map"
+                            aria-label="Open Chatbot"
                         >
-                            <Plus className="h-6 w-6 text-white" />
+                            <Bot className="h-6 w-6 text-white" />
                         </Button>
                     </TooltipTrigger>
                     <TooltipContent side="top" className="bg-black/70 text-white border-none">
-                        <p>Add Information</p>
+                        <p>Open Chatbot</p>
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>
