@@ -9,35 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@radix-ui/react-accordion": "^1.2.11",
     "@google/generative-ai": "^0.24.1",
+    "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-avatar": "^1.1.10",
-    "@radix-ui/react-scroll-area": "^1.2.9",
-    "@radix-ui/react-slot": "^1.2.3",
-    "class-variance-authority": "^0.7.1",
-    "clsx": "^2.1.1",
-    "framer-motion": "^12.18.1",
-
     "@radix-ui/react-popover": "^1.1.14",
+    "@radix-ui/react-scroll-area": "^1.2.9",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-tooltip": "^1.2.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.18.1",
     "geojson": "^0.5.0",
-
     "lucide-react": "^0.522.0",
     "maplibre-gl": "^5.6.0",
     "next": "15.3.4",
     "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-
+    "react-map-gl": "^8.0.4",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
-
-    "react-map-gl": "^8.0.4",
-
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
