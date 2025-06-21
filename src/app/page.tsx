@@ -125,18 +125,21 @@ const sampleAreas: Area[] = [
     name: "Restriction Zones",
     geometry: restrictionZone,
     category: "no_go",
+    description: "Areas that should be strictly avoided",
   },
   {
     id: "caution",
     name: "Caution Area",
     geometry: cautionZone,
     category: "caution",
+    description: "Proceed with caution in this region",
   },
   {
     id: "safe",
     name: "Safe Area",
     geometry: safeZone,
     category: "safe",
+    description: "Verified safe zone for operations",
   },
 ];
 
@@ -183,6 +186,7 @@ export default function Home() {
         name: `Area ${prev.length}`,
         geometry: restrictionZone,
         category: "caution",
+        description: "User added area",
       },
     ]);
   };
