@@ -16,6 +16,8 @@ export interface Landmark {
     name: string;
     description?: string;
     location: Location;
+    /** Radius around the landmark to automatically create an area, in meters */
+    radius?: number;
     category: LandmarkCategory;
 
     // Optional metadata
