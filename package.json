@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-
+    "@radix-ui/react-accordion": "^1.2.11",
     "@google/generative-ai": "^0.24.1",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-scroll-area": "^1.2.9",

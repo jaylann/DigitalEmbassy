@@ -1,0 +1,67 @@
+[
+  {
+    "categoryName": "Allgemeine Konsularische Dienste / General Consular Services",
+    "questions": [
+      {
+        "id": "gc_teh_1",
+        "question": "Wie sind die Öffnungszeiten der Botschaft in Teheran? / What are the embassy's opening hours in Tehran?",
+        "answer": "<p>Die genauen Öffnungszeiten für verschiedene konsularische Dienstleistungen können variieren. Bitte überprüfen Sie den Abschnitt 'Öffnungszeiten und Erreichbarkeit' auf der offiziellen Webseite der Botschaft Teheran: <a href='https://teheran.diplo.de/ir-de/botschaft/oeffnungszeiten-erreichbarkeit' target='_blank' rel='noopener noreferrer'>https://teheran.diplo.de/ir-de/botschaft/oeffnungszeiten-erreichbarkeit</a>.</p><p>Für viele Dienstleistungen ist eine vorherige Terminvereinbarung zwingend erforderlich.</p><p><em>General opening hours may vary for different consular services. Please check the 'Opening Hours and Accessibility' section on the official Tehran Embassy website. An appointment is usually mandatory for most services.</em></p>"
+      },
+      {
+        "id": "gc_teh_2",
+        "question": "Wie erreiche ich die Botschaft im Notfall außerhalb der Öffnungszeiten? / How can I contact the embassy in an emergency outside opening hours?",
+        "answer": "<p>Für dringende Notfälle deutscher Staatsangehöriger außerhalb der Dienstzeiten gibt es einen Bereitschaftsdienst. Die Telefonnummer des Bereitschaftsdienstes finden Sie auf der Webseite der Botschaft unter 'Hilfe in Notfällen'.</p><p><strong>Notfallnummer (Bereitschaftsdienst):</strong> [Platzhalter für aktuelle Notfallnummer / Placeholder for current emergency number]</p><p><em>For urgent emergencies involving German nationals outside of office hours, there is an on-call duty officer. The emergency number can be found on the embassy website under 'Help in Emergencies'.</em></p>"
+      },
+      {
+        "id": "gc_teh_3",
+        "question": "Benötige ich für alle Dienstleistungen einen Termin? / Do I need an appointment for all services?",
+        "answer": "<p>Ja, für die meisten konsularischen Dienstleistungen (z.B. Passanträge, Visa, Beglaubigungen) ist eine vorherige Terminbuchung über das Online-System der Botschaft erforderlich. Informationen zur Terminvergabe finden Sie auf der Webseite der Botschaft.</p><p><em>Yes, for most consular services (e.g., passport applications, visas, certifications), an appointment booked through the embassy's online system is required. Information on appointment booking can be found on the embassy website.</em></p>"
+      }
+    ]
+  },
+  {
+    "categoryName": "Pass- und Personalausweisangelegenheiten / Passport & ID Matters",
+    "questions": [
+      {
+        "id": "pid_teh_1",
+        "question": "Mein deutscher Reisepass/Personalausweis wurde verloren/gestohlen. Was soll ich tun? / My German passport/ID card is lost/stolen. What should I do?",
+        "answer": "<p>1. Melden Sie den Verlust/Diebstahl umgehend bei der örtlichen iranischen Polizei und lassen Sie sich eine Verlustanzeige ausstellen.</p><p>2. Kontaktieren Sie so schnell wie möglich die deutsche Botschaft in Teheran. Sie können einen Reiseausweis als Passersatz zur Rückkehr nach Deutschland oder unter Umständen einen vorläufigen Reisepass beantragen.</p><p>3. Bringen Sie zur Vorsprache bei der Botschaft die polizeiliche Verlustanzeige, ggf. vorhandene Kopien des verlorenen Dokuments und Passfotos mit.</p><p><em>1. Report the loss/theft immediately to the local Iranian police and obtain a police report.</em></p><p><em>2. Contact the German Embassy in Tehran as soon as possible. You can apply for an emergency travel document ('Reiseausweis als Passersatz') to return to Germany or, in some cases, a temporary passport.</em></p><p><em>3. Bring the police report, any copies of the lost document you may have, and passport photos to your embassy appointment.</em></p>"
+      },
+      {
+        "id": "pid_teh_2",
+        "question": "Wie lange dauert die Ausstellung eines neuen Reisepasses? / How long does it take to get a new passport?",
+        "answer": "<p>Die Bearbeitungszeit für einen regulären biometrischen Reisepass, der im Ausland beantragt wird, beträgt in der Regel ca. 6-8 Wochen, da er in Deutschland gedruckt wird. Ein Reiseausweis als Passersatz kann oft schneller, innerhalb weniger Tage, ausgestellt werden.</p><p><em>The processing time for a regular biometric passport applied for abroad is usually around 6-8 weeks, as it is printed in Germany. An emergency travel document can often be issued more quickly, within a few days.</em></p>"
+      }
+    ]
+  },
+  {
+    "categoryName": "Krisenvorsorge und Sicherheitshinweise / Crisis Preparedness & Safety Advice",
+    "questions": [
+      {
+        "id": "cps_teh_1",
+        "question": "Wie kann ich mich auf Krisensituationen im Iran vorbereiten? / How can I prepare for crisis situations in Iran?",
+        "answer": "<p>Wir empfehlen allen deutschen Staatsangehörigen, die sich auch nur vorübergehend im Iran aufhalten, sich in die Krisenvorsorgeliste 'ELEFAND' des Auswärtigen Amts einzutragen: <a href='https://krisenvorsorgeliste.diplo.de' target='_blank' rel='noopener noreferrer'>https://krisenvorsorgeliste.diplo.de</a>.</p><p>Verfolgen Sie die aktuellen Reise- und Sicherheitshinweise des Auswärtigen Amts für Iran: <a href='https://www.auswaertiges-amt.de/de/ReiseUndSicherheit/iransicherheit/202396' target='_blank' rel='noopener noreferrer'>Reise- und Sicherheitshinweise Iran</a>.</p><p><em>We recommend all German nationals, even those staying temporarily in Iran, to register on the 'ELEFAND' crisis preparedness list of the Federal Foreign Office. Follow the current travel and safety advice for Iran issued by the Federal Foreign Office.</em></p>"
+      },
+      {
+        "id": "cps_teh_2",
+        "question": "Was sollte ich bezüglich lokaler Gesetze und Gepflogenheiten im Iran beachten? / What should I be aware of regarding local laws and customs in Iran?",
+        "answer": "<p>Es ist unerlässlich, die lokalen Gesetze, Traditionen und religiösen Gepflogenheiten des Iran strikt zu respektieren. Dies beinhaltet insbesondere:</p><ul><li>Kleidungsvorschriften (insbesondere für Frauen: Kopftuch und körperbedeckende Kleidung).</li><li>Alkoholverbot.</li><li>Verhaltensregeln während des Ramadan und anderer religiöser Feiertage.</li><li>Besondere Vorsicht bei Fotografieren und Filmen, insbesondere von Regierungsgebäuden, militärischen Einrichtungen und Demonstrationen.</li></ul><p>Informieren Sie sich vor Reiseantritt umfassend.</p><p><em>It is essential to strictly respect local laws, traditions, and religious customs in Iran. This includes dress codes (especially for women: headscarf and body-covering clothing), prohibition of alcohol, rules of conduct during Ramadan, and caution when photographing/filming. Inform yourself comprehensively before your trip.</em></p>"
+      },
+      {
+        "id": "cps_teh_3",
+        "question": "Ich besitze die deutsch-iranische Doppelstaatsangehörigkeit. Was bedeutet das für mich im Iran? / I am a German-Iranian dual national. What does this mean for me in Iran?",
+        "answer": "<p>Deutsch-iranische Doppelstaater werden von den iranischen Behörden ausschließlich als iranische Staatsangehörige behandelt. Die Möglichkeiten der deutschen Botschaft, konsularischen Beistand zu leisten, sind in solchen Fällen erheblich eingeschränkt. Dies ist besonders bei Festnahmen oder Ausreisesperren relevant.</p><p><em>German-Iranian dual nationals are treated exclusively as Iranian citizens by Iranian authorities. The German Embassy's ability to provide consular assistance is significantly limited in such cases, especially concerning arrests or travel bans.</em></p>"
+      }
+    ]
+  },
+  {
+    "categoryName": "Visa und Einreise (nach Deutschland) / Visa and Entry (to Germany)",
+    "questions": [
+      {
+        "id": "visa_teh_1",
+        "question": "Benötigen iranische Staatsangehörige ein Visum für Deutschland? / Do Iranian nationals need a visa for Germany?",
+        "answer": "<p>Ja, iranische Staatsangehörige benötigen für die Einreise nach Deutschland und in den Schengen-Raum in der Regel ein Visum. Informationen zu den verschiedenen Visatypen und Antragsverfahren finden Sie auf der Webseite der Botschaft Teheran im Bereich 'Visa und Einreise'.</p><p><em>Yes, Iranian nationals generally require a visa to enter Germany and the Schengen area. Information on different visa types and application procedures can be found on the Tehran Embassy website under 'Visa and Entry'.</em></p>"
+      }
+    ]
+  }
+]
