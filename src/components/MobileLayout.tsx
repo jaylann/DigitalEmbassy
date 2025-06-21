@@ -14,7 +14,6 @@ interface NavItem {
 const navItems: NavItem[] = [
     { href: '/', label: 'Map', icon: Home },
     { href: '/news', label: 'News', icon: Rss },
-    { href: '/chatbot', label: 'Chatbot', icon: MessageCircle },
     { href: '/wallet', label: 'Wallet', icon: Wallet },
     { href: '/faq', label: 'FAQ', icon: ListChecks },
     { href: '/settings', label: 'Settings', icon: Settings },
