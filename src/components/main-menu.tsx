@@ -72,20 +72,18 @@ export function MainMenu(): React.ReactElement {
                         <ul className="flex flex-col gap-1">
                             {menuItems.map((item) => (
                                 <li key={item.href}>
-                                    <Link href={item.href} passHref legacyBehavior>
-                                        <a className="block">
-                                            <Button
-                                                variant="ghost"
-                                                className={`w-full justify-start gap-3 px-3 py-2 text-base ${
-                                                    item.isEmergency
-                                                        ? "text-red-400 hover:bg-red-900/50 hover:text-red-300"
-                                                        : "hover:bg-white/10"
-                                                }`}
-                                            >
-                                                {item.icon}
-                                                <span>{item.label}</span>
-                                            </Button>
-                                        </a>
+                                    <Link href={item.href} className="block">
+                                        <Button
+                                            variant="ghost"
+                                            className={`w-full justify-start gap-3 px-3 py-2 text-base ${
+                                                item.isEmergency
+                                                    ? "text-red-400 hover:bg-red-900/50 hover:text-red-300"
+                                                    : "hover:bg-white/10"
+                                            }`}
+                                        >
+                                            {item.icon}
+                                            <span>{item.label}</span>
+                                        </Button>
                                     </Link>
                                 </li>
                             ))}
