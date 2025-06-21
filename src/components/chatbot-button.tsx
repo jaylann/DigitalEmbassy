@@ -1,45 +1,49 @@
+/**
+ * @file Renders a floating action button that opens a full-screen, mobile-first
+ * chatbot interface. This component controls the modal state and orchestrates
+ * the real-time chat logic.
+ */
+
 "use client";
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bot, X, ChevronDown } from "lucide-react";
+import { Bot, X, ArrowUp, Loader2 } from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import clsx from "clsx";
+
+// --- UI Component Imports ---
 import { Button } from "@/components/ui/button";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Input } from "@/components/ui/input";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
+// --- Logic and Type Imports ---
+import { getGeminiResponse } from "@/lib/actions/gemini";
+import { saveReportToMesh } from "@/lib/actions/mesh";
+import type { Message, Location } from "@/lib/types";
+import { cn } from "@/lib/utils";
+
+// --- Main Controller Component ---
 
 /**
  * An icon button to open a full-screen chatbot interface optimized for mobile.
- * The interface slides up from the bottom like iOS Maps.
- *
- * @returns {React.ReactElement} The rendered chatbot button and interface.
+ * It manages the modal's open/close state and houses the chat logic.
  */
 export function ChatbotButton(): React.ReactElement {
     const [isOpen, setIsOpen] = React.useState(false);
 
-    const toggleChat = () => {
-        setIsOpen(!isOpen);
-    };
-
     // Prevent body scroll when chat is open
     React.useEffect(() => {
-        if (isOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
+        document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+        return () => { document.body.style.overflow = 'unset'; };
     }, [isOpen]);
 
     return (
         <>
-            <motion.div
+            <motion.div /* Floating Action Button */
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
@@ -51,61 +55,45 @@ export function ChatbotButton(): React.ReactElement {
                             <Button
                                 variant="default"
                                 size="icon"
-                                onClick={toggleChat}
+                                onClick={() => setIsOpen(true)}
                                 className="h-12 w-12 rounded-full bg-black/50 shadow-lg backdrop-blur-sm hover:bg-black/70 transition-colors"
                                 aria-label="Open Chatbot"
                             >
                                 <Bot className="h-6 w-6 text-white" />
                             </Button>
                         </TooltipTrigger>
-                        <TooltipContent side="top" className="bg-black/70 text-white border-none">
-                            <p>Open Chatbot</p>
-                        </TooltipContent>
+                        <TooltipContent side="top" className="bg-black/70 text-white border-none"><p>Open Chatbot</p></TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
             </motion.div>
 
-            {/* Full-Screen Chat Interface */}
             <AnimatePresence>
                 {isOpen && (
-                    <motion.div
+                    <motion.div /* Full-Screen Chat Modal */
                         initial={{ y: "100%" }}
                         animate={{ y: 0 }}
                         exit={{ y: "100%" }}
-                        transition={{
-                            type: "spring",
-                            damping: 30,
-                            stiffness: 300,
-                            mass: 0.8
-                        }}
+                        transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
                         className="fixed inset-0 z-50 bg-black flex flex-col pointer-events-auto"
-                        style={{
-                            height: "100vh",
-                            height: "100dvh" // Dynamic viewport height for mobile
-                        }}
+                        style={{ height: "100dvh" }}
                     >
-                        {/* Header with drag handle and close button */}
-                        <div className="flex items-center justify-between p-4 bg-black border-b border-zinc-800 safe-area-top">
-                            {/* Drag handle indicator */}
-                            <div className="flex-1 flex justify-center">
-                                <div className="w-12 h-1 bg-white/30 rounded-full" />
-                            </div>
-
-                            {/* Close button */}
+                        {/* Header with only the close button */}
+                        <div className="flex items-center justify-end p-4 bg-black border-b border-zinc-800 safe-area-top shrink-0">
+                            {/* The grip bar has been removed. justify-end positions the button correctly. */}
                             <Button
                                 variant="ghost"
                                 size="icon"
                                 onClick={() => setIsOpen(false)}
-                                className="h-10 w-10 rounded-full bg-zinc-800 hover:bg-zinc-700 text-white shrink-0"
+                                className="h-10 w-10 rounded-full bg-zinc-800 hover:bg-zinc-700 text-white"
                                 aria-label="Close Chatbot"
                             >
                                 <X className="h-5 w-5" />
                             </Button>
                         </div>
 
-                        {/* Chat Interface */}
+                        {/* Integrated, fully functional chat interface */}
                         <div className="flex-1 flex flex-col min-h-0">
-                            <MobileChatInterface />
+                            <ChatPanelContent />
                         </div>
                     </motion.div>
                 )}
@@ -114,63 +102,76 @@ export function ChatbotButton(): React.ReactElement {
     );
 }
 
+
+// --- Chat UI and Logic Component ---
+
+/** Renders Markdown safely. Memoized for performance. */
+const MemoizedMarkdown = React.memo(({ content }: { content: string }) => (
+    <div className="prose prose-sm prose-invert break-words">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+    </div>
+));
+MemoizedMarkdown.displayName = "MemoizedMarkdown";
+
 /**
- * Mobile-optimized chat interface component
+ * The actual chat interface content, now with real logic.
  */
-function MobileChatInterface(): React.ReactElement {
-    const [messages, setMessages] = React.useState([
+function ChatPanelContent(): React.ReactElement {
+    const [messages, setMessages] = React.useState<Message[]>([
         {
             id: "init",
-            role: "assistant" as const,
+            role: "assistant",
             content: "I am the Euromesh emergency assistant. You can ask for information or report a new danger.",
         },
     ]);
     const [input, setInput] = React.useState("");
-    const [isPending, setIsPending] = React.useState(false);
-    const messagesEndRef = React.useRef<HTMLDivElement>(null);
-
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    };
+    const [isPending, startTransition] = React.useTransition();
+    const scrollAreaRef = React.useRef<HTMLDivElement>(null);
 
     React.useEffect(() => {
-        scrollToBottom();
+        if (scrollAreaRef.current) {
+            scrollAreaRef.current.scrollTo({ top: scrollAreaRef.current.scrollHeight, behavior: 'smooth' });
+        }
     }, [messages]);
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
         const trimmedInput = input.trim();
         if (!trimmedInput || isPending) return;
 
-        const userMessage = {
-            id: crypto.randomUUID(),
-            role: "user" as const,
-            content: trimmedInput,
-        };
-
-        setMessages(prev => [...prev, userMessage]);
+        const userMessage: Message = { id: crypto.randomUUID(), role: "user", content: trimmedInput };
+        const newMessages = [...messages, userMessage];
+        setMessages(newMessages);
         setInput("");
-        setIsPending(true);
 
-        // Simulate API response
-        setTimeout(() => {
-            const assistantMessage = {
-                id: crypto.randomUUID(),
-                role: "assistant" as const,
-                content: "Thank you for your message. I'm here to help with emergency information and reports.",
-            };
-            setMessages(prev => [...prev, assistantMessage]);
-            setIsPending(false);
-        }, 1000);
+        startTransition(async () => {
+            const mockUserLocation: Location = { lat: 52.5200, lng: 13.4050 };
+            const result = await getGeminiResponse(newMessages);
+
+            if (result.success) {
+                const assistantResponse = result.data;
+                let finalAssistantMessage: Message;
+
+                switch (assistantResponse.type) {
+                    case 'message':
+                        finalAssistantMessage = { id: crypto.randomUUID(), role: 'assistant', content: assistantResponse.payload.content };
+                        setMessages(prev => [...prev, finalAssistantMessage]);
+                        break;
+                    case 'report':
+                        saveReportToMesh(assistantResponse.payload, mockUserLocation);
+                        finalAssistantMessage = { id: crypto.randomUUID(), role: 'assistant', content: "Thank you. Your report has been received and will be shared with the network." };
+                        setMessages(prev => [...prev, finalAssistantMessage]);
+                        break;
+                }
+            }
+        });
     };
 
     return (
         <div className="flex flex-col h-full bg-black">
             {/* Header */}
-            <div className="flex items-center space-x-3 p-4 border-b border-zinc-800">
-                <div className="flex items-center justify-center w-10 h-10 bg-zinc-800 rounded-full">
-                    <Bot className="h-5 w-5 text-white" />
-                </div>
+            <div className="flex items-center space-x-3 p-4 border-b border-zinc-800 shrink-0">
+                <Avatar><AvatarFallback className="bg-zinc-800 text-white"><Bot /></AvatarFallback></Avatar>
                 <div>
                     <h2 className="text-white font-semibold">Euromesh Assistant</h2>
                     <p className="text-zinc-400 text-sm">Official Emergency Channel</p>
@@ -178,75 +179,49 @@ function MobileChatInterface(): React.ReactElement {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
-                {messages.map((message) => (
-                    <motion.div
-                        key={message.id}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}
-                    >
-                        <div
-                            className={`max-w-[85%] px-4 py-3 rounded-2xl ${
-                                message.role === "user"
-                                    ? "bg-blue-600 text-white"
-                                    : "bg-zinc-800 text-white"
-                            }`}
+            <ScrollArea className="flex-1 min-h-0" ref={scrollAreaRef}>
+                <div className="p-4 space-y-4">
+                    {messages.map((message) => (
+                        <motion.div
+                            key={message.id}
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className={cn("flex", message.role === "user" ? "justify-end" : "justify-start")}
                         >
-                            <p className="text-sm leading-relaxed">{message.content}</p>
-                        </div>
-                    </motion.div>
-                ))}
-
-                {isPending && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="flex justify-start"
-                    >
-                        <div className="bg-zinc-800 px-4 py-3 rounded-2xl">
-                            <div className="flex space-x-1">
-                                <div className="w-2 h-2 bg-zinc-400 rounded-full animate-bounce" />
-                                <div className="w-2 h-2 bg-zinc-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }} />
-                                <div className="w-2 h-2 bg-zinc-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
+                            <div className={clsx("max-w-[85%] px-4 py-2.5 rounded-2xl", message.role === "user" ? "bg-zinc-200 text-zinc-900" : "bg-zinc-800 text-white")}>
+                                <MemoizedMarkdown content={message.content} />
                             </div>
-                        </div>
-                    </motion.div>
-                )}
-
-                <div ref={messagesEndRef} />
-            </div>
+                        </motion.div>
+                    ))}
+                    {isPending && (
+                        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-start">
+                            <div className="bg-zinc-800 p-3 rounded-full">
+                                <Loader2 className="h-5 w-5 text-white/50 animate-spin" />
+                            </div>
+                        </motion.div>
+                    )}
+                </div>
+            </ScrollArea>
 
             {/* Input */}
-            <div className="p-4 border-t border-zinc-800 safe-area-bottom">
+            <div className="p-4 border-t border-zinc-800 shrink-0 safe-area-bottom">
                 <form onSubmit={handleSubmit} className="flex items-center space-x-3">
-                    <div className="flex-1 relative">
-                        <input
-                            type="text"
-                            value={input}
-                            onChange={(e) => setInput(e.target.value)}
-                            placeholder="Type your question or report..."
-                            className="w-full px-4 py-3 bg-zinc-800 text-white rounded-full border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-zinc-400"
-                            disabled={isPending}
-                        />
-                    </div>
+                    <Input
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        placeholder="Type your question or report..."
+                        className="flex-1 h-12 px-5 bg-zinc-800 text-white rounded-full border-zinc-700 placeholder-zinc-500"
+                        disabled={isPending}
+                        autoComplete="off"
+                    />
                     <Button
                         type="submit"
                         size="icon"
                         disabled={isPending || !input.trim()}
-                        className="h-12 w-12 rounded-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 shrink-0"
+                        className="h-12 w-12 rounded-full bg-zinc-200 text-zinc-900 hover:bg-white disabled:bg-zinc-800 disabled:text-white/50 shrink-0"
                     >
-                        <motion.div
-                            animate={isPending ? { rotate: 360 } : { rotate: 0 }}
-                            transition={{ duration: 1, repeat: isPending ? Infinity : 0, ease: "linear" }}
-                        >
-                            {isPending ? (
-                                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
-                            ) : (
-                                <ChevronDown className="h-5 w-5 text-white rotate-180" />
-                            )}
-                        </motion.div>
+                        <ArrowUp className="h-5 w-5" />
                     </Button>
                 </form>
             </div>
