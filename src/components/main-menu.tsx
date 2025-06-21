@@ -24,17 +24,6 @@ import {
 
 const menuItems = [
     {
-        label: "Home",
-        href: "/",
-        icon: <MapIcon className="h-5 w-5" />,
-    },
-    {
-        label: "Emergency Call",
-        href: "/emergency-call",
-        icon: <PhoneCall className="h-5 w-5" />,
-        isEmergency: true,
-    },
-    {
         label: "FAQ",
         href: "/faq",
         icon: <HelpCircle className="h-5 w-5" />,
@@ -48,6 +37,12 @@ const menuItems = [
         label: "Wallet",
         href: "/wallet",
         icon: <Wallet className="h-5 w-5" />,
+    },
+    {
+        label: "Emergency Call",
+        href: "/emergency-call",
+        icon: <PhoneCall className="h-5 w-5" />,
+        isEmergency: true,
     },
 ];
 
