@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Map, { Source, Layer } from "react-map-gl/maplibre";
+import type { LineString } from "geojson";
 import { motion, AnimatePresence } from "framer-motion";
 import "maplibre-gl/dist/maplibre-gl.css";
 
@@ -9,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { MapOverlay } from "@/components/map-overlay";
 import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay";
 import { MapMarker } from "@/components/map-marker";
+import { AnimatedRoute } from "@/components/animated-route";
 import { SystemStatus } from "@/types/status";
 import type { Landmark } from "@/types/landmarks";
 import type { Area } from "@/types/areas";
@@ -16,9 +18,11 @@ import type { Area } from "@/types/areas";
 interface InteractiveMapProps {
     landmarks?: Landmark[];
     areas?: Area[];
+    /** Optional route to display and animate */
+    route?: LineString;
 }
 
-export function InteractiveMap({ landmarks = [], areas = [] }: InteractiveMapProps): React.ReactElement {
+export function InteractiveMap({ landmarks = [], areas = [], route }: InteractiveMapProps): React.ReactElement {
     const [status, setStatus] = React.useState<SystemStatus>("Online");
     const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
 
@@ -77,6 +81,8 @@ export function InteractiveMap({ landmarks = [], areas = [] }: InteractiveMapPro
                         <div title={lm.name} className="h-4 w-4 -translate-y-1 rounded-full border-2 border-white bg-blue-600 shadow" />
                     </MapMarker>
                 ))}
+
+                {route && <AnimatedRoute route={route} />}
             </Map>
 
             <MapOverlay status={status} />
