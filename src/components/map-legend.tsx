@@ -1,4 +1,4 @@
-// src/components/map-layout/map-legend.tsx
+// src/components/map-legend.tsx
 
 "use client";
 

@@ -1,4 +1,4 @@
-// src/app/faq/faq-page-content.tsx
+// src/components/faq-page-content.tsx
 
 "use client"; // This directive now lives here.
 

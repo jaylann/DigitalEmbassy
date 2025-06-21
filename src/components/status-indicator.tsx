@@ -1,4 +1,4 @@
-// src/components/map-layout/status-indicator.tsx
+// src/components/status-indicator.tsx
 
 "use client";
 

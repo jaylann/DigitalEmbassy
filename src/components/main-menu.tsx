@@ -1,5 +1,5 @@
 
-// src/components/map-layout/main-menu.tsx
+// src/components/main-menu.tsx
 
 "use client";
 
