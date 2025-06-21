@@ -1,5 +1,6 @@
 'use client'
 import { useState } from "react";
+import MobileLayout from '../../components/MobileLayout'
 
 interface NewsItem {
   id: number;
@@ -68,10 +69,12 @@ export default function NewsPage() {
   );
 
   return (
-    <main className="p-4 max-w-xl mx-auto space-y-4 sm:p-6">
-      {sorted.map((item) => (
-        <NewsCard key={item.id} item={item} />
-      ))}
-    </main>
+    <MobileLayout>
+      <main className="p-4 max-w-xl mx-auto space-y-4 sm:p-6">
+        {sorted.map((item) => (
+          <NewsCard key={item.id} item={item} />
+        ))}
+      </main>
+    </MobileLayout>
   );
 }
