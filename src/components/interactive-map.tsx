@@ -3,7 +3,8 @@
 import * as React from "react";
 import Map, { Source, Layer } from "react-map-gl/maplibre";
 import type maplibregl from "maplibre-gl";
-import type { LineString } from "geojson";
+import type { LineString, Feature, FeatureCollection } from "geojson";
+import circle from "@turf/circle";
 import { motion, AnimatePresence } from "framer-motion";
 import "maplibre-gl/dist/maplibre-gl.css";
 
@@ -23,8 +24,20 @@ const CATEGORY_COLORS: Record<AreaCategory, { fill: string; border: string }> = 
     caution: { fill: "#FACC15", border: "#CA8A04" },
     safe: { fill: "#16A34A", border: "#15803D" },
 };
-import { Landmark } from "@/lib/types";
+
+import {Landmark} from "@/lib/types";
+const LANDMARK_AREA_MAP: Record<Landmark["category"], AreaCategory> = {
+    safe_space: "safe",
+    dangerous_spot: "no_go",
+    communication: "safe",
+    trusted_contact: "safe",
+    medical: "safe",
+    checkpoint: "caution",
+};
+
+
 import type { Route } from "@/types/routes";
+
 
 interface InteractiveMapProps {
     landmarks?: Landmark[];
@@ -60,12 +73,30 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
         throw new Error("Missing NEXT_PUBLIC_MAPTILER_KEY environment variable.");
     }
 
+    const landmarkAreas = React.useMemo(() => {
+        return landmarks
+            .filter((lm) => typeof lm.radius === "number")
+            .map((lm) => ({
+                id: `lm-${lm.id}`,
+                name: lm.name,
+                geometry: circle(
+                    [lm.location.lng, lm.location.lat],
+                    (lm.radius ?? 0) / 1000,
+                    { steps: 64, units: "kilometers" }
+                ),
+                category: LANDMARK_AREA_MAP[lm.category],
+            })) as Area[];
+    }, [landmarks]);
+
+    const allAreas = React.useMemo(() => [...areas, ...landmarkAreas], [areas, landmarkAreas]);
+
     const interactiveLayers = React.useMemo(
         () => [
             ...areas.flatMap((a) => [`area-fill-${a.id}`, `area-outline-${a.id}`]),
             ...routes.map((r) => `route-line-${r.id}`),
         ],
-        [areas, routes]
+        [allAreas, routes]
+
     );
 
     const handleMapClick = React.useCallback(
@@ -101,7 +132,7 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
             setSelectedArea(null);
             setSelectedRoute(null);
         },
-        [areas, routes]
+        [allAreas, routes]
     );
 
     return (
@@ -130,10 +161,10 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
                 onClick={handleMapClick}
                 interactiveLayerIds={interactiveLayers}
             >
-                {areas.map((area) => {
+                {allAreas.map((area) => {
                     const colors = CATEGORY_COLORS[area.category];
                     return (
-                        <Source key={area.id} id={`area-${area.id}`} type="geojson" data={area.geometry}>
+                        <Source key={area.id} id={`area-${area.id}`} type="geojson" data={area.geometry as Feature | FeatureCollection}>
                             <Layer
                                 id={`area-fill-${area.id}`}
                                 type="fill"
