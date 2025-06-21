@@ -39,18 +39,21 @@ export function LandmarksProvider({ children }: { children: ReactNode }) {
       try {
         const stored = localStorage.getItem("landmarks");
         if (stored) {
-          setLandmarks(JSON.parse(stored));
+          const loaded = JSON.parse(stored) as Landmark[];
+          setLandmarks((prev) => (prev.length ? prev : loaded));
           return;
         }
         const res = await fetch("/api/landmarks");
         if (res.ok) {
           const dynamic: Landmark[] = await res.json();
-          setLandmarks([...dynamic, ...staticLandmarks]);
+          const loaded = [...dynamic, ...staticLandmarks];
+          setLandmarks((prev) => (prev.length ? prev : loaded));
         } else {
-          setLandmarks([...staticLandmarks]);
+          const loaded = [...staticLandmarks];
+          setLandmarks((prev) => (prev.length ? prev : loaded));
         }
       } catch {
-        setLandmarks([...staticLandmarks]);
+        setLandmarks((prev) => (prev.length ? prev : [...staticLandmarks]));
       }
     }
     void loadLandmarks();
