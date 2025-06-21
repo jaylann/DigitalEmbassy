@@ -19,25 +19,44 @@ if (!MAPTILER_KEY) {
     throw new Error("Missing NEXT_PUBLIC_MAPTILER_KEY environment variable.");
 }
 
-// Example restriction zone (Berlin LEZ rectangle)
+// Example restriction zones (centered on initial view at lon: 51.3347, lat: 35.7219)
 const restrictionZone: FeatureCollection = {
-    type: "FeatureCollection",
-    features: [
-        {
-            type: "Feature",
-            properties: { name: "No‑Go" },
-            geometry: {
-                type: "Polygon",
-                coordinates: [
-                    [
-                        [13.376, 52.513], [13.454, 52.513],
-                        [13.454, 52.55], [13.376, 52.55],
-                        [13.376, 52.513]
-                    ]
-                ]
-            }
-        }
-    ]
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      properties: { name: "No‑Go Zone" },
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [51.33, 35.70],
+            [51.33, 35.745],
+            [51.35, 35.75],
+            [51.355, 35.72],
+            [51.345, 35.695],
+            [51.33, 35.70]
+          ]
+        ]
+      }
+    },
+    {
+      type: "Feature",
+      properties: { name: "Caution Zone" },
+      geometry: {
+        type: "Polygon",
+        coordinates: [
+          [
+            [51.32, 35.71],
+            [51.34, 35.74],
+            [51.36, 35.71],
+            [51.34, 35.68],
+            [51.32, 35.71]
+          ]
+        ]
+      }
+    }
+  ]
 };
 
 /**
@@ -83,7 +102,7 @@ export default function Home(): React.ReactElement {
             />
 
             <Map
-                initialViewState={{ longitude: 13.405, latitude: 52.53, zoom: 12 }}
+                initialViewState={{ longitude: 51.3347, latitude: 35.7219, zoom: 12 }}
                 mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}
                 style={{ position: "absolute", inset: 0, width: '100%', height: '100%' }}
             >

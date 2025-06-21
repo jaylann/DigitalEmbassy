@@ -1,8 +1,6 @@
 import { getGermanEmbassiesNearby } from '../services/googlePlaces';
 import { convertPlaceToLandmark } from '../utils/landmarkAdapters';
-import * as dotenv from 'dotenv'; 
-
-dotenv.config(); // Loads API key from .env
+//Load API Key using .env.local nextjs env
 
 async function test() {
     try {
