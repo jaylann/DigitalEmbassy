@@ -17,7 +17,7 @@ if (!apiKey) throw new Error("FATAL: GEMINI_API_KEY is not defined.");
 
 const genAI = new GoogleGenerativeAI(apiKey);
 const safetySettings = [{ category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH }];
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash-latest", safetySettings });
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash", safetySettings });
 
 /**
  * @constant {string} SYSTEM_PROMPT
@@ -41,7 +41,7 @@ You are the AI engine for the Euromesh emergency app. You have two primary modes
         2.  Check if you have extracted BOTH a specific 'name' (the place) AND a 'description' (what happened).
         3.  **If BOTH are present**, return a \`report\` type JSON.
         4.  **If EITHER 'name' OR 'description' is missing**, you MUST return a \`message\` type JSON to ask the user for the missing information.
-        5.  **If you need the user's location**, return a \`location_request\` type JSON asking them to share it.
+        5.  **If you need the user's location**, return a JSON object with type: location_request and a payload asking the user to share their location, for example: '{"type": "location_request", "payload": {"content": "Please share your location."}}'
     *   **JSON Output (when complete):** \`{"type": "report", "payload": {"name": "...", "description": "..."}}\`
 
 --- RULES & EXAMPLES ---
