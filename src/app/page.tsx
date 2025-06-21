@@ -4,12 +4,13 @@
 
 import * as React from "react";
 import Map, { Source, Layer } from "react-map-gl/maplibre";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import type { FeatureCollection } from "geojson";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 import { Button } from "@/components/ui/button";
-import { SystemStatus } from "@/types/status";
+import {SystemStatus} from "@/types/status";
+import {CrisisWarningOverlay} from "@/components/crising-warning-oerlay";
 import {MapOverlay} from "@/components/map-overlay";
 
 // Retrieve MapTiler key from environment variables
@@ -48,8 +49,21 @@ const restrictionZone: FeatureCollection = {
 export default function Home(): React.ReactElement {
     const [status, setStatus] = React.useState<SystemStatus>("Online");
 
+    const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
+
+    React.useEffect(() => {
+      if (status !== 'Crisis') {
+        setIsCrisisAcknowledged(false);
+      }
+    }, [status]);
+
     return (
         <main className="relative h-screen w-screen overflow-hidden bg-black">
+            <AnimatePresence>
+              {status === 'Crisis' && !isCrisisAcknowledged && (
+                <CrisisWarningOverlay onAcknowledge={() => setIsCrisisAcknowledged(true)} />
+              )}
+            </AnimatePresence>
             {/*
         This div is a dedicated layer for the glow effect.
         - `absolute inset-0`: Covers the entire parent.
