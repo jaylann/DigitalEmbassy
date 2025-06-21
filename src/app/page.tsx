@@ -1,6 +1,6 @@
 // src/app/page.tsx
 
-import type { FeatureCollection } from "geojson";
+import type { FeatureCollection, LineString } from "geojson";
 import { InteractiveMap } from "@/components/interactive-map";
 import type { Landmark } from "@/types/landmarks";
 import type { Area } from "@/types/areas";
@@ -69,7 +69,24 @@ const sampleAreas: Area[] = [
   },
 ];
 
+const sampleRoute: LineString = {
+  type: "LineString",
+  coordinates: [
+    [51.33, 35.72],
+    [51.335, 35.723],
+    [51.34, 35.726],
+    [51.345, 35.729],
+    [51.35, 35.732],
+  ],
+};
+
 export default function Home() {
-  return <InteractiveMap landmarks={sampleLandmarks} areas={sampleAreas} />;
+  return (
+    <InteractiveMap
+      landmarks={sampleLandmarks}
+      areas={sampleAreas}
+      route={sampleRoute}
+    />
+  );
 }
 
