@@ -7,6 +7,8 @@ import type { FeatureCollection, LineString } from "geojson";
 import { InteractiveMap } from "@/components/interactive-map";
 import type { Area } from "@/types/areas";
 import {Landmark} from "@/lib/types";
+import defaultLandmarks from "../../data/landmarks.json";
+import defaultAreas from "../../data/areas.json";
 
 // Example restriction zones (centered on initial view at lon: 51.3347, lat: 35.7219)
 const restrictionZone: FeatureCollection = {
@@ -48,100 +50,6 @@ const restrictionZone: FeatureCollection = {
   ]
 };
 
-const cautionZone: FeatureCollection = {
-  type: "FeatureCollection",
-  features: [
-    {
-      type: "Feature",
-      properties: { name: "Caution Zone" },
-      geometry: {
-        type: "Polygon",
-        coordinates: [
-          [
-            [51.36, 35.72],
-            [51.37, 35.73],
-            [51.38, 35.72],
-            [51.37, 35.71],
-            [51.36, 35.72],
-          ],
-        ],
-      },
-    },
-  ],
-};
-
-const safeZone: FeatureCollection = {
-  type: "FeatureCollection",
-  features: [
-    {
-      type: "Feature",
-      properties: { name: "Safe Zone" },
-      geometry: {
-        type: "Polygon",
-        coordinates: [
-          [
-            [51.32, 35.715],
-            [51.33, 35.715],
-            [51.33, 35.705],
-            [51.32, 35.705],
-            [51.32, 35.715],
-          ],
-        ],
-      },
-    },
-  ],
-};
-
-const sampleLandmarks: Landmark[] = [
-  {
-    id: "checkpoint-a",
-    name: "Checkpoint A",
-    location: { lat: 35.722, lng: 51.335 },
-    category: "checkpoint",
-    description: "Primary checkpoint for authorized personnel only",
-    trustLevel: "high",
-    lastUpdated: "2025-06-21T10:00:00Z",
-    addedBy: "user-admin-001",
-    isVerified: true,
-    visible: true,
-  },
-  {
-    id: "medical-1",
-    name: "Medical Center",
-    location: { lat: 35.725, lng: 51.34 },
-    category: "medical",
-    description: "On-site medical center providing emergency care",
-    trustLevel: "medium",
-    lastUpdated: "2025-06-20T15:30:00Z",
-    addedBy: "user-medic-042",
-    isVerified: false,
-    visible: true,
-  },
-];
-
-const sampleAreas: Area[] = [
-  {
-    id: "restriction",
-    name: "Restriction Zones",
-    geometry: restrictionZone,
-    category: "no_go",
-    description: "Areas that should be strictly avoided",
-  },
-  {
-    id: "caution",
-    name: "Caution Area",
-    geometry: cautionZone,
-    category: "caution",
-    description: "Proceed with caution in this region",
-  },
-  {
-    id: "safe",
-    name: "Safe Area",
-    geometry: safeZone,
-    category: "safe",
-    description: "Verified safe zone for operations",
-  },
-];
 
 // --- REVISED AND IMPROVED ROUTE ---
 const sampleRoute: LineString = {
@@ -163,8 +71,46 @@ const sampleRoute: LineString = {
 };
 
 export default function Home() {
-  const [landmarks, setLandmarks] = React.useState<Landmark[]>(sampleLandmarks);
-  const [areas, setAreas] = React.useState<Area[]>(sampleAreas);
+  const [landmarks, setLandmarks] = React.useState<Landmark[]>([]);
+  const [areas, setAreas] = React.useState<Area[]>([]);
+
+  // Load default data and any stored user data on first render
+  React.useEffect(() => {
+    try {
+      const storedLandmarks = localStorage.getItem('landmarks');
+      if (storedLandmarks) {
+        setLandmarks(JSON.parse(storedLandmarks));
+      } else {
+        setLandmarks(defaultLandmarks as Landmark[]);
+      }
+    } catch {
+      setLandmarks(defaultLandmarks as Landmark[]);
+    }
+
+    try {
+      const storedAreas = localStorage.getItem('areas');
+      if (storedAreas) {
+        setAreas(JSON.parse(storedAreas));
+      } else {
+        setAreas(defaultAreas as Area[]);
+      }
+    } catch {
+      setAreas(defaultAreas as Area[]);
+    }
+  }, []);
+
+  // Persist landmarks and areas whenever they change
+  React.useEffect(() => {
+    if (landmarks.length) {
+      localStorage.setItem('landmarks', JSON.stringify(landmarks));
+    }
+  }, [landmarks]);
+
+  React.useEffect(() => {
+    if (areas.length) {
+      localStorage.setItem('areas', JSON.stringify(areas));
+    }
+  }, [areas]);
 
   const addLandmark = () => {
     setLandmarks((prev) => [
