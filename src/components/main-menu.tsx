@@ -6,7 +6,14 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Menu, BookOpen, HelpCircle, Settings, Siren } from "lucide-react";
+import {
+    Menu,
+    HelpCircle,
+    PhoneCall,
+    Newspaper,
+    Wallet,
+    Map as MapIcon,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,9 +24,15 @@ import {
 
 const menuItems = [
     {
-        label: "What to do in a Crisis",
-        href: "/crisis-guide",
-        icon: <BookOpen className="h-5 w-5" />,
+        label: "Home",
+        href: "/",
+        icon: <MapIcon className="h-5 w-5" />,
+    },
+    {
+        label: "Emergency Call",
+        href: "/emergency-call",
+        icon: <PhoneCall className="h-5 w-5" />,
+        isEmergency: true,
     },
     {
         label: "FAQ",
@@ -27,15 +40,14 @@ const menuItems = [
         icon: <HelpCircle className="h-5 w-5" />,
     },
     {
-        label: "Settings",
-        href: "/settings",
-        icon: <Settings className="h-5 w-5" />,
+        label: "News",
+        href: "/news",
+        icon: <Newspaper className="h-5 w-5" />,
     },
     {
-        label: "Emergency Help",
-        href: "/emergency",
-        icon: <Siren className="h-5 w-5" />,
-        isEmergency: true,
+        label: "Wallet",
+        href: "/wallet",
+        icon: <Wallet className="h-5 w-5" />,
     },
 ];
 
