@@ -1,0 +1,13 @@
+{
+  "id": "debug-landmark",
+  "name": "Temporary Safe Spot",
+  "location": {"lat": 35.728, "lng": 51.342},
+  "radius": 100,
+  "category": "safe_space",
+  "description": "Debug landmark for route change",
+  "trustLevel": "high",
+  "lastUpdated": "2025-06-21T00:00:00Z",
+  "addedBy": "debug",
+  "isVerified": true,
+  "visible": true
+}
