@@ -12,7 +12,16 @@ import { Input } from "@/components/ui/input"; // Assuming you have shadcn Input
  *
  * @returns {React.ReactElement} The rendered search bar.
  */
-export function SearchBar(): React.ReactElement {
+interface SearchBarProps {
+    onFocus?: () => void;
+    onBlur?: () => void;
+    onSearch?: (value: string) => void;
+    autoFocus?: boolean;
+}
+
+export function SearchBar({ onFocus, onBlur, onSearch, autoFocus }: SearchBarProps): React.ReactElement {
+    const [value, setValue] = React.useState("");
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -26,7 +35,17 @@ export function SearchBar(): React.ReactElement {
             />
             <Input
                 type="search"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter" && onSearch) {
+                        onSearch(value);
+                    }
+                }}
                 placeholder="Search location..."
+                autoFocus={autoFocus}
                 className="h-12 w-full rounded-full border-none bg-black/50 pl-11 pr-4 text-white shadow-lg backdrop-blur-sm placeholder:text-gray-400 focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-0"
             />
         </motion.div>

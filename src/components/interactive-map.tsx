@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import Map, { Source, Layer } from "react-map-gl/maplibre";
+import Map, { Source, Layer, MapRef } from "react-map-gl/maplibre";
 import type maplibregl from "maplibre-gl";
 import type { LineString } from "geojson";
 import { motion, AnimatePresence } from "framer-motion";
@@ -33,8 +33,14 @@ interface InteractiveMapProps {
 export function InteractiveMap({ landmarks = [], areas = [], route }: InteractiveMapProps): React.ReactElement {
     const [status, setStatus] = React.useState<SystemStatus>("Online");
     const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
+    const [showLandmarks, setShowLandmarks] = React.useState(true);
+    const [showAreas, setShowAreas] = React.useState(true);
 
     const { lastKnownLocation } = useLocation();
+    const mapRef = React.useRef<MapRef | null>(null);
+    const flyToLocation = React.useCallback((lng: number, lat: number) => {
+        mapRef.current?.flyTo({ center: [lng, lat], zoom: 14 });
+    }, []);
     const [selectedArea, setSelectedArea] = React.useState<{
         area: Area;
         coordinates: { lng: number; lat: number };
@@ -52,8 +58,11 @@ export function InteractiveMap({ landmarks = [], areas = [], route }: Interactiv
     }
 
     const interactiveLayers = React.useMemo(
-        () => areas.flatMap((a) => [`area-fill-${a.id}`, `area-outline-${a.id}`]),
-        [areas]
+        () =>
+            showAreas
+                ? areas.flatMap((a) => [`area-fill-${a.id}`, `area-outline-${a.id}`])
+                : [],
+        [areas, showAreas]
     );
 
     const handleMapClick = React.useCallback(
@@ -97,13 +106,15 @@ export function InteractiveMap({ landmarks = [], areas = [], route }: Interactiv
             />
 
             <Map
+                ref={mapRef}
                 initialViewState={{ longitude: lastKnownLocation.lng, latitude: lastKnownLocation.lat, zoom: 12 }}
                 mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
                 onClick={handleMapClick}
                 interactiveLayerIds={interactiveLayers}
             >
-                {areas.map((area) => {
+                {showAreas &&
+                    areas.map((area) => {
                     const colors = CATEGORY_COLORS[area.category];
                     return (
                         <Source key={area.id} id={`area-${area.id}`} type="geojson" data={area.geometry}>
@@ -127,9 +138,10 @@ export function InteractiveMap({ landmarks = [], areas = [], route }: Interactiv
                     );
                 })}
 
-                {landmarks.map((lm) => (
-                    <LandmarkMarker key={lm.id} landmark={lm} />
-                ))}
+                {showLandmarks &&
+                    landmarks.map((lm) => (
+                        <LandmarkMarker key={lm.id} landmark={lm} />
+                    ))}
 
                 {route && <AnimatedRoute route={route} />}
                 {selectedArea && (
@@ -141,7 +153,16 @@ export function InteractiveMap({ landmarks = [], areas = [], route }: Interactiv
                 )}
             </Map>
 
-            <MapOverlay status={status} />
+            <MapOverlay
+                status={status}
+                landmarks={landmarks}
+                areas={areas}
+                onSearchSelect={flyToLocation}
+                showLandmarks={showLandmarks}
+                showAreas={showAreas}
+                setShowLandmarks={setShowLandmarks}
+                setShowAreas={setShowAreas}
+            />
 
             <div className="absolute bottom-24 right-4 z-20 flex flex-col gap-2">
                 {(["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]).map((s) => (
