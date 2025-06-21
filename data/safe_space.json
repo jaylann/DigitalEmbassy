@@ -80,22 +80,6 @@
     "radius": 100
   },
   {
-    "id": "e74a44ce-f849-46be-858b-cfe04c2f3a86",
-    "name": "Shahid Haqqani Metro Station",
-    "description": "Tehran, Haghani Hwy, Iran",
-    "location": {
-      "lat": 35.7562669,
-      "lng": 51.4265943
-    },
-    "category": "safe_space",
-    "trustLevel": "high",
-    "lastUpdated": "2025-06-21T14:56:05.972061",
-    "addedBy": "system",
-    "isVerified": false,
-    "visible": true,
-    "radius": 100
-  },
-  {
     "id": "13e0ff29-3a70-47b0-970d-6f20688e7019",
     "name": "Gholhak Subway Station",
     "description": "Tehran Province, Tehran, District 3, Shariati St, Iran",
