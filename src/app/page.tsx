@@ -1,9 +1,12 @@
 // src/app/page.tsx
 
+"use client";
+
+import * as React from "react";
 import type { FeatureCollection, LineString } from "geojson";
 import { InteractiveMap } from "@/components/interactive-map";
-import type { Landmark } from "@/types/landmarks";
 import type { Area } from "@/types/areas";
+import {Landmark} from "@/lib/types";
 
 // Example restriction zones (centered on initial view at lon: 51.3347, lat: 35.7219)
 const restrictionZone: FeatureCollection = {
@@ -95,12 +98,24 @@ const sampleLandmarks: Landmark[] = [
     name: "Checkpoint A",
     location: { lat: 35.722, lng: 51.335 },
     category: "checkpoint",
+    description: "Primary checkpoint for authorized personnel only",
+    trustLevel: "high",
+    lastUpdated: "2025-06-21T10:00:00Z",
+    addedBy: "user-admin-001",
+    isVerified: true,
+    visible: true,
   },
   {
     id: "medical-1",
     name: "Medical Center",
     location: { lat: 35.725, lng: 51.34 },
     category: "medical",
+    description: "On-site medical center providing emergency care",
+    trustLevel: "medium",
+    lastUpdated: "2025-06-20T15:30:00Z",
+    addedBy: "user-medic-042",
+    isVerified: false,
+    visible: true,
   },
 ];
 
@@ -125,24 +140,74 @@ const sampleAreas: Area[] = [
   },
 ];
 
+// --- REVISED AND IMPROVED ROUTE ---
 const sampleRoute: LineString = {
   type: "LineString",
   coordinates: [
-    [51.33, 35.72],
-    [51.335, 35.723],
-    [51.34, 35.726],
-    [51.345, 35.729],
-    [51.35, 35.732],
+    // 1. Start southwest of the main area of interest
+    [51.325, 35.715],
+    // 2. Head northeast towards the checkpoint
+    [51.330, 35.720],
+    // 3. Pass directly through "Checkpoint A" landmark
+    [51.335, 35.722],
+    // 4. Make a sharp turn east to avoid the western edge of the "No-Go Zone"
+    [51.338, 35.723],
+    // 5. Curve northwards on a final approach to the destination
+    [51.339, 35.7245],
+    // 6. Arrive precisely at the "Medical Center" landmark
+    [51.340, 35.725],
   ],
 };
 
 export default function Home() {
+  const [landmarks, setLandmarks] = React.useState<Landmark[]>(sampleLandmarks);
+  const [areas, setAreas] = React.useState<Area[]>(sampleAreas);
+
+  const addLandmark = () => {
+    setLandmarks((prev) => [
+      ...prev,
+      {
+        id: `dynamic-lm-${prev.length}`,
+        name: `Landmark ${prev.length}`,
+        location: { lat: 35.72 + prev.length * 0.002, lng: 51.335 },
+        category: "checkpoint",
+      },
+    ]);
+  };
+
+  const addArea = () => {
+    setAreas((prev) => [
+      ...prev,
+      {
+        id: `dynamic-area-${prev.length}`,
+        name: `Area ${prev.length}`,
+        geometry: restrictionZone,
+        category: "caution",
+      },
+    ]);
+  };
+
   return (
-    <InteractiveMap
-      landmarks={sampleLandmarks}
-      areas={sampleAreas}
-      route={sampleRoute}
-    />
+    <>
+      <InteractiveMap
+        landmarks={landmarks}
+        areas={areas}
+        route={sampleRoute}
+      />
+      <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
+        <button
+          onClick={addLandmark}
+          className="rounded bg-blue-600 px-3 py-2 text-white"
+        >
+          Add Landmark
+        </button>
+        <button
+          onClick={addArea}
+          className="rounded bg-blue-600 px-3 py-2 text-white"
+        >
+          Add Area
+        </button>
+      </div>
+    </>
   );
 }
-

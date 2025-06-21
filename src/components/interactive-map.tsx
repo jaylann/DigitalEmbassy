@@ -12,14 +12,13 @@ import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay";
 import { LandmarkMarker } from "@/components/landmark-marker";
 import { AnimatedRoute } from "@/components/animated-route";
 import { SystemStatus } from "@/types/status";
-import type { Landmark } from "@/types/landmarks";
 import type { Area, AreaCategory } from "@/types/areas";
-
 const CATEGORY_COLORS: Record<AreaCategory, { fill: string; border: string }> = {
     no_go: { fill: "#DC2626", border: "#b91c1c" },
     caution: { fill: "#FACC15", border: "#CA8A04" },
     safe: { fill: "#16A34A", border: "#15803D" },
 };
+import {Landmark} from "@/lib/types";
 
 interface InteractiveMapProps {
     landmarks?: Landmark[];
