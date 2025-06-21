@@ -35,7 +35,7 @@ export function MapMarker({
                               children,
                           }: MapMarkerProps): React.ReactElement {
     return (
-        <Marker longitude={longitude} latitude={latitude} anchor="bottom" onClick={onClick}>
+        <Marker longitude={longitude} latitude={latitude} anchor="center" onClick={onClick}>
             {/* The wrapper div ensures that DOM events like hover and click are properly handled. */}
             <div className="pointer-events-auto cursor-pointer">
                 {children}
