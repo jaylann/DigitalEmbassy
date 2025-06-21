@@ -1,13 +1,13 @@
 {
   "id": "debug-landmark",
-  "name": "Temporary Safe Spot",
-  "location": {"lat": 35.728, "lng": 51.342},
-  "radius": 100,
-  "category": "safe_space",
-  "description": "Debug landmark for route change",
+  "name": "Bombed bridge",
+  "location": {"lat": 35.758, "lng": 51.758},
+  "radius": 300,
+  "category": "explosion",
+  "description": "Bridge got bombed and is now unusable.",
   "trustLevel": "high",
   "lastUpdated": "2025-06-21T00:00:00Z",
-  "addedBy": "debug",
+  "addedBy": "Benjamin Netanyahu",
   "isVerified": true,
   "visible": true
 }
