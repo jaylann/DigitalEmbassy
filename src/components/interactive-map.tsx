@@ -9,7 +9,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { Button } from "@/components/ui/button";
 import { MapOverlay } from "@/components/map-overlay";
 import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay";
-import { MapMarker } from "@/components/map-marker";
+import { LandmarkMarker } from "@/components/landmark-marker";
 import { AnimatedRoute } from "@/components/animated-route";
 import { SystemStatus } from "@/types/status";
 import type { Landmark } from "@/types/landmarks";
@@ -77,9 +77,7 @@ export function InteractiveMap({ landmarks = [], areas = [], route }: Interactiv
                 ))}
 
                 {landmarks.map((lm) => (
-                    <MapMarker key={lm.id} latitude={lm.location.lat} longitude={lm.location.lng}>
-                        <div title={lm.name} className="h-4 w-4 -translate-y-1 rounded-full border-2 border-white bg-blue-600 shadow" />
-                    </MapMarker>
+                    <LandmarkMarker key={lm.id} landmark={lm} />
                 ))}
 
                 {route && <AnimatedRoute route={route} />}
