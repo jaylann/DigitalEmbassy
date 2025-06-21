@@ -6,18 +6,35 @@
 
 "use server";
 
-import fs from 'fs/promises';
-import path from 'path';
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
-import type { GeminiApiResponse, Message, Landmark, AssistantResponse } from "@/lib/types";
+import fs from "fs/promises";
+import path from "path";
+import {
+  GoogleGenerativeAI,
+  HarmCategory,
+  HarmBlockThreshold,
+} from "@google/generative-ai";
+import type {
+  GeminiApiResponse,
+  Message,
+  Landmark,
+  AssistantResponse,
+} from "@/lib/types";
 
-const dbPath = path.join(process.cwd(), 'data', 'landmarks.json');
+const dbPath = path.join(process.cwd(), "data", "landmarks.json");
 const apiKey = process.env.GEMINI_API_KEY;
 if (!apiKey) throw new Error("FATAL: GEMINI_API_KEY is not defined.");
 
 const genAI = new GoogleGenerativeAI(apiKey);
-const safetySettings = [{ category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH }];
-const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash", safetySettings });
+const safetySettings = [
+  {
+    category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+    threshold: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+  },
+];
+const model = genAI.getGenerativeModel({
+  model: "gemini-2.5-flash",
+  safetySettings,
+});
 
 /**
  * @constant {string} SYSTEM_PROMPT
@@ -35,20 +52,18 @@ You are the AI engine for the Euromesh emergency app. You have two primary modes
     *   **JSON Output:** \`{"type": "message", "payload": {"content": "Your answer here."}}\`
 
 2.  **REPORT_MODE:**
-    *   **Trigger:** The user wants to report a danger.
-    *   **Action:** Your goal is to create a 'dangerous_spot' landmark by collecting a 'name' and a 'description'. Follow this procedure:
+    *   **Trigger:** The user wants to report a danger or disaster.
+    *   **Action:** Collect a 'name', 'description', and a 'category'. Allowed categories are 'explosion', 'attack', or 'disaster'. Follow this procedure:
         1.  Analyze the user's message and the conversation history.
-        2.  Check if you have extracted BOTH a specific 'name' (the place) AND a 'description' (what happened).
-        3.  **If BOTH are present**, return a \`report\` type JSON.
-        4.  **If EITHER 'name' OR 'description' is missing**, you MUST return a \`message\` type JSON to ask the user for the missing information.
-        5.  **If you need the user's location**, return a JSON object with type: location_request and a payload asking the user to share their location, for example: '{"type": "location_request", "payload": {"content": "Please share your location."}}'
-    *   **JSON Output (when complete):** \`{"type": "report", "payload": {"name": "...", "description": "..."}}\`
+        2.  Check if you have extracted ALL THREE fields.
+        3.  **If any field is missing**, return a \`message\` type JSON asking the user for the missing detail.
+        4.  **When all fields are collected**, return a \`location_request\` JSON including the full report object in the payload. Example:
+           \`{"type": "location_request", "payload": {"content": "Please share the location.", "report": {"name": "...", "description": "...", "category": "explosion"}}}\`
 
 --- RULES & EXAMPLES ---
 - Your output must start with \`{\` and end with \`}\`. No markdown fences.
 - Use the conversation history for context.
-- **CRITICAL RULE:** NEVER create a 'report' type JSON unless you have collected ALL required information ('name' and 'description'). Always ask for missing details first.
-
+- **CRITICAL RULE:** Do not request the user's location until you have collected name, description, and category. Always ask for missing details first.
 - **Example 1: Incomplete Report (Vague Initial Request)**
   - User: "I would like to report something."
   - Your JSON Response: \`{"type": "message", "payload": {"content": "I can help with that. Please describe the danger."}}\`
@@ -59,34 +74,34 @@ You are the AI engine for the Euromesh emergency app. You have two primary modes
 
 - **Example 3: Requesting Location**
   - User: "A fire broke out near me."
-  - Your JSON Response: \`{"type": "location_request", "payload": {"content": "Please share your location."}}\`
+  - Your JSON Response: \`{"type": "location_request", "payload": {"content": "Please share the location.", "report": {"name": "Unknown", "description": "A fire broke out", "category": "disaster"}}}\`
 
-- **Example 3: Complete Report (All details provided over two turns)**
-- **Example 4: Complete Report (All details provided over two turns)**
-  - (After the previous exchange)
+- **Example 4: Completed Report**
+  - (After gathering name, description, and category)
   - User: "It's the Tabiat Bridge."
-  - Your JSON Response: \`{"type": "report", "payload": {"name": "Tabiat Bridge", "description": "A bridge collapsed"}}\`
+  - Your JSON Response: \`{"type": "location_request", "payload": {"content": "Please mark the location on the map.", "report": {"name": "Tabiat Bridge", "description": "A bridge collapsed", "category": "disaster"}}}\`
 `.trim();
 
-
 export async function getGeminiResponse(
-    chatHistory: Message[]
+  chatHistory: Message[],
 ): Promise<GeminiApiResponse> {
   let landmarks: Landmark[] = [];
   try {
-    const fileContent = await fs.readFile(dbPath, 'utf-8');
+    const fileContent = await fs.readFile(dbPath, "utf-8");
     landmarks = JSON.parse(fileContent);
     console.log(`Loaded ${landmarks.length} landmarks from mesh database.`);
   } catch (error) {
     console.log(
       "No mesh database found or it's empty. Starting with a clean context.",
-      error
+      error,
     );
   }
 
   const historyForPrompt = chatHistory
-      .map(msg => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`)
-      .join('\n');
+    .map(
+      (msg) => `${msg.role === "user" ? "User" : "Assistant"}: ${msg.content}`,
+    )
+    .join("\n");
 
   const fullPrompt = `
 ${SYSTEM_PROMPT}
@@ -112,16 +127,19 @@ ${historyForPrompt}
     if (!sanitizedText) throw new Error("Sanitized response text is empty.");
 
     const parsedJson = JSON.parse(sanitizedText) as AssistantResponse;
-    if (!parsedJson.type || !parsedJson.payload) throw new Error("Invalid JSON structure.");
+    if (!parsedJson.type || !parsedJson.payload)
+      throw new Error("Invalid JSON structure.");
 
     return { success: true, data: parsedJson };
   } catch (error) {
     console.error("FULL ERROR OBJECT:", error);
     const errorResponse: AssistantResponse = {
       type: "message",
-      payload: { content: "I'm having trouble processing that request. Could you please try rephrasing?" }
+      payload: {
+        content:
+          "I'm having trouble processing that request. Could you please try rephrasing?",
+      },
     };
     return { success: true, data: errorResponse };
   }
 }
-

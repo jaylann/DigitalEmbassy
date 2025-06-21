@@ -13,6 +13,9 @@ import type { LineString } from "geojson";
 import checkpoint from "../../data/checkpoint.json";
 import communication from "../../data/communication.json";
 import dangerousSpots from "../../data/dangerous_spot.json";
+import explosions from "../../data/explosion.json";
+import attacks from "../../data/attack.json";
+import disasters from "../../data/disaster.json";
 import hospitals from "../../data/hospitals.json";
 import medical from "../../data/medical.json";
 import safeSpaces from "../../data/safe_space.json";
@@ -27,13 +30,13 @@ const defaultLandmarks: Landmark[] = [
   ...(checkpoint as Landmark[]),
   ...(communication as Landmark[]),
   ...(dangerousSpots as Landmark[]),
+  ...(explosions as Landmark[]),
+  ...(attacks as Landmark[]),
+  ...(disasters as Landmark[]),
   ...(hospitals as Landmark[]),
   ...(medical as Landmark[]),
   ...(safeSpaces as Landmark[]),
 ];
-
-
-
 
 export default function Home() {
   const [landmarks, setLandmarks] = React.useState<Landmark[]>([]);
@@ -44,7 +47,7 @@ export default function Home() {
   // Load default data and any stored user data on first render
   React.useEffect(() => {
     try {
-      const storedLandmarks = localStorage.getItem('landmarks');
+      const storedLandmarks = localStorage.getItem("landmarks");
       if (storedLandmarks) {
         setLandmarks(JSON.parse(storedLandmarks));
       } else {
@@ -55,7 +58,7 @@ export default function Home() {
     }
 
     try {
-      const storedAreas = localStorage.getItem('areas');
+      const storedAreas = localStorage.getItem("areas");
       if (storedAreas) {
         setAreas(JSON.parse(storedAreas));
       } else {
@@ -66,7 +69,7 @@ export default function Home() {
     }
 
     try {
-      const storedRoutes = localStorage.getItem('routes');
+      const storedRoutes = localStorage.getItem("routes");
       if (storedRoutes) {
         setRoutes(JSON.parse(storedRoutes));
       } else {
@@ -77,7 +80,7 @@ export default function Home() {
     }
 
     try {
-      const storedRoute = localStorage.getItem('animatedRoute');
+      const storedRoute = localStorage.getItem("animatedRoute");
       if (storedRoute) {
         setRoute(JSON.parse(storedRoute));
       } else {
@@ -91,29 +94,27 @@ export default function Home() {
   // Persist landmarks and areas whenever they change
   React.useEffect(() => {
     if (landmarks.length) {
-      localStorage.setItem('landmarks', JSON.stringify(landmarks));
+      localStorage.setItem("landmarks", JSON.stringify(landmarks));
     }
   }, [landmarks]);
 
   React.useEffect(() => {
     if (areas.length) {
-      localStorage.setItem('areas', JSON.stringify(areas));
+      localStorage.setItem("areas", JSON.stringify(areas));
     }
   }, [areas]);
 
-
   React.useEffect(() => {
     if (routes.length) {
-      localStorage.setItem('routes', JSON.stringify(routes));
+      localStorage.setItem("routes", JSON.stringify(routes));
     }
   }, [routes]);
 
   React.useEffect(() => {
     if (route) {
-      localStorage.setItem('animatedRoute', JSON.stringify(route));
+      localStorage.setItem("animatedRoute", JSON.stringify(route));
     }
   }, [route]);
-
 
   return (
     <>
@@ -127,9 +128,10 @@ export default function Home() {
         <Button
           onClick={() =>
             setRoute((current) =>
-              current && JSON.stringify(current) === JSON.stringify(animatedRouteA)
+              current &&
+              JSON.stringify(current) === JSON.stringify(animatedRouteA)
                 ? (animatedRouteB as LineString)
-                : (animatedRouteA as LineString)
+                : (animatedRouteA as LineString),
             )
           }
           variant="secondary"
