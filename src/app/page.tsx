@@ -1,5 +1,8 @@
 // src/app/page.tsx
 
+"use client";
+
+import * as React from "react";
 import type { FeatureCollection, LineString } from "geojson";
 import { InteractiveMap } from "@/components/interactive-map";
 import type { Landmark } from "@/types/landmarks";
@@ -81,12 +84,55 @@ const sampleRoute: LineString = {
 };
 
 export default function Home() {
+  const [landmarks, setLandmarks] = React.useState<Landmark[]>(sampleLandmarks);
+  const [areas, setAreas] = React.useState<Area[]>(sampleAreas);
+
+  const addLandmark = () => {
+    setLandmarks((prev) => [
+      ...prev,
+      {
+        id: `dynamic-lm-${prev.length}`,
+        name: `Landmark ${prev.length}`,
+        location: { lat: 35.72 + prev.length * 0.002, lng: 51.335 },
+        category: "checkpoint",
+      },
+    ]);
+  };
+
+  const addArea = () => {
+    setAreas((prev) => [
+      ...prev,
+      {
+        id: `dynamic-area-${prev.length}`,
+        name: `Area ${prev.length}`,
+        geometry: restrictionZone,
+        category: "caution",
+      },
+    ]);
+  };
+
   return (
-    <InteractiveMap
-      landmarks={sampleLandmarks}
-      areas={sampleAreas}
-      route={sampleRoute}
-    />
+    <>
+      <InteractiveMap
+        landmarks={landmarks}
+        areas={areas}
+        route={sampleRoute}
+      />
+      <div className="absolute top-4 left-4 z-20 flex flex-col gap-2">
+        <button
+          onClick={addLandmark}
+          className="rounded bg-blue-600 px-3 py-2 text-white"
+        >
+          Add Landmark
+        </button>
+        <button
+          onClick={addArea}
+          className="rounded bg-blue-600 px-3 py-2 text-white"
+        >
+          Add Area
+        </button>
+      </div>
+    </>
   );
 }
 

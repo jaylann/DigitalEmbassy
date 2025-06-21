@@ -143,7 +143,11 @@ export function LandmarkMarker({ landmark }: LandmarkMarkerProps): React.ReactEl
         try {
             return formatDistanceToNow(new Date(isoDate), { addSuffix: true });
         } catch (error) {
-            console.error("Invalid date format for lastUpdated:", isoDate);
+            console.error(
+                "Invalid date format for lastUpdated:",
+                isoDate,
+                error
+            );
             return "unknown";
         }
     };
