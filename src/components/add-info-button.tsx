@@ -1,46 +1,41 @@
 // src/components/map-layout/add-info-button.tsx
-
 "use client";
 
-import * as React from "react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipProvider,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
+import * as React from "react";
+import {Plus} from "lucide-react";
+import { Button } from "./ui/button";
+// ... other imports
+
+interface AddInfoButtonProps {
+    onClick: () => void; // Expects an onClick function
+    isActive?: boolean;   // Expects an optional isActive boolean
+}
 
 /**
  * An icon button to allow users to add new information to the map.
- * Includes a tooltip for better user experience.
- *
- * @returns {React.ReactElement} The rendered "Add Info" button.
  */
-export function AddInfoButton(): React.ReactElement {
+export function AddInfoButton({ onClick, isActive }: AddInfoButtonProps): React.ReactElement { // Props are destructured here
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut", delay: 0.1 }}
-            className="pointer-events-auto"
-        >
-            <TooltipProvider delayDuration={150}>
+        // ... JSX using onClick and isActive ...
+        <motion.div /* ... */ >
+            <TooltipProvider /* ... */ >
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Button
-                            variant="default"
+                            variant={isActive ? "secondary" : "default"}
                             size="icon"
-                            className="h-12 w-12 rounded-full bg-black/50 shadow-lg backdrop-blur-sm hover:bg-black/70"
+                            className="h-12 w-12 rounded-full bg-black/50 shadow-lg backdrop-blur-sm hover:bg-black/70 data-[state=active]:bg-primary/80"
                             aria-label="Add Information to Map"
+                            onClick={onClick} // Prop is used here
+                            data-state={isActive ? "active" : "inactive"}
                         >
                             <Plus className="h-6 w-6 text-white" />
                         </Button>
                     </TooltipTrigger>
-                    <TooltipContent side="top" className="bg-black/70 text-white border-none">
-                        <p>Add Information</p>
+                    <TooltipContent /* ... */ >
+                        <p>{isActive ? "Click on map to add" : "Add Information"}</p>
                     </TooltipContent>
                 </Tooltip>
             </TooltipProvider>

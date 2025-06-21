@@ -15,6 +15,7 @@ const newsItems: NewsItem[] = [
     headline: "Network Status Green",
     description: "All systems are now online and fully operational following the brief outage. Monitoring will continue.",
     datetime: new Date(Date.now() - 1000 * 60 * 5).toISOString(), // 5 minutes ago
+    // No specific location for this general update
   },
   {
     id: 2,
@@ -22,6 +23,8 @@ const newsItems: NewsItem[] = [
     headline: "Crisis Averted in Sector 7G",
     description: "The crisis situation in Sector 7G has been successfully neutralized. Routes are now clear. Proceed with standard caution.",
     datetime: new Date(Date.now() - 1000 * 3600 * 2).toISOString(), // 2 hours ago
+    location: { lat: 35.7300, lng: 51.4200 }, // Example coordinates for "Sector 7G"
+    placeName: "Sector 7G (Near North Bridge)"
   },
   {
     id: 3,
@@ -29,6 +32,17 @@ const newsItems: NewsItem[] = [
     headline: "New Sympathetic Contact Added",
     description: "A new trusted contact 'Viper' has been added to the directory for the downtown district. Review their profile in the contacts section.",
     datetime: "2024-05-28T11:00:00Z",
+    location: { lat: 35.6892, lng: 51.4208 }, // Example coordinates for "downtown district"
+    placeName: "Downtown District"
+  },
+  {
+    id: 4,
+    tag: "Alert",
+    headline: "Checkpoint Charlie temporarily closed",
+    description: "Due to unforeseen circumstances, Checkpoint Charlie is closed until further notice. Use alternative routes.",
+    datetime: new Date(Date.now() - 1000 * 60 * 30).toISOString(), // 30 minutes ago
+    location: { lat: 52.5074, lng: 13.3904 }, // Berlin Checkpoint Charlie coordinates
+    placeName: "Checkpoint Charlie"
   },
 ];
 
