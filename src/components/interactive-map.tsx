@@ -8,7 +8,6 @@ import circle from "@turf/circle";
 import { motion, AnimatePresence } from "framer-motion";
 import "maplibre-gl/dist/maplibre-gl.css";
 
-import { Button } from "@/components/ui/button";
 import { MapOverlay } from "@/components/map-overlay";
 import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay";
 import { LandmarkMarker } from "@/components/landmark-marker";
@@ -17,7 +16,7 @@ import { RoutePath } from "@/components/route-path";
 import { useLocation } from "@/lib/state/location";
 import { AreaPopup } from "@/components/area-popup";
 import { RoutePopup } from "@/components/route-popup";
-import { SystemStatus } from "@/types/status";
+import { useDebug } from "@/lib/state/debug";
 import type { Area, AreaCategory } from "@/types/areas";
 const CATEGORY_COLORS: Record<AreaCategory, { fill: string; border: string }> = {
     no_go: { fill: "#DC2626", border: "#b91c1c" },
@@ -49,19 +48,10 @@ interface InteractiveMapProps {
 }
 
 export function InteractiveMap({ landmarks = [], areas = [], routes = [], route }: InteractiveMapProps): React.ReactElement {
-    const [status, setStatus] = React.useState<SystemStatus>("Online");
+    const { status } = useDebug();
     const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
 
     const { lastKnownLocation } = useLocation();
-    const [viewState, setViewState] = React.useState({
-        longitude: lastKnownLocation.lng,
-        latitude: lastKnownLocation.lat,
-        zoom: 12,
-    });
-
-    React.useEffect(() => {
-        setViewState((vs) => ({ ...vs, longitude: lastKnownLocation.lng, latitude: lastKnownLocation.lat }));
-    }, [lastKnownLocation]);
     const [selectedArea, setSelectedArea] = React.useState<{
         area: Area;
         coordinates: { lng: number; lat: number };
@@ -175,7 +165,6 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
 
             <Map
                 initialViewState={{ longitude: lastKnownLocation.lng, latitude: lastKnownLocation.lat, zoom: 12 }}
-                onMove={(e) => setViewState(e.viewState)}
                 mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
                 onClick={handleMapClick}
@@ -237,14 +226,6 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
             </Map>
 
             <MapOverlay status={status} landmarks={landmarks} areas={areas} />
-
-            <div className="absolute bottom-24 right-4 z-20 flex flex-col gap-2">
-                {(["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]).map((s) => (
-                    <Button key={s} onClick={() => setStatus(s)} size="sm" variant="secondary">
-                        Set: {s}
-                    </Button>
-                ))}
-            </div>
         </main>
     );
 }
