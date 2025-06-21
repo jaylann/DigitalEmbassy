@@ -28,16 +28,16 @@ export async function getGermanEmbassiesNearby(city: string, country: string): P
       return [];
     }
 
-    return data.results.map((place: any) => ({
+    return (data.results as RawPlaceResult[]).map((place) => ({
       name: place.name,
       formatted_address: place.formatted_address,
       geometry: {
         location: {
           lat: place.geometry.location.lat,
-          lng: place.geometry.location.lng
-        }
+          lng: place.geometry.location.lng,
+        },
       },
-      place_id: place.place_id
+      place_id: place.place_id,
     }));
   } catch (err) {
     console.error('Failed to fetch embassy data:', err);
