@@ -6,7 +6,8 @@ import { ChatbotButton } from "./chatbot-button";
 import { MainMenu } from "./main-menu";
 import { SearchBar } from "./search-bar";
 import { StatusIndicator } from "./status-indicator";
-import {SystemStatus} from "@/types/status";
+import { MapLegend } from "./map-legend"; // Import the legend component
+import { SystemStatus } from "@/types/status";
 
 /**
  * @interface MapOverlayProps
@@ -32,6 +33,13 @@ export function MapOverlay({ status }: MapOverlayProps): React.ReactElement {
         >
             {/* Top section: Status Indicator and Main Menu */}
             <header className="relative flex w-full items-start justify-center">
+                {/* --- ADDITION START --- */}
+                {/* Absolute positioned Map Legend on the left */}
+                <div className="absolute left-0 top-0">
+                    <MapLegend />
+                </div>
+                {/* --- ADDITION END --- */}
+
                 {/* Centered Status Indicator */}
                 <div className="pt-1">
                     <StatusIndicator status={status} />

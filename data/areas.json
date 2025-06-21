@@ -1,0 +1,81 @@
+[
+  {
+    "id": "restriction",
+    "name": "Restriction Zones",
+    "geometry": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": { "name": "No‑Go Zone" },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [51.33, 35.70],
+                [51.33, 35.745],
+                [51.35, 35.75],
+                [51.355, 35.72],
+                [51.345, 35.695],
+                [51.33, 35.70]
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "category": "no_go"
+  },
+  {
+    "id": "caution",
+    "name": "Caution Area",
+    "geometry": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": { "name": "Caution Zone" },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [51.32, 35.71],
+                [51.34, 35.74],
+                [51.36, 35.71],
+                [51.34, 35.68],
+                [51.32, 35.71]
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "category": "caution"
+  },
+  {
+    "id": "safe",
+    "name": "Safe Area",
+    "geometry": {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": { "name": "Safe Zone" },
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [51.32, 35.715],
+                [51.33, 35.715],
+                [51.33, 35.705],
+                [51.32, 35.705],
+                [51.32, 35.715]
+              ]
+            ]
+          }
+        }
+      ]
+    },
+    "category": "safe"
+  }
+]

@@ -72,7 +72,10 @@ export async function getGeminiResponse(
     landmarks = JSON.parse(fileContent);
     console.log(`Loaded ${landmarks.length} landmarks from mesh database.`);
   } catch (error) {
-    console.log("No mesh database found or it's empty. Starting with a clean context.");
+    console.log(
+      "No mesh database found or it's empty. Starting with a clean context.",
+      error
+    );
   }
 
   const historyForPrompt = chatHistory

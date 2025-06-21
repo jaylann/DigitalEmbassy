@@ -17,8 +17,10 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { getGeminiResponse } from "@/lib/actions/gemini";
 import { saveReportToMesh } from "@/lib/actions/mesh";
-import type { Message, Location } from "@/lib/types";
+import type { Message } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { useLocation } from "@/lib/state/location";
+import { SelectMap } from "@/components/select-map";
 
 const MemoizedMarkdown = memo(({ content }: { content: string }) => (
     <div className="prose prose-sm prose-invert break-words">
@@ -37,6 +39,8 @@ export function ChatInterface() {
     ]);
     const [input, setInput] = useState<string>("");
     const [isPending, startTransition] = useTransition();
+    const { lastKnownLocation } = useLocation();
+    const [showLocationPicker, setShowLocationPicker] = useState(false);
     const scrollAreaRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -56,8 +60,6 @@ export function ChatInterface() {
         setInput("");
 
         startTransition(async () => {
-            const mockUserLocation: Location = { lat: 52.5200, lng: 13.4050 };
-
             // --- SIMPLIFIED CALL: The function now loads its own context. ---
             const result = await getGeminiResponse(newMessages);
 
@@ -67,16 +69,21 @@ export function ChatInterface() {
 
                 switch (assistantResponse.type) {
                     case 'message':
+                        let content = assistantResponse.payload.content;
+                        if (content.toLowerCase().includes('location')) {
+                            setShowLocationPicker(true);
+                            content = 'Please select the location on the map.';
+                        }
                         finalAssistantMessage = {
                             id: crypto.randomUUID(),
                             role: 'assistant',
-                            content: assistantResponse.payload.content,
+                            content,
                         };
                         setMessages(prev => [...prev, finalAssistantMessage]);
                         break;
 
                     case 'report':
-                        saveReportToMesh(assistantResponse.payload, mockUserLocation);
+                        saveReportToMesh(assistantResponse.payload, lastKnownLocation);
 
                         finalAssistantMessage = {
                             id: crypto.randomUUID(),
@@ -103,7 +110,7 @@ export function ChatInterface() {
             </CardHeader>
             <CardContent className="flex-1 p-0 min-h-0">
                 <ScrollArea className="h-full p-4" ref={scrollAreaRef}><div className="space-y-4">
-                    {messages.map((message) => (
+                {messages.map((message) => (
                         <motion.div key={message.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}
                                     className={cn("flex flex-col", message.role === "user" ? "items-end" : "items-start")}>
                             <div className={clsx("max-w-[80%] rounded-lg px-3 py-2", message.role === "user" ? "bg-zinc-200 text-zinc-900" : "bg-zinc-800 text-zinc-50", message.isError && "bg-red-900/50 border border-red-500/50")}>
@@ -112,6 +119,11 @@ export function ChatInterface() {
                         </motion.div>
                     ))}
                 </div></ScrollArea>
+                {showLocationPicker && (
+                    <div className="p-4">
+                        <SelectMap onSave={() => setShowLocationPicker(false)} />
+                    </div>
+                )}
             </CardContent>
             <CardFooter className="p-4 border-t border-zinc-800">
                 <form onSubmit={handleSubmit} className="flex w-full items-center space-x-2">
