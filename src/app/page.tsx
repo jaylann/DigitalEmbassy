@@ -7,11 +7,15 @@ import { InteractiveMap } from "@/components/interactive-map";
 import type { Area } from "@/types/areas";
 import { Landmark } from "@/lib/types";
 import type { Route } from "@/types/routes";
+import type { LineString } from "geojson";
 import importedLandmarks from "../../data/landmarks.json";
 import { useDebug } from "@/lib/state/debug";
 import checkpoint from "../../data/checkpoint.json";
 import communication from "../../data/communication.json";
 import dangerousSpots from "../../data/dangerous_spot.json";
+import explosions from "../../data/explosion.json";
+import attacks from "../../data/attack.json";
+import disasters from "../../data/disaster.json";
 import hospitals from "../../data/hospitals.json";
 import medical from "../../data/medical.json";
 import safeSpaces from "../../data/safe_space.json";
@@ -19,18 +23,17 @@ import safeSpaces from "../../data/safe_space.json";
 import defaultAreas from "../../data/areas.json";
 import defaultRoutes from "../../data/routes.json";
 
-const defaultLandmarks: Landmark[] = [
-  ...(importedLandmarks as Landmark[]),
+const staticLandmarks: Landmark[] = [
   ...(checkpoint as Landmark[]),
   ...(communication as Landmark[]),
   ...(dangerousSpots as Landmark[]),
+  ...(explosions as Landmark[]),
+  ...(attacks as Landmark[]),
+  ...(disasters as Landmark[]),
   ...(hospitals as Landmark[]),
   ...(medical as Landmark[]),
   ...(safeSpaces as Landmark[]),
 ];
-
-
-
 
 export default function Home() {
   const [landmarks, setLandmarks] = React.useState<Landmark[]>([]);
@@ -40,19 +43,30 @@ export default function Home() {
 
   // Load default data and any stored user data on first render
   React.useEffect(() => {
-    try {
-      const storedLandmarks = localStorage.getItem('landmarks');
-      if (storedLandmarks) {
-        setLandmarks(JSON.parse(storedLandmarks));
-      } else {
-        setLandmarks(defaultLandmarks);
+    async function loadLandmarks() {
+      try {
+        const storedLandmarks = localStorage.getItem("landmarks");
+        if (storedLandmarks) {
+          setLandmarks(JSON.parse(storedLandmarks));
+          return;
+        }
+
+        const res = await fetch("/api/landmarks");
+        if (res.ok) {
+          const dynamic: Landmark[] = await res.json();
+          setLandmarks([...dynamic, ...staticLandmarks]);
+        } else {
+          setLandmarks([...staticLandmarks]);
+        }
+      } catch {
+        setLandmarks([...staticLandmarks]);
       }
-    } catch {
-      setLandmarks(defaultLandmarks);
     }
 
+    void loadLandmarks();
+
     try {
-      const storedAreas = localStorage.getItem('areas');
+      const storedAreas = localStorage.getItem("areas");
       if (storedAreas) {
         setAreas(JSON.parse(storedAreas));
       } else {
@@ -63,7 +77,7 @@ export default function Home() {
     }
 
     try {
-      const storedRoutes = localStorage.getItem('routes');
+      const storedRoutes = localStorage.getItem("routes");
       if (storedRoutes) {
         setRoutes(JSON.parse(storedRoutes));
       } else {
@@ -78,23 +92,21 @@ export default function Home() {
   // Persist landmarks and areas whenever they change
   React.useEffect(() => {
     if (landmarks.length) {
-      localStorage.setItem('landmarks', JSON.stringify(landmarks));
+      localStorage.setItem("landmarks", JSON.stringify(landmarks));
     }
   }, [landmarks]);
 
   React.useEffect(() => {
     if (areas.length) {
-      localStorage.setItem('areas', JSON.stringify(areas));
+      localStorage.setItem("areas", JSON.stringify(areas));
     }
   }, [areas]);
 
-
   React.useEffect(() => {
     if (routes.length) {
-      localStorage.setItem('routes', JSON.stringify(routes));
+      localStorage.setItem("routes", JSON.stringify(routes));
     }
   }, [routes]);
-
 
 
   return (
@@ -105,7 +117,6 @@ export default function Home() {
         routes={routes}
         route={route ?? undefined}
       />
-
     </>
   );
 }

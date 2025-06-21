@@ -24,7 +24,7 @@ import {SelectMap} from "@/components/select-map"; // Updated Import
 // --- Logic and Type Imports ---
 import {getGeminiResponse} from "@/lib/actions/gemini";
 import {saveReportToMesh} from "@/lib/actions/mesh";
-import type {Location, Message} from "@/lib/types"; // Ensure Location type is exported
+import type { Location, Message, ReportPayload } from "@/lib/types"; // Ensure Location type is exported
 import {cn} from "@/lib/utils";
 import {useLocation} from "@/lib/state/location";
 import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
@@ -126,6 +126,7 @@ export function ChatPanelContent(): React.ReactElement {
 
     // State to control the visibility of the new SelectMap overlay
     const [isLocationPickerOpen, setLocationPickerOpen] = React.useState(false);
+    const [pendingReport, setPendingReport] = React.useState<ReportPayload | null>(null);
 
     const scrollAreaRef = React.useRef<HTMLDivElement>(null);
 
@@ -165,24 +166,15 @@ export function ChatPanelContent(): React.ReactElement {
                         };
                         setMessages(prev => [...prev, finalAssistantMessage]);
                         break;
-                    case 'report':
-                        saveReportToMesh(assistantResponse.payload, lastKnownLocation);
-                        finalAssistantMessage = {
-                            id: crypto.randomUUID(),
-                            role: 'assistant',
-                            content: "Thank you. Your report has been received and will be shared with the network."
-                        };
-                        setMessages(prev => [...prev, finalAssistantMessage]);
-                        break;
                     case 'location_request':
-                        // Set the AI's response message first
+                        // Store the report data and ask the user for location
+                        setPendingReport(assistantResponse.payload.report);
                         finalAssistantMessage = {
                             id: crypto.randomUUID(),
                             role: 'assistant',
                             content: assistantResponse.payload.content
                         };
                         setMessages(prev => [...prev, finalAssistantMessage]);
-                        // Then, open the map picker
                         setLocationPickerOpen(true);
                         break;
                 }
@@ -203,20 +195,40 @@ export function ChatPanelContent(): React.ReactElement {
      * Handles the location data returned from the SelectMap component.
      * @param {Location} location - The geographic coordinates selected by the user.
      */
-    const handleLocationSave = (location: Location): void => {
-        // 1. Update the global location state
+    const handleLocationSave = async (location: Location): Promise<void> => {
         setLastKnownLocation(location);
 
-        // 2. Close the map picker
-        setLocationPickerOpen(false);
+        if (pendingReport) {
+            const result = await saveReportToMesh(pendingReport, location);
+            if (result.success && result.landmark) {
+                try {
+                    const stored = localStorage.getItem('landmarks');
+                    const landmarks = stored ? JSON.parse(stored) : [];
+                    landmarks.push(result.landmark);
+                    localStorage.setItem('landmarks', JSON.stringify(landmarks));
+                } catch {
+                    /* ignore */
+                }
+            }
+            setMessages(prev => [
+                ...prev,
+                {
+                    id: crypto.randomUUID(),
+                    role: 'assistant',
+                    content: 'Thank you. Your report has been saved and shared.'
+                }
+            ]);
+        } else {
+            const confirmationMessage: Message = {
+                id: crypto.randomUUID(),
+                role: 'assistant',
+                content: `Location confirmed at latitude ${location.lat.toFixed(4)}, longitude ${location.lng.toFixed(4)}. How can I assist you further?`
+            };
+            setMessages(prev => [...prev, confirmationMessage]);
+        }
 
-        // 3. Add a confirmation message to the chat for better UX
-        const confirmationMessage: Message = {
-            id: crypto.randomUUID(),
-            role: 'assistant',
-            content: `Location confirmed at latitude ${location.lat.toFixed(4)}, longitude ${location.lng.toFixed(4)}. How can I assist you further?`
-        };
-        setMessages(prev => [...prev, confirmationMessage]);
+        setLocationPickerOpen(false);
+        setPendingReport(null);
     };
 
     return (<div className="flex flex-col h-full bg-black">

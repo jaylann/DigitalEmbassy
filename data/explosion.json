@@ -1,0 +1,14 @@
+[
+  {
+    "id": "explosion-example",
+    "name": "Firecracker Factory",
+    "description": "Site of recent explosion",
+    "location": { "lat": 35.7, "lng": 51.4 },
+    "category": "explosion",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-21T14:53:39.836Z",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  }
+]

@@ -18,33 +18,35 @@ import { AreaPopup } from "@/components/area-popup";
 import { RoutePopup } from "@/components/route-popup";
 import { useDebug } from "@/lib/state/debug";
 import type { Area, AreaCategory } from "@/types/areas";
-const CATEGORY_COLORS: Record<AreaCategory, { fill: string; border: string }> = {
+const CATEGORY_COLORS: Record<AreaCategory, { fill: string; border: string }> =
+  {
     no_go: { fill: "#DC2626", border: "#b91c1c" },
     caution: { fill: "#FACC15", border: "#CA8A04" },
     safe: { fill: "#16A34A", border: "#15803D" },
-};
+  };
 
-import {Landmark} from "@/lib/types";
+import { Landmark } from "@/lib/types";
 const LANDMARK_AREA_MAP: Record<Landmark["category"], AreaCategory> = {
-    safe_space: "safe",
-    dangerous_spot: "no_go",
-    communication: "safe",
-    trusted_contact: "safe",
-    medical: "safe",
-    checkpoint: "caution",
+  safe_space: "safe",
+  dangerous_spot: "no_go",
+  communication: "safe",
+  trusted_contact: "safe",
+  medical: "safe",
+  checkpoint: "caution",
+  explosion: "no_go",
+  attack: "no_go",
+  disaster: "no_go",
 };
-
 
 import type { Route } from "@/types/routes";
 
-
 interface InteractiveMapProps {
-    landmarks?: Landmark[];
-    areas?: Area[];
-    /** Array of full routes to display */
-    routes?: Route[];
-    /** Optional route to display and animate */
-    route?: LineString;
+  landmarks?: Landmark[];
+  areas?: Area[];
+  /** Array of full routes to display */
+  routes?: Route[];
+  /** Optional route to display and animate */
+  route?: LineString;
 }
 
 export function InteractiveMap({ landmarks = [], areas = [], routes = [], route }: InteractiveMapProps): React.ReactElement {
@@ -65,12 +67,18 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
         if (status !== "Crisis") {
             setIsCrisisAcknowledged(false);
         }
-    }, [status]);
+      }
 
-    const MAPTILER_KEY = process.env.NEXT_PUBLIC_MAPTILER_KEY_LOCAL;
-    if (!MAPTILER_KEY) {
-        throw new Error("Missing NEXT_PUBLIC_MAPTILER_KEY environment variable.");
-    }
+      const routeMatch = layerId.match(/^route-line-(.*)$/);
+      if (routeMatch) {
+        const id = routeMatch[1];
+        const routeObj = routes.find((r) => r.id === id);
+        if (routeObj) {
+          setSelectedRoute({ route: routeObj, coordinates: e.lngLat });
+          setSelectedArea(null);
+          return;
+        }
+      }
 
     const landmarkAreas = React.useMemo(() => {
         return landmarks
