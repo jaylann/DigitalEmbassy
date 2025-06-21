@@ -6,6 +6,7 @@ import { useLandmarks } from "@/lib/state/landmarks";
 import animatedRouteA from "../../data/animated_route.json";
 import animatedRouteB from "../../data/animated_route_alt.json";
 import landmarkChange from "../../data/landmark_change.json";
+import type { Landmark } from "@/lib/types";
 import type { LineString } from "geojson";
 import type { SystemStatus } from "@/types/status";
 
@@ -43,7 +44,7 @@ export default function DebugMenu() {
         key: "w",
         label: "Start Landmark Change (W)",
         handler: () => {
-          addLandmark(landmarkChange);
+          addLandmark(landmarkChange as Landmark);
           setRoute(animatedRouteB as LineString);
         },
       },
