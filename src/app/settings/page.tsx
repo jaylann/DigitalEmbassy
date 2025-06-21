@@ -3,7 +3,7 @@
 "use client";
 
 import * as React from "react";
-import { motion, type Variants } from "framer-motion"; // ✅ FIX: Import the 'Variants' type
+import { motion, type Variants } from "framer-motion";
 import { Bell, Palette, Lock, Info, LogOut } from "lucide-react";
 import MobileLayout from '../../components/MobileLayout';
 import { Switch } from "@/components/ui/switch";
@@ -30,7 +30,7 @@ export default function SettingsPage(): React.ReactElement {
     const [mapStyle, setMapStyle] = React.useState<string>("streets-v2");
 
     // --- Animation Variants with Explicit Typing ---
-    const containerVariants: Variants = { // ✅ FIX: Explicitly apply the 'Variants' type
+    const containerVariants: Variants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
@@ -38,7 +38,7 @@ export default function SettingsPage(): React.ReactElement {
         },
     };
 
-    const itemVariants: Variants = { // ✅ FIX: Explicitly apply the 'Variants' type
+    const itemVariants: Variants = {
         hidden: { opacity: 0, x: -20 },
         visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 100 } },
     };
