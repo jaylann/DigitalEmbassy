@@ -3,17 +3,21 @@
 "use client";
 
 import * as React from "react";
-import type { LineString } from "geojson";
 import { InteractiveMap } from "@/components/interactive-map";
 import type { Area } from "@/types/areas";
 import { Landmark } from "@/lib/types";
+import type { Route } from "@/types/routes";
+import defaultLandmarks from "../../data/landmarks.json";
+import type { LineString } from "geojson";
 import checkpoint from "../../data/checkpoint.json";
 import communication from "../../data/communication.json";
 import dangerousSpots from "../../data/dangerous_spot.json";
 import hospitals from "../../data/hospitals.json";
 import medical from "../../data/medical.json";
 import safeSpaces from "../../data/safe_space.json";
+
 import defaultAreas from "../../data/areas.json";
+import defaultRoutes from "../../data/routes.json";
 
 const defaultLandmarks: Landmark[] = [
   ...(checkpoint as Landmark[]),
@@ -26,28 +30,11 @@ const defaultLandmarks: Landmark[] = [
 
 
 
-// --- REVISED AND IMPROVED ROUTE ---
-const sampleRoute: LineString = {
-  type: "LineString",
-  coordinates: [
-    // 1. Start southwest of the main area of interest
-    [51.325, 35.715],
-    // 2. Head northeast towards the checkpoint
-    [51.330, 35.720],
-    // 3. Pass directly through "Checkpoint A" landmark
-    [51.335, 35.722],
-    // 4. Make a sharp turn east to avoid the western edge of the "No-Go Zone"
-    [51.338, 35.723],
-    // 5. Curve northwards on a final approach to the destination
-    [51.339, 35.7245],
-    // 6. Arrive precisely at the "Medical Center" landmark
-    [51.340, 35.725],
-  ],
-};
 
 export default function Home() {
   const [landmarks, setLandmarks] = React.useState<Landmark[]>([]);
   const [areas, setAreas] = React.useState<Area[]>([]);
+  const [routes, setRoutes] = React.useState<Route[]>([]);
 
   // Load default data and any stored user data on first render
   React.useEffect(() => {
@@ -72,6 +59,17 @@ export default function Home() {
     } catch {
       setAreas(defaultAreas as Area[]);
     }
+
+    try {
+      const storedRoutes = localStorage.getItem('routes');
+      if (storedRoutes) {
+        setRoutes(JSON.parse(storedRoutes));
+      } else {
+        setRoutes(defaultRoutes as Route[]);
+      }
+    } catch {
+      setRoutes(defaultRoutes as Route[]);
+    }
   }, []);
 
   // Persist landmarks and areas whenever they change
@@ -88,12 +86,19 @@ export default function Home() {
   }, [areas]);
 
 
+  React.useEffect(() => {
+    if (routes.length) {
+      localStorage.setItem('routes', JSON.stringify(routes));
+    }
+  }, [routes]);
+
+
   return (
     <>
       <InteractiveMap
         landmarks={landmarks}
         areas={areas}
-        route={sampleRoute}
+        routes={routes}
       />
     </>
   );

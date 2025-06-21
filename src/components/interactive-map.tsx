@@ -13,8 +13,10 @@ import { MapOverlay } from "@/components/map-overlay";
 import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay";
 import { LandmarkMarker } from "@/components/landmark-marker";
 import { AnimatedRoute } from "@/components/animated-route";
+import { RoutePath } from "@/components/route-path";
 import { useLocation } from "@/lib/state/location";
 import { AreaPopup } from "@/components/area-popup";
+import { RoutePopup } from "@/components/route-popup";
 import { SystemStatus } from "@/types/status";
 import type { Area, AreaCategory } from "@/types/areas";
 const CATEGORY_COLORS: Record<AreaCategory, { fill: string; border: string }> = {
@@ -22,6 +24,7 @@ const CATEGORY_COLORS: Record<AreaCategory, { fill: string; border: string }> = 
     caution: { fill: "#FACC15", border: "#CA8A04" },
     safe: { fill: "#16A34A", border: "#15803D" },
 };
+
 import {Landmark} from "@/lib/types";
 const LANDMARK_AREA_MAP: Record<Landmark["category"], AreaCategory> = {
     safe_space: "safe",
@@ -32,20 +35,30 @@ const LANDMARK_AREA_MAP: Record<Landmark["category"], AreaCategory> = {
     checkpoint: "caution",
 };
 
+
+import type { Route } from "@/types/routes";
+
+
 interface InteractiveMapProps {
     landmarks?: Landmark[];
     areas?: Area[];
+    /** Array of full routes to display */
+    routes?: Route[];
     /** Optional route to display and animate */
     route?: LineString;
 }
 
-export function InteractiveMap({ landmarks = [], areas = [], route }: InteractiveMapProps): React.ReactElement {
+export function InteractiveMap({ landmarks = [], areas = [], routes = [], route }: InteractiveMapProps): React.ReactElement {
     const [status, setStatus] = React.useState<SystemStatus>("Online");
     const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
 
     const { lastKnownLocation } = useLocation();
     const [selectedArea, setSelectedArea] = React.useState<{
         area: Area;
+        coordinates: { lng: number; lat: number };
+    } | null>(null);
+    const [selectedRoute, setSelectedRoute] = React.useState<{
+        route: Route;
         coordinates: { lng: number; lat: number };
     } | null>(null);
 
@@ -78,29 +91,48 @@ export function InteractiveMap({ landmarks = [], areas = [], route }: Interactiv
     const allAreas = React.useMemo(() => [...areas, ...landmarkAreas], [areas, landmarkAreas]);
 
     const interactiveLayers = React.useMemo(
-        () => allAreas.flatMap((a) => [`area-fill-${a.id}`, `area-outline-${a.id}`]),
-        [allAreas]
+        () => [
+            ...areas.flatMap((a) => [`area-fill-${a.id}`, `area-outline-${a.id}`]),
+            ...routes.map((r) => `route-line-${r.id}`),
+        ],
+        [allAreas, routes]
+
     );
 
     const handleMapClick = React.useCallback(
         (e: maplibregl.MapLayerMouseEvent) => {
             if (!e.features || e.features.length === 0) {
                 setSelectedArea(null);
+                setSelectedRoute(null);
                 return;
             }
             const layerId = e.features[0].layer.id;
-            const match = layerId.match(/^area-(?:fill|outline)-(.*)$/);
-            if (match) {
-                const id = match[1];
-                const area = allAreas.find((a) => a.id === id);
+            const areaMatch = layerId.match(/^area-(?:fill|outline)-(.*)$/);
+            if (areaMatch) {
+                const id = areaMatch[1];
+                const area = areas.find((a) => a.id === id);
                 if (area) {
                     setSelectedArea({ area, coordinates: e.lngLat });
+                    setSelectedRoute(null);
                     return;
                 }
             }
+
+            const routeMatch = layerId.match(/^route-line-(.*)$/);
+            if (routeMatch) {
+                const id = routeMatch[1];
+                const routeObj = routes.find((r) => r.id === id);
+                if (routeObj) {
+                    setSelectedRoute({ route: routeObj, coordinates: e.lngLat });
+                    setSelectedArea(null);
+                    return;
+                }
+            }
+
             setSelectedArea(null);
+            setSelectedRoute(null);
         },
-        [allAreas]
+        [allAreas, routes]
     );
 
     return (
@@ -157,12 +189,29 @@ export function InteractiveMap({ landmarks = [], areas = [], route }: Interactiv
                     <LandmarkMarker key={lm.id} landmark={lm} />
                 ))}
 
+                {routes.map((r) => (
+                    <RoutePath
+                        key={r.id}
+                        id={r.id}
+                        path={r.path}
+                        color={r.lineColor}
+                        width={r.lineWidth}
+                    />
+                ))}
+
                 {route && <AnimatedRoute route={route} />}
                 {selectedArea && (
                     <AreaPopup
                         area={selectedArea.area}
                         coordinates={selectedArea.coordinates}
                         onClose={() => setSelectedArea(null)}
+                    />
+                )}
+                {selectedRoute && (
+                    <RoutePopup
+                        route={selectedRoute.route}
+                        coordinates={selectedRoute.coordinates}
+                        onClose={() => setSelectedRoute(null)}
                     />
                 )}
             </Map>

@@ -70,7 +70,8 @@ export function ChatInterface() {
                 switch (assistantResponse.type) {
                     case 'message':
                         let content = assistantResponse.payload.content;
-                        if (content.toLowerCase().includes('location')) {
+                        const locationRequestRegex = /(location|where|address|place|map)/i;
+                        if (locationRequestRegex.test(content)) {
                             setShowLocationPicker(true);
                             content = 'Please select the location on the map.';
                         }
