@@ -1,7 +1,7 @@
 [
   {
     "id": "abe757d1-4dbe-4aa1-8ed0-a315b4dab414",
-    "name": "tehran hospital - \u0628\u06cc\u0645\u0627\u0631\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646",
+    "name": "tehran hospital - بیمارستان تهران",
     "description": "PC99+4RF District 6, Tehran, Iran",
     "location": {
       "lat": 35.7178153,
@@ -12,7 +12,8 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "f59fbc9e-9805-4ed0-bea8-9bfc300fcfc0",
@@ -27,12 +28,13 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "2344ca89-fab4-4560-beb3-08a90c27679f",
     "name": "Milad Hospital",
-    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u0627\u062a\u0648\u0628\u0627\u0646 \u0647\u0645\u062a \u062e\u0631\u0648\u062c\u06cc \u0627\u062e\u062a\u0635\u0627\u0635\u06cc \u0628\u0631\u062c \u0648 \u0628\u06cc\u0645\u0627\u0631\u0633\u062a\u0627\u0646 \u0645\u06cc\u0644\u0627\u062f\u060c P9WJ+6HH, Iran",
+    "description": "Tehran, استان تهران تهران اتوبان همت خروجی اختصاصی برج و بیمارستان میلاد، P9WJ+6HH, Iran",
     "location": {
       "lat": 35.745565,
       "lng": 51.3814979
@@ -42,7 +44,8 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "59d321f7-16bf-4a99-ac13-ac8e200a8fa0",
@@ -57,12 +60,13 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "86fd7970-bb32-4a20-8974-4400325a04aa",
     "name": "Imam Khomeini Hospital",
-    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u0627\u0646\u062a\u0647\u0627\u06cc \u0628\u0644\u0648\u0627\u0631 \u06a9\u0634\u0627\u0648\u0631\u0632, 14197 33141, Iran",
+    "description": "Tehran, استان تهران تهران انتهای بلوار کشاورز, 14197 33141, Iran",
     "location": {
       "lat": 35.708003399999996,
       "lng": 51.3806272
@@ -72,7 +76,8 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "aaf53a60-2412-4374-9808-a5afbb0b492a",
@@ -87,12 +92,13 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "40c63b93-82e8-4160-85ac-64e3b97f4c3f",
     "name": "Laleh Hospital",
-    "description": "Tehran, Tehran Sima-ye-Iran Street Phase 5\u060c Iran",
+    "description": "Tehran, Tehran Sima-ye-Iran Street Phase 5، Iran",
     "location": {
       "lat": 35.752695599999996,
       "lng": 51.3602887
@@ -102,12 +108,13 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "ba65d8e7-73d1-4231-8560-a64dd6332f95",
     "name": "Sina Hospital",
-    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062e\u06cc\u0627\u0628\u0627\u0646 \u0627\u0645\u0627\u0645 \u062e\u0645\u06cc\u0646\u06cc(\u0631\u0647)- \u0646\u0631\u0633\u06cc\u062f\u0647 \u0628\u0647 \u0645\u06cc\u062f\u0627\u0646 \u062d\u0633\u0646 \u0622\u0628\u0627\u062f\u060c 11367 46911, Iran",
+    "description": "Tehran, استان تهران تهران خیابان امام خمینی(ره)- نرسیده به میدان حسن آباد، 11367 46911, Iran",
     "location": {
       "lat": 35.68763,
       "lng": 51.41375250000001
@@ -117,7 +124,8 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "3dcecb11-8513-42af-a3dc-2add95c2193d",
@@ -132,12 +140,13 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "b4ba6ff7-7bb7-457d-99c9-d0842f92d4a6",
     "name": "Tehran Clinic Hospital",
-    "description": "Tehran Province, Tehran, \u0642\u0627\u0626\u0645 \u0645\u0642\u0627\u0645 \u0641\u0631\u0627\u0647\u0627\u0646\u06cc\u060c PCG9+87H, Iran",
+    "description": "Tehran Province, Tehran, قائم مقام فراهانی، PCG9+87H, Iran",
     "location": {
       "lat": 35.7258201,
       "lng": 51.4182452
@@ -147,12 +156,13 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "2bf9876d-6377-492a-a94f-b6fbf3cca211",
     "name": "Bahman Hospital",
-    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u0634\u0647\u0631\u06a9 \u063a\u0631\u0628\u060c\u060c Iran Zamin Blvd, Q98J+878, Iran",
+    "description": "Tehran, استان تهران شهرک غرب،، Iran Zamin Blvd, Q98J+878, Iran",
     "location": {
       "lat": 35.7657834,
       "lng": 51.3806896
@@ -162,12 +172,13 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "63729ca8-19a2-4448-8aa7-5796ee831ef9",
     "name": "Iranmehr Hospital",
-    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062e\u06cc\u0627\u0628\u0627\u0646 \u0634\u0631\u06cc\u0639\u062a\u06cc\u060c \u062f\u0648 \u0631\u0627\u0647\u06cc\u060c QC8R+XVJ, Iran",
+    "description": "Tehran, استان تهران تهران خیابان شریعتی، دو راهی، QC8R+XVJ, Iran",
     "location": {
       "lat": 35.767466,
       "lng": 51.4421292
@@ -177,12 +188,13 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "d3361c35-02e2-4401-a160-ae3477996917",
     "name": "Iranshahr Hospital",
-    "description": "Tehran Province, Tehran, District 7, \u062a\u0647\u0631\u0627\u0646 - \u062e\u064a\u0627\u0628\u0627\u0646 \u0634\u0631\u064a\u0639\u062a\u064a \u0646\u0631\u0633\u064a\u062f\u0647 \u0628\u0647 \u0633\u0647 \u0631\u0627\u0647 \u0637\u0627\u0644\u0642\u0627\u0646\u064a \u062e\u064a\u0627\u0628\u0627\u0646 \u062c\u0648\u0627\u062f \u0643\u0627\u0631\u06af\u0631 \u0628\u064a\u0645\u0627\u0631\u0633\u062a\u0627\u0646 \u0627\u064a\u0631\u0627\u0646\u0634\u0647\u0631\u060c \u062e\u06cc\u0627\u0628\u0627\u0646 \u0634\u0647\u06cc\u062f \u062c\u0648\u0627\u062f \u06a9\u0627\u0631\u06af\u0631\u060c PC5M+M66, Iran",
+    "description": "Tehran Province, Tehran, District 7, تهران - خيابان شريعتي نرسيده به سه راه طالقاني خيابان جواد كارگر بيمارستان ايرانشهر، خیابان شهید جواد کارگر، PC5M+M66, Iran",
     "location": {
       "lat": 35.7091695,
       "lng": 51.4330309
@@ -192,7 +204,8 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "77d94882-bfb5-4655-a03e-72b5bc979ac3",
@@ -207,7 +220,8 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "aa659538-77a4-452c-b127-346472249f35",
@@ -222,7 +236,8 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "32507434-485c-48b9-a478-ea2f948ebc0a",
@@ -237,12 +252,13 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "a3b689c5-9c47-4867-b530-455d3a474bd6",
     "name": "Torfeh Hospital",
-    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 Tehran \u062e\u06cc\u0627\u0628\u0627\u0646 \u0645\u0635\u0637\u0641\u06cc \u062e\u0645\u06cc\u0646\u06cc\u060c \u0645\u0642\u0627\u0628\u0644 \u0633\u0627\u0632\u0645\u0627\u0646 \u062a\u0628\u0644\u06cc\u063a\u0627\u062a \u0627\u0633\u0644\u0627\u0645\u06cc\u060c 11498 47514, Iran",
+    "description": "Tehran, استان تهران Tehran خیابان مصطفی خمینی، مقابل سازمان تبلیغات اسلامی، 11498 47514, Iran",
     "location": {
       "lat": 35.695612499999996,
       "lng": 51.4348346
@@ -252,7 +268,8 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "83c4cb5a-e794-41f0-95b2-36ca8100e4db",
@@ -267,12 +284,13 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "50c7d5e1-b328-4c76-ad63-519b9f829136",
     "name": "Khatam Al-Anbiya Hospital",
-    "description": "Tehran Province, Tehran, Rashid Yasemi Street\u060c Upper than Mirdamad St.\u060c Vali- Asr St.\u060c QC95+J5G, Iran",
+    "description": "Tehran Province, Tehran, Rashid Yasemi Street، Upper than Mirdamad St.، Vali- Asr St.، QC95+J5G, Iran",
     "location": {
       "lat": 35.7690536,
       "lng": 51.4079613
@@ -282,12 +300,13 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "6276de76-0a31-458e-97d4-4a1272a53176",
     "name": "Pars Hospital",
-    "description": "Tehran Province, Tehran, 67\u060c \u0628\u0644\u0648\u0627\u0631 \u06a9\u0634\u0627\u0648\u0631\u0632\u060c Iran",
+    "description": "Tehran Province, Tehran, 67، بلوار کشاورز، Iran",
     "location": {
       "lat": 35.7100094,
       "lng": 51.399569400000004
@@ -297,6 +316,7 @@
     "lastUpdated": "2025-06-21T14:44:54.915644",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   }
 ]

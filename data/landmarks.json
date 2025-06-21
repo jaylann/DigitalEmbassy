@@ -2,7 +2,10 @@
   {
     "id": "checkpoint-a",
     "name": "Checkpoint A",
-    "location": { "lat": 35.722, "lng": 51.335 },
+    "location": {
+      "lat": 35.722,
+      "lng": 51.335
+    },
     "radius": 200,
     "category": "checkpoint",
     "description": "Primary checkpoint for authorized personnel only",
@@ -15,7 +18,10 @@
   {
     "id": "medical-1",
     "name": "Medical Center",
-    "location": { "lat": 35.725, "lng": 51.34 },
+    "location": {
+      "lat": 35.725,
+      "lng": 51.34
+    },
     "radius": 150,
     "category": "medical",
     "description": "On-site medical center providing emergency care",

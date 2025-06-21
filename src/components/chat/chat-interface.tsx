@@ -113,14 +113,7 @@ export function ChatInterface() {
                 lastKnownLocation,
               );
               if (result.success && result.landmark) {
-                try {
-                  const stored = localStorage.getItem("landmarks");
-                  const landmarks = stored ? JSON.parse(stored) : [];
-                  landmarks.push(result.landmark);
-                  localStorage.setItem("landmarks", JSON.stringify(landmarks));
-                } catch {
-                  /* ignore */
-                }
+                // Landmark saved successfully
               }
 
               finalAssistantMessage = {
@@ -204,14 +197,7 @@ export function ChatInterface() {
             if (pendingReport) {
               const result = await saveReportToMesh(pendingReport, loc);
               if (result.success && result.landmark) {
-                try {
-                  const stored = localStorage.getItem("landmarks");
-                  const landmarks = stored ? JSON.parse(stored) : [];
-                  landmarks.push(result.landmark);
-                  localStorage.setItem("landmarks", JSON.stringify(landmarks));
-                } catch {
-                  /* ignore */
-                }
+                // Landmark saved successfully
               }
               setMessages((prev) => [
                 ...prev,

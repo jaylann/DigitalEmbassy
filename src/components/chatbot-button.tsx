@@ -198,17 +198,10 @@ export function ChatPanelContent(): React.ReactElement {
     const handleLocationSave = async (location: Location): Promise<void> => {
         setLastKnownLocation(location);
 
-        if (pendingReport) {
+            if (pendingReport) {
             const result = await saveReportToMesh(pendingReport, location);
             if (result.success && result.landmark) {
-                try {
-                    const stored = localStorage.getItem('landmarks');
-                    const landmarks = stored ? JSON.parse(stored) : [];
-                    landmarks.push(result.landmark);
-                    localStorage.setItem('landmarks', JSON.stringify(landmarks));
-                } catch {
-                    /* ignore */
-                }
+                // Landmark saved successfully
             }
             setMessages(prev => [
                 ...prev,

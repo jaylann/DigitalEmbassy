@@ -7,8 +7,6 @@ import { InteractiveMap } from "@/components/interactive-map";
 import type { Area } from "@/types/areas";
 import { Landmark } from "@/lib/types";
 import type { Route } from "@/types/routes";
-import type { LineString } from "geojson";
-import importedLandmarks from "../../data/landmarks.json";
 import { useDebug } from "@/lib/state/debug";
 import checkpoint from "../../data/checkpoint.json";
 import communication from "../../data/communication.json";
@@ -41,16 +39,10 @@ export default function Home() {
   const [routes, setRoutes] = React.useState<Route[]>([]);
   const { route } = useDebug();
 
-  // Load default data and any stored user data on first render
+  // Load default data on first render
   React.useEffect(() => {
     async function loadLandmarks() {
       try {
-        const storedLandmarks = localStorage.getItem("landmarks");
-        if (storedLandmarks) {
-          setLandmarks(JSON.parse(storedLandmarks));
-          return;
-        }
-
         const res = await fetch("/api/landmarks");
         if (res.ok) {
           const dynamic: Landmark[] = await res.json();
@@ -65,48 +57,9 @@ export default function Home() {
 
     void loadLandmarks();
 
-    try {
-      const storedAreas = localStorage.getItem("areas");
-      if (storedAreas) {
-        setAreas(JSON.parse(storedAreas));
-      } else {
-        setAreas(defaultAreas as Area[]);
-      }
-    } catch {
-      setAreas(defaultAreas as Area[]);
-    }
-
-    try {
-      const storedRoutes = localStorage.getItem("routes");
-      if (storedRoutes) {
-        setRoutes(JSON.parse(storedRoutes));
-      } else {
-        setRoutes(defaultRoutes as Route[]);
-      }
-    } catch {
-      setRoutes(defaultRoutes as Route[]);
-    }
-
+    setAreas(defaultAreas as Area[]);
+    setRoutes(defaultRoutes as Route[]);
   }, []);
-
-  // Persist landmarks and areas whenever they change
-  React.useEffect(() => {
-    if (landmarks.length) {
-      localStorage.setItem("landmarks", JSON.stringify(landmarks));
-    }
-  }, [landmarks]);
-
-  React.useEffect(() => {
-    if (areas.length) {
-      localStorage.setItem("areas", JSON.stringify(areas));
-    }
-  }, [areas]);
-
-  React.useEffect(() => {
-    if (routes.length) {
-      localStorage.setItem("routes", JSON.stringify(routes));
-    }
-  }, [routes]);
 
 
   return (
