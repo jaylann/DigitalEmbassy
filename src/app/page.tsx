@@ -114,6 +114,10 @@ export default function Home() {
     }
   }, [route]);
 
+  const handleAddLandmark = React.useCallback((lm: Landmark) => {
+    setLandmarks((prev) => [...prev, lm]);
+  }, []);
+
 
   return (
     <>
@@ -122,6 +126,7 @@ export default function Home() {
         areas={areas}
         routes={routes}
         route={route ?? undefined}
+        onAddLandmark={handleAddLandmark}
       />
       <div className="absolute bottom-4 left-4 z-20">
         <Button

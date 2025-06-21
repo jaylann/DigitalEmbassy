@@ -19,6 +19,7 @@ interface MapOverlayProps {
     status: SystemStatus;
     landmarks: Landmark[];
     areas: Area[];
+    onAddLandmark?: (lm: Landmark) => void;
 }
 
 /**
@@ -29,7 +30,7 @@ interface MapOverlayProps {
  * @param {MapOverlayProps} props - The component props.
  * @returns {React.ReactElement} The rendered map overlay.
  */
-export function MapOverlay({ status, landmarks, areas }: MapOverlayProps): React.ReactElement {
+export function MapOverlay({ status, landmarks, areas, onAddLandmark }: MapOverlayProps): React.ReactElement {
     const [searchActive, setSearchActive] = React.useState(false);
     const [filter, setFilter] = React.useState<"all" | "landmarks" | "areas">("all");
 
@@ -70,7 +71,7 @@ export function MapOverlay({ status, landmarks, areas }: MapOverlayProps): React
             ) : (
                 <footer className="flex w-full items-center justify-center">
                     <div className="flex items-center justify-center gap-2 sm:gap-4">
-                        <AddInfoButton />
+                        <AddInfoButton onAdd={onAddLandmark} />
                         {searchBar}
                         <ChatbotButton />
                     </div>
