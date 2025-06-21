@@ -1,6 +1,6 @@
 import { getGermanEmbassiesNearby } from '../services/googlePlaces';
 import { convertPlaceToLandmark } from '../utils/landmarkAdapters';
-//Load API Key using .env.local nextjs env
+// Load API key from the `.env.local` environment file
 
 async function test() {
     try {
