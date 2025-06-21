@@ -8,7 +8,6 @@ import circle from "@turf/circle";
 import { motion, AnimatePresence } from "framer-motion";
 import "maplibre-gl/dist/maplibre-gl.css";
 
-import { Button } from "@/components/ui/button";
 import { MapOverlay } from "@/components/map-overlay";
 import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay";
 import { LandmarkMarker } from "@/components/landmark-marker";
@@ -17,7 +16,7 @@ import { RoutePath } from "@/components/route-path";
 import { useLocation } from "@/lib/state/location";
 import { AreaPopup } from "@/components/area-popup";
 import { RoutePopup } from "@/components/route-popup";
-import { SystemStatus } from "@/types/status";
+import { useDebug } from "@/lib/state/debug";
 import type { Area, AreaCategory } from "@/types/areas";
 const CATEGORY_COLORS: Record<AreaCategory, { fill: string; border: string }> =
   {
@@ -50,90 +49,23 @@ interface InteractiveMapProps {
   route?: LineString;
 }
 
-export function InteractiveMap({
-  landmarks = [],
-  areas = [],
-  routes = [],
-  route,
-}: InteractiveMapProps): React.ReactElement {
-  const [status, setStatus] = React.useState<SystemStatus>("Online");
-  const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
+export function InteractiveMap({ landmarks = [], areas = [], routes = [], route }: InteractiveMapProps): React.ReactElement {
+    const { status } = useDebug();
+    const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
 
-  const { lastKnownLocation } = useLocation();
-  const [selectedArea, setSelectedArea] = React.useState<{
-    area: Area;
-    coordinates: { lng: number; lat: number };
-  } | null>(null);
-  const [selectedRoute, setSelectedRoute] = React.useState<{
-    route: Route;
-    coordinates: { lng: number; lat: number };
-  } | null>(null);
+    const { lastKnownLocation } = useLocation();
+    const [selectedArea, setSelectedArea] = React.useState<{
+        area: Area;
+        coordinates: { lng: number; lat: number };
+    } | null>(null);
+    const [selectedRoute, setSelectedRoute] = React.useState<{
+        route: Route;
+        coordinates: { lng: number; lat: number };
+    } | null>(null);
 
-  React.useEffect(() => {
-    if (status !== "Crisis") {
-      setIsCrisisAcknowledged(false);
-    }
-  }, [status]);
-
-  const MAPTILER_KEY = process.env.NEXT_PUBLIC_MAPTILER_KEY_LOCAL;
-  if (!MAPTILER_KEY) {
-    throw new Error("Missing NEXT_PUBLIC_MAPTILER_KEY environment variable.");
-  }
-
-  const landmarkAreas = React.useMemo(() => {
-    return landmarks
-      .filter((lm) => typeof lm.radius === "number")
-      .map((lm) => ({
-        id: `lm-${lm.id}`,
-        name: lm.name,
-        geometry: circle(
-          [lm.location.lng, lm.location.lat],
-          (lm.radius ?? 0) / 1000,
-          { steps: 64, units: "kilometers" },
-        ),
-        category: LANDMARK_AREA_MAP[lm.category],
-      })) as Area[];
-  }, [landmarks]);
-
-  const allAreas = React.useMemo(
-    () => [...areas, ...landmarkAreas],
-    [areas, landmarkAreas],
-  );
-
-  const interactiveLayers = React.useMemo(
-    () => [
-      ...allAreas.flatMap((a) => [`area-fill-${a.id}`, `area-outline-${a.id}`]),
-      ...routes.map((r) => `route-line-${r.id}`),
-    ],
-    [allAreas, routes],
-  );
-
-  // Filter out any duplicate landmarks by ID to avoid React key conflicts
-  const uniqueLandmarks = React.useMemo(() => {
-    const seen = new Set<string>();
-    return landmarks.filter((lm) => {
-      if (seen.has(lm.id)) return false;
-      seen.add(lm.id);
-      return true;
-    });
-  }, [landmarks]);
-
-  const handleMapClick = React.useCallback(
-    (e: maplibregl.MapLayerMouseEvent) => {
-      if (!e.features || e.features.length === 0) {
-        setSelectedArea(null);
-        setSelectedRoute(null);
-        return;
-      }
-      const layerId = e.features[0].layer.id;
-      const areaMatch = layerId.match(/^area-(?:fill|outline)-(.*)$/);
-      if (areaMatch) {
-        const id = areaMatch[1];
-        const area = allAreas.find((a) => a.id === id);
-        if (area) {
-          setSelectedArea({ area, coordinates: e.lngLat });
-          setSelectedRoute(null);
-          return;
+    React.useEffect(() => {
+        if (status !== "Crisis") {
+            setIsCrisisAcknowledged(false);
         }
       }
 
@@ -148,125 +80,160 @@ export function InteractiveMap({
         }
       }
 
-      setSelectedArea(null);
-      setSelectedRoute(null);
-    },
-    [allAreas, routes],
-  );
+    const landmarkAreas = React.useMemo(() => {
+        return landmarks
+            .filter((lm) => typeof lm.radius === "number")
+            .map((lm) => ({
+                id: `lm-${lm.id}`,
+                name: lm.name,
+                geometry: circle(
+                    [lm.location.lng, lm.location.lat],
+                    (lm.radius ?? 0) / 1000,
+                    { steps: 64, units: "kilometers" }
+                ),
+                category: LANDMARK_AREA_MAP[lm.category],
+            })) as Area[];
+    }, [landmarks]);
 
-  return (
-    <main className="relative h-screen w-screen overflow-hidden bg-black">
-      <AnimatePresence>
-        {status === "Crisis" && !isCrisisAcknowledged && (
-          <CrisisWarningOverlay
-            onAcknowledge={() => setIsCrisisAcknowledged(true)}
-          />
-        )}
-      </AnimatePresence>
+    const allAreas = React.useMemo(() => [...areas, ...landmarkAreas], [areas, landmarkAreas]);
 
-      <motion.div
-        className="pointer-events-none absolute inset-0 z-10"
-        animate={{
-          boxShadow:
-            status === "Transmitting"
-              ? "inset 0px 0px 20px 5px rgba(59, 130, 246, 0.6)"
-              : "inset 0px 0px 0px 0px rgba(59, 130, 246, 0)",
-        }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-      />
+    const interactiveLayers = React.useMemo(
+        () => [
+            ...allAreas.flatMap((a) => [`area-fill-${a.id}`, `area-outline-${a.id}`]),
+            ...routes.map((r) => `route-line-${r.id}`),
+        ],
+        [allAreas, routes]
 
-      <Map
-        initialViewState={{
-          longitude: lastKnownLocation.lng,
-          latitude: lastKnownLocation.lat,
-          zoom: 12,
-        }}
-        mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-        }}
-        onClick={handleMapClick}
-        interactiveLayerIds={interactiveLayers}
-      >
-        {allAreas.map((area) => {
-          const colors = CATEGORY_COLORS[area.category];
-          return (
-            <Source
-              key={area.id}
-              id={`area-${area.id}`}
-              type="geojson"
-              data={area.geometry as Feature | FeatureCollection}
+    );
+
+    // Filter out any duplicate landmarks by ID to avoid React key conflicts
+    const uniqueLandmarks = React.useMemo(() => {
+        const seen = new Set<string>();
+        return landmarks.filter((lm) => {
+            if (seen.has(lm.id)) return false;
+            seen.add(lm.id);
+            return true;
+        });
+    }, [landmarks]);
+
+    const handleMapClick = React.useCallback(
+        (e: maplibregl.MapLayerMouseEvent) => {
+            if (!e.features || e.features.length === 0) {
+                setSelectedArea(null);
+                setSelectedRoute(null);
+                return;
+            }
+            const layerId = e.features[0].layer.id;
+            const areaMatch = layerId.match(/^area-(?:fill|outline)-(.*)$/);
+            if (areaMatch) {
+                const id = areaMatch[1];
+                const area = allAreas.find((a) => a.id === id);
+                if (area) {
+                    setSelectedArea({ area, coordinates: e.lngLat });
+                    setSelectedRoute(null);
+                    return;
+                }
+            }
+
+            const routeMatch = layerId.match(/^route-line-(.*)$/);
+            if (routeMatch) {
+                const id = routeMatch[1];
+                const routeObj = routes.find((r) => r.id === id);
+                if (routeObj) {
+                    setSelectedRoute({ route: routeObj, coordinates: e.lngLat });
+                    setSelectedArea(null);
+                    return;
+                }
+            }
+
+            setSelectedArea(null);
+            setSelectedRoute(null);
+        },
+        [allAreas, routes]
+    );
+
+    return (
+        <main className="relative h-screen w-screen overflow-hidden bg-black">
+            <AnimatePresence>
+                {status === "Crisis" && !isCrisisAcknowledged && (
+                    <CrisisWarningOverlay onAcknowledge={() => setIsCrisisAcknowledged(true)} />
+                )}
+            </AnimatePresence>
+
+            <motion.div
+                className="pointer-events-none absolute inset-0 z-10"
+                animate={{
+                    boxShadow:
+                        status === "Transmitting"
+                            ? "inset 0px 0px 20px 5px rgba(59, 130, 246, 0.6)"
+                            : "inset 0px 0px 0px 0px rgba(59, 130, 246, 0)",
+                }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+            />
+
+            <Map
+                initialViewState={{ longitude: lastKnownLocation.lng, latitude: lastKnownLocation.lat, zoom: 12 }}
+                mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
+                onClick={handleMapClick}
+                interactiveLayerIds={interactiveLayers}
             >
-              <Layer
-                id={`area-fill-${area.id}`}
-                type="fill"
-                paint={{
-                  "fill-color": area.fillColor ?? colors.fill,
-                  "fill-opacity": 0.25,
-                }}
-              />
-              <Layer
-                id={`area-outline-${area.id}`}
-                type="line"
-                paint={{
-                  "line-color": area.borderColor ?? colors.border,
-                  "line-width": 2,
-                }}
-              />
-            </Source>
-          );
-        })}
+                {allAreas.map((area) => {
+                    const colors = CATEGORY_COLORS[area.category];
+                    return (
+                        <Source key={area.id} id={`area-${area.id}`} type="geojson" data={area.geometry as Feature | FeatureCollection}>
+                            <Layer
+                                id={`area-fill-${area.id}`}
+                                type="fill"
+                                paint={{
+                                    "fill-color": area.fillColor ?? colors.fill,
+                                    "fill-opacity": 0.25,
+                                }}
+                            />
+                            <Layer
+                                id={`area-outline-${area.id}`}
+                                type="line"
+                                paint={{
+                                    "line-color": area.borderColor ?? colors.border,
+                                    "line-width": 2,
+                                }}
+                            />
+                        </Source>
+                    );
+                })}
 
-        {uniqueLandmarks.map((lm) => (
-          <LandmarkMarker key={lm.id} landmark={lm} />
-        ))}
+                {uniqueLandmarks.map((lm) => (
+                    <LandmarkMarker key={lm.id} landmark={lm} />
+                ))}
 
-        {routes.map((r) => (
-          <RoutePath
-            key={r.id}
-            id={r.id}
-            path={r.path}
-            color={r.lineColor}
-            width={r.lineWidth}
-          />
-        ))}
+                {routes.map((r) => (
+                    <RoutePath
+                        key={r.id}
+                        id={r.id}
+                        path={r.path}
+                        color={r.lineColor}
+                        width={r.lineWidth}
+                    />
+                ))}
 
-        {route && <AnimatedRoute route={route} />}
-        {selectedArea && (
-          <AreaPopup
-            area={selectedArea.area}
-            coordinates={selectedArea.coordinates}
-            onClose={() => setSelectedArea(null)}
-          />
-        )}
-        {selectedRoute && (
-          <RoutePopup
-            route={selectedRoute.route}
-            coordinates={selectedRoute.coordinates}
-            onClose={() => setSelectedRoute(null)}
-          />
-        )}
-      </Map>
+                {route && <AnimatedRoute route={route} />}
+                {selectedArea && (
+                    <AreaPopup
+                        area={selectedArea.area}
+                        coordinates={selectedArea.coordinates}
+                        onClose={() => setSelectedArea(null)}
+                    />
+                )}
+                {selectedRoute && (
+                    <RoutePopup
+                        route={selectedRoute.route}
+                        coordinates={selectedRoute.coordinates}
+                        onClose={() => setSelectedRoute(null)}
+                    />
+                )}
+            </Map>
 
-      <MapOverlay status={status} landmarks={landmarks} areas={areas} />
-
-      <div className="absolute bottom-24 right-4 z-20 flex flex-col gap-2">
-        {(
-          ["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]
-        ).map((s) => (
-          <Button
-            key={s}
-            onClick={() => setStatus(s)}
-            size="sm"
-            variant="secondary"
-          >
-            Set: {s}
-          </Button>
-        ))}
-      </div>
-    </main>
-  );
+            <MapOverlay status={status} landmarks={landmarks} areas={areas} />
+        </main>
+    );
 }
