@@ -13,7 +13,13 @@ import { LandmarkMarker } from "@/components/landmark-marker";
 import { AnimatedRoute } from "@/components/animated-route";
 import { SystemStatus } from "@/types/status";
 import type { Landmark } from "@/types/landmarks";
-import type { Area } from "@/types/areas";
+import type { Area, AreaCategory } from "@/types/areas";
+
+const CATEGORY_COLORS: Record<AreaCategory, { fill: string; border: string }> = {
+    no_go: { fill: "#DC2626", border: "#b91c1c" },
+    caution: { fill: "#FACC15", border: "#CA8A04" },
+    safe: { fill: "#16A34A", border: "#15803D" },
+};
 
 interface InteractiveMapProps {
     landmarks?: Landmark[];
@@ -61,20 +67,29 @@ export function InteractiveMap({ landmarks = [], areas = [], route }: Interactiv
                 mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
             >
-                {areas.map((area) => (
-                    <Source key={area.id} id={`area-${area.id}`} type="geojson" data={area.geometry}>
-                        <Layer
-                            id={`area-fill-${area.id}`}
-                            type="fill"
-                            paint={{ "fill-color": area.fillColor || "#DC2626", "fill-opacity": 0.25 }}
-                        />
-                        <Layer
-                            id={`area-outline-${area.id}`}
-                            type="line"
-                            paint={{ "line-color": area.borderColor || "#DC2626", "line-width": 2 }}
-                        />
-                    </Source>
-                ))}
+                {areas.map((area) => {
+                    const colors = CATEGORY_COLORS[area.category];
+                    return (
+                        <Source key={area.id} id={`area-${area.id}`} type="geojson" data={area.geometry}>
+                            <Layer
+                                id={`area-fill-${area.id}`}
+                                type="fill"
+                                paint={{
+                                    "fill-color": area.fillColor ?? colors.fill,
+                                    "fill-opacity": 0.25,
+                                }}
+                            />
+                            <Layer
+                                id={`area-outline-${area.id}`}
+                                type="line"
+                                paint={{
+                                    "line-color": area.borderColor ?? colors.border,
+                                    "line-width": 2,
+                                }}
+                            />
+                        </Source>
+                    );
+                })}
 
                 {landmarks.map((lm) => (
                     <LandmarkMarker key={lm.id} landmark={lm} />
