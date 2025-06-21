@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import DebugMenu from "@/components/DebugMenu";
 import { LocationProvider } from "@/lib/state/location";
+import {TooltipProvider} from "@/components/ui/tooltip";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,8 +29,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <LocationProvider>
+          <TooltipProvider delayDuration={150}>
           {children}
           <DebugMenu />
+          </TooltipProvider>
         </LocationProvider>
       </body>
     </html>

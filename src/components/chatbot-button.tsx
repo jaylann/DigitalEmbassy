@@ -15,7 +15,7 @@ import clsx from "clsx";
 
 // --- UI Component Imports ---
 import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -39,8 +39,9 @@ export function ChatbotButton(): React.ReactElement {
 
     // Prevent body scroll when chat is open
     React.useEffect(() => {
-        document.body.style.overflow = isOpen ? 'hidden' : 'unset';
-        return () => { document.body.style.overflow = 'unset'; };
+        const originalOverflow = document.body.style.overflow;
+        document.body.style.overflow = isOpen ? 'hidden' : originalOverflow;
+        return () => { document.body.style.overflow = originalOverflow; };
     }, [isOpen]);
 
     return (
@@ -51,22 +52,20 @@ export function ChatbotButton(): React.ReactElement {
                 transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
                 className="pointer-events-auto"
             >
-                <TooltipProvider delayDuration={150}>
-                    <Tooltip>
-                        <TooltipTrigger asChild>
-                            <Button
-                                variant="default"
-                                size="icon"
-                                onClick={() => setIsOpen(true)}
-                                className="h-12 w-12 rounded-full bg-black/50 shadow-lg backdrop-blur-sm hover:bg-black/70 transition-colors"
-                                aria-label="Open Chatbot"
-                            >
-                                <Bot className="h-6 w-6 text-white" />
-                            </Button>
-                        </TooltipTrigger>
-                        <TooltipContent side="top" className="bg-black/70 text-white border-none"><p>Open Chatbot</p></TooltipContent>
-                    </Tooltip>
-                </TooltipProvider>
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                        <Button
+                            variant="default"
+                            size="icon"
+                            onClick={() => setIsOpen(true)}
+                            className="h-12 w-12 rounded-full bg-black/50 shadow-lg backdrop-blur-sm hover:bg-black/70 transition-colors"
+                            aria-label="Open Chatbot"
+                        >
+                            <Bot className="h-6 w-6 text-white" />
+                        </Button>
+                    </TooltipTrigger>
+                    <TooltipContent side="top" className="bg-black/70 text-white border-none"><p>Open Chatbot</p></TooltipContent>
+                </Tooltip>
             </motion.div>
 
             <AnimatePresence>
