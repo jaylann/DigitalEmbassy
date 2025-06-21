@@ -2,8 +2,8 @@
 
 import type { FeatureCollection, LineString } from "geojson";
 import { InteractiveMap } from "@/components/interactive-map";
-import type { Landmark } from "@/types/landmarks";
 import type { Area } from "@/types/areas";
+import {Landmark} from "@/lib/types";
 
 // Example restriction zones (centered on initial view at lon: 51.3347, lat: 35.7219)
 const restrictionZone: FeatureCollection = {
@@ -51,12 +51,24 @@ const sampleLandmarks: Landmark[] = [
     name: "Checkpoint A",
     location: { lat: 35.722, lng: 51.335 },
     category: "checkpoint",
+    description: "Primary checkpoint for authorized personnel only",
+    trustLevel: "high",
+    lastUpdated: "2025-06-21T10:00:00Z",
+    addedBy: "user-admin-001",
+    isVerified: true,
+    visible: true,
   },
   {
     id: "medical-1",
     name: "Medical Center",
     location: { lat: 35.725, lng: 51.34 },
     category: "medical",
+    description: "On-site medical center providing emergency care",
+    trustLevel: "medium",
+    lastUpdated: "2025-06-20T15:30:00Z",
+    addedBy: "user-medic-042",
+    isVerified: false,
+    visible: true,
   },
 ];
 
@@ -89,4 +101,3 @@ export default function Home() {
     />
   );
 }
-

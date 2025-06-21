@@ -18,11 +18,11 @@ import {
     Clock,
 } from "lucide-react";
 
-import type { Landmark, LandmarkCategory } from "@/types/landmarks";
 import { cn } from "@/lib/utils";
 import { MapMarker } from "@/components/map-marker";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { Badge } from "@/components/ui/badge";
+import {Landmark, LandmarkCategory} from "@/lib/types";
 
 /**
  * Configuration object for styling and icons of each landmark category.
