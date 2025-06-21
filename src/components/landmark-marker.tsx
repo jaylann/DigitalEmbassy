@@ -22,7 +22,7 @@ import { cn } from "@/lib/utils";
 import { MapMarker } from "@/components/map-marker";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { Badge } from "@/components/ui/badge";
-import {Landmark, LandmarkCategory} from "@/lib/types";
+import type { Landmark, LandmarkCategory } from "@/lib/types";
 
 /**
  * Configuration object for styling and icons of each landmark category.
@@ -153,13 +153,14 @@ export function LandmarkMarker({ landmark }: LandmarkMarkerProps): React.ReactEl
     };
 
     return (
-        <MapMarker latitude={location.lat} longitude={location.lng}>
-            <Popover>
+        <Popover>
+            <MapMarker latitude={location.lat} longitude={location.lng}>
                 <PopoverTrigger asChild>
-                    <motion.div
-                        className="flex items-center justify-center"
+                    <motion.button
+                        className="flex items-center justify-center cursor-pointer appearance-none bg-transparent border-none p-0"
                         whileHover={{ scale: 1.2, y: -2 }}
                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        aria-label={`Show details for ${name}`}
                     >
                         <div
                             className={cn(
@@ -167,68 +168,59 @@ export function LandmarkMarker({ landmark }: LandmarkMarkerProps): React.ReactEl
                                 config.styles.bg
                             )}
                             title={name}
-                            aria-label={`Landmark: ${name}`}
                         >
                             <Icon className="h-4 w-4 text-white" />
                         </div>
-                    </motion.div>
+                    </motion.button>
                 </PopoverTrigger>
-                <PopoverContent
-                    className="w-72 border-neutral-700 bg-black/75 p-4 text-white shadow-xl backdrop-blur-lg"
-                    sideOffset={12}
-                >
-                    <div className="flex flex-col gap-3">
-                        {/* Header */}
-                        <div className="flex items-start gap-3">
-                            <div
-                                className={cn(
-                                    "mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md",
-                                    config.styles.bg
-                                )}
-                            >
-                                <Icon className="h-5 w-5 text-white" />
-                            </div>
-                            <div className="flex-grow">
-                                <h3 className="text-base font-bold leading-tight text-white">{name}</h3>
-                                <Badge variant="outline" className={cn("mt-1.5", config.styles.badge)}>
-                                    {config.label}
-                                </Badge>
-                            </div>
+            </MapMarker>
+
+            <PopoverContent
+                className="w-72 border-neutral-700 bg-black/75 p-4 text-white shadow-xl backdrop-blur-lg"
+                sideOffset={12}
+            >
+                <div className="flex flex-col gap-3">
+                    {/* Header */}
+                    <div className="flex items-start gap-3">
+                        <div className={cn("mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md", config.styles.bg)}>
+                            <Icon className="h-5 w-5 text-white" />
                         </div>
-
-                        {/* Description */}
-                        {description && (
-                            <p className="text-sm leading-snug text-neutral-300">{description}</p>
-                        )}
-
-                        <hr className="border-t border-neutral-700" />
-
-                        {/* Metadata */}
-                        <div className="space-y-2 text-xs text-neutral-400">
-                            {isVerified && (
-                                <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="h-4 w-4 text-green-400" />
-                                    <span className="font-medium text-neutral-200">Verified by Trusted Source</span>
-                                </div>
-                            )}
-                            {trustLevel && (
-                                <div className="flex items-center gap-2">
-                                    <Signal className="h-4 w-4" />
-                                    <span>
-                                        Trust Level: <span className="font-semibold capitalize text-neutral-200">{trustLevel}</span>
-                                    </span>
-                                </div>
-                            )}
-                            {lastUpdated && (
-                                <div className="flex items-center gap-2">
-                                    <Clock className="h-4 w-4" />
-                                    <span>Last Updated: <span className="font-semibold text-neutral-200">{formatLastUpdated(lastUpdated)}</span></span>
-                                </div>
-                            )}
+                        <div className="flex-grow">
+                            <h3 className="text-base font-bold leading-tight text-white">{name}</h3>
+                            <Badge variant="outline" className={cn("mt-1.5", config.styles.badge)}>
+                                {config.label}
+                            </Badge>
                         </div>
                     </div>
-                </PopoverContent>
-            </Popover>
-        </MapMarker>
+
+                    {/* Description */}
+                    {description && <p className="text-sm leading-snug text-neutral-300">{description}</p>}
+
+                    <hr className="border-t border-neutral-700" />
+
+                    {/* Metadata */}
+                    <div className="space-y-2 text-xs text-neutral-400">
+                        {isVerified && (
+                            <div className="flex items-center gap-2">
+                                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                <span className="font-medium text-neutral-200">Verified by Trusted Source</span>
+                            </div>
+                        )}
+                        {trustLevel && (
+                            <div className="flex items-center gap-2">
+                                <Signal className="h-4 w-4" />
+                                <span>Trust Level: <span className="font-semibold capitalize text-neutral-200">{trustLevel}</span></span>
+                            </div>
+                        )}
+                        {lastUpdated && (
+                            <div className="flex items-center gap-2">
+                                <Clock className="h-4 w-4" />
+                                <span>Last Updated: <span className="font-semibold text-neutral-200">{formatLastUpdated(lastUpdated)}</span></span>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </PopoverContent>
+        </Popover>
     );
 }

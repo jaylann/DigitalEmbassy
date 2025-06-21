@@ -174,7 +174,7 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
             />
 
             <Map
-                viewState={viewState}
+                initialViewState={{ longitude: lastKnownLocation.lng, latitude: lastKnownLocation.lat, zoom: 12 }}
                 onMove={(e) => setViewState(e.viewState)}
                 mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
