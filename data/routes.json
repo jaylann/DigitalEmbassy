@@ -1,0 +1,20 @@
+[
+  {
+    "id": "supply-run",
+    "name": "Supply Run Route",
+    "path": {
+      "type": "LineString",
+      "coordinates": [
+        [51.325, 35.715],
+        [51.330, 35.720],
+        [51.335, 35.722],
+        [51.338, 35.723],
+        [51.339, 35.7245],
+        [51.340, 35.725]
+      ]
+    },
+    "description": "Safe path between checkpoint and medical center",
+    "lineColor": "#2563EB",
+    "lineWidth": 4
+  }
+]
