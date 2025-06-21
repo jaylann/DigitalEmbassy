@@ -1,6 +1,6 @@
 [
   {
-    "id": "9433cbde-90fa-4769-810e-6bf4cca0c57e",
+    "id": "4002fcf2-b4f1-4ef2-b6d0-2a608dc50c11",
     "name": "tehran hospital - \u0628\u06cc\u0645\u0627\u0631\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646",
     "description": "PC99+4RF District 6, Tehran, Iran",
     "location": {
@@ -9,13 +9,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "5783b788-7708-4acc-b150-53b7b5c0e58b",
+    "id": "80451d02-b0ff-40e9-ab19-737aaf4d8be9",
     "name": "Atieh Hospital",
     "description": "Tehran, West Shahrak Qods (West),Shahid Dadman Intersection, Farahzadi Blvd, 6564-14151, Iran",
     "location": {
@@ -24,13 +24,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "6c726a2c-d7b8-4256-af83-279b66e294ef",
+    "id": "a3816762-cc27-4cc4-a750-2a3cf631b465",
     "name": "Milad Hospital",
     "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u0627\u062a\u0648\u0628\u0627\u0646 \u0647\u0645\u062a \u062e\u0631\u0648\u062c\u06cc \u0627\u062e\u062a\u0635\u0627\u0635\u06cc \u0628\u0631\u062c \u0648 \u0628\u06cc\u0645\u0627\u0631\u0633\u062a\u0627\u0646 \u0645\u06cc\u0644\u0627\u062f\u060c P9WJ+6HH, Iran",
     "location": {
@@ -39,13 +39,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "8aff8da3-b7b2-4de4-b5f3-8eef77cdb2d6",
+    "id": "117d2224-f5b4-4326-a4a0-cc19c6ee6194",
     "name": "Arman Hospital",
     "description": "Tehran Province, Tehran, District 3, Seoul St, Q9CW+GH3, Iran",
     "location": {
@@ -54,13 +54,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "dd7aad23-7eda-42cb-bef5-367582b3d593",
+    "id": "485ed494-1cb9-4ffd-a794-ead1db2784fe",
     "name": "Imam Khomeini Hospital",
     "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u0627\u0646\u062a\u0647\u0627\u06cc \u0628\u0644\u0648\u0627\u0631 \u06a9\u0634\u0627\u0648\u0631\u0632, 14197 33141, Iran",
     "location": {
@@ -69,13 +69,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "01cf3356-b48b-4c3b-bc20-204e286473fa",
+    "id": "05bbe494-03a9-4ed8-84da-e417481a02fd",
     "name": "Mehr Hospital",
     "description": "Tehran Province, Tehran, District 6, W Zartosht St, PC82+8VJ, Iran",
     "location": {
@@ -84,13 +84,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "a402951e-61b8-4eda-a4a8-37537c419551",
+    "id": "007db38c-4404-4b18-965f-e884757f96bb",
     "name": "Laleh Hospital",
     "description": "Tehran, Tehran Sima-ye-Iran Street Phase 5\u060c Iran",
     "location": {
@@ -99,13 +99,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "48c1475a-0c10-497a-9b4a-fb87cb421f77",
+    "id": "3e7c288c-419e-4dcd-a272-a46f69ed4319",
     "name": "Sina Hospital",
     "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062e\u06cc\u0627\u0628\u0627\u0646 \u0627\u0645\u0627\u0645 \u062e\u0645\u06cc\u0646\u06cc(\u0631\u0647)- \u0646\u0631\u0633\u06cc\u062f\u0647 \u0628\u0647 \u0645\u06cc\u062f\u0627\u0646 \u062d\u0633\u0646 \u0622\u0628\u0627\u062f\u060c 11367 46911, Iran",
     "location": {
@@ -114,13 +114,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "0236582c-9c65-4e4c-a84f-b3e530102f8e",
+    "id": "2acef97f-6f96-44b9-b397-7cea361d4eac",
     "name": "Jam Hospital",
     "description": "Tehran Province, Tehran, Fajr St, PCFF+56J, Iran",
     "location": {
@@ -129,13 +129,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "a7ab8cef-b4ce-4534-a392-6330ec791344",
+    "id": "1d7f27d0-0b37-4200-a711-322304822d62",
     "name": "Tehran Clinic Hospital",
     "description": "Tehran Province, Tehran, \u0642\u0627\u0626\u0645 \u0645\u0642\u0627\u0645 \u0641\u0631\u0627\u0647\u0627\u0646\u06cc\u060c PCG9+87H, Iran",
     "location": {
@@ -144,13 +144,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "a9b3fe02-b954-4549-8d87-728f63c77eee",
+    "id": "ea1e3631-0c31-4bcf-9dfe-065958fd7d0b",
     "name": "Bahman Hospital",
     "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u0634\u0647\u0631\u06a9 \u063a\u0631\u0628\u060c\u060c Iran Zamin Blvd, Q98J+878, Iran",
     "location": {
@@ -159,13 +159,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "1be196b4-eadf-439e-a425-1b23b97da42f",
+    "id": "95a44dd3-df98-4cb5-a49c-b26baff90b83",
     "name": "Iranmehr Hospital",
     "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062e\u06cc\u0627\u0628\u0627\u0646 \u0634\u0631\u06cc\u0639\u062a\u06cc\u060c \u062f\u0648 \u0631\u0627\u0647\u06cc\u060c QC8R+XVJ, Iran",
     "location": {
@@ -174,13 +174,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "bb70692e-8708-48c4-ae09-ebfb37e16e63",
+    "id": "360bcf8c-ea54-4d84-ade2-568515d7dd2f",
     "name": "Iranshahr Hospital",
     "description": "Tehran Province, Tehran, District 7, \u062a\u0647\u0631\u0627\u0646 - \u062e\u064a\u0627\u0628\u0627\u0646 \u0634\u0631\u064a\u0639\u062a\u064a \u0646\u0631\u0633\u064a\u062f\u0647 \u0628\u0647 \u0633\u0647 \u0631\u0627\u0647 \u0637\u0627\u0644\u0642\u0627\u0646\u064a \u062e\u064a\u0627\u0628\u0627\u0646 \u062c\u0648\u0627\u062f \u0643\u0627\u0631\u06af\u0631 \u0628\u064a\u0645\u0627\u0631\u0633\u062a\u0627\u0646 \u0627\u064a\u0631\u0627\u0646\u0634\u0647\u0631\u060c \u062e\u06cc\u0627\u0628\u0627\u0646 \u0634\u0647\u06cc\u062f \u062c\u0648\u0627\u062f \u06a9\u0627\u0631\u06af\u0631\u060c PC5M+M66, Iran",
     "location": {
@@ -189,13 +189,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "e4113c90-f91a-4262-bd02-b862a24baf9e",
+    "id": "14bea13b-c6ae-4f0f-8535-d978c31b855c",
     "name": "Shariati Hospital",
     "description": "Tehran Province, Tehran, N Kargar, P9CP+JP2, Iran",
     "location": {
@@ -204,13 +204,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "0492d437-facd-45e8-9f3d-193dd581abea",
+    "id": "469085b9-0e74-44e2-9bc8-cda293e15eaa",
     "name": "Apadana Hospital",
     "description": "Tehran Province, Tehran, District 6, St No. 172, Qarani, PC69+Q94, Iran",
     "location": {
@@ -219,13 +219,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "e4134fba-1f2f-46e5-88ad-1a431b6d07fc",
+    "id": "2e129b4a-5358-4751-8a88-0d488e68dbcd",
     "name": "Farmaniyeh Hospital",
     "description": "Tehran Province, Tajrish, Farmanieh Ave, Iran",
     "location": {
@@ -234,13 +234,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "6b460980-2c59-4b71-900d-37f2fc811866",
+    "id": "82cec91f-a9c6-40db-aa15-629f7296ea7c",
     "name": "Torfeh Hospital",
     "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 Tehran \u062e\u06cc\u0627\u0628\u0627\u0646 \u0645\u0635\u0637\u0641\u06cc \u062e\u0645\u06cc\u0646\u06cc\u060c \u0645\u0642\u0627\u0628\u0644 \u0633\u0627\u0632\u0645\u0627\u0646 \u062a\u0628\u0644\u06cc\u063a\u0627\u062a \u0627\u0633\u0644\u0627\u0645\u06cc\u060c 11498 47514, Iran",
     "location": {
@@ -249,13 +249,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "03f59fba-89c6-44e1-bbb6-c17f1b05a5f4",
+    "id": "8ce10d46-b50f-4f98-a6d0-bca3d6812dd4",
     "name": "Yas Hospital",
     "description": "Tehran Province, Tehran, District 7, N Villa Rd, PC97+9R2, Iran",
     "location": {
@@ -264,13 +264,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "aaf755ae-562f-40f3-b679-a3a1a616e125",
+    "id": "e7abc6c3-0f1a-4214-b0da-ce2c1f8f6fdc",
     "name": "Khatam Al-Anbiya Hospital",
     "description": "Tehran Province, Tehran, Rashid Yasemi Street\u060c Upper than Mirdamad St.\u060c Vali- Asr St.\u060c QC95+J5G, Iran",
     "location": {
@@ -279,13 +279,13 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
   },
   {
-    "id": "580f8822-c8fa-422d-97f1-967481fa7ed6",
+    "id": "e05161dc-6d43-41f2-95b6-a4f0f1332f95",
     "name": "Pars Hospital",
     "description": "Tehran Province, Tehran, 67\u060c \u0628\u0644\u0648\u0627\u0631 \u06a9\u0634\u0627\u0648\u0631\u0632\u060c Iran",
     "location": {
@@ -294,7 +294,7 @@
     },
     "category": "checkpoint",
     "trustLevel": "medium",
-    "lastUpdated": "2025-06-21T14:35:13.288856",
+    "lastUpdated": "2025-06-21T14:37:09.014764",
     "addedBy": "system",
     "isVerified": false,
     "visible": true
