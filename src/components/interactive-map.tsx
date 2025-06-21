@@ -53,7 +53,7 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
     const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
 
     const { lastKnownLocation } = useLocation();
-    const [viewState, setViewState] = React.useState({
+    const [, setViewState] = React.useState({
         longitude: lastKnownLocation.lng,
         latitude: lastKnownLocation.lat,
         zoom: 12,
