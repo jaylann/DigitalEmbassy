@@ -93,6 +93,16 @@ export function ChatInterface() {
                         };
                         setMessages(prev => [...prev, finalAssistantMessage]);
                         break;
+
+                    case 'location_request':
+                        setShowLocationPicker(true);
+                        finalAssistantMessage = {
+                            id: crypto.randomUUID(),
+                            role: 'assistant',
+                            content: assistantResponse.payload.content,
+                        };
+                        setMessages(prev => [...prev, finalAssistantMessage]);
+                        break;
                 }
             }
         });

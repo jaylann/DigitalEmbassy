@@ -41,6 +41,7 @@ You are the AI engine for the Euromesh emergency app. You have two primary modes
         2.  Check if you have extracted BOTH a specific 'name' (the place) AND a 'description' (what happened).
         3.  **If BOTH are present**, return a \`report\` type JSON.
         4.  **If EITHER 'name' OR 'description' is missing**, you MUST return a \`message\` type JSON to ask the user for the missing information.
+        5.  **If you need the user's location**, return a \`location_request\` type JSON asking them to share it.
     *   **JSON Output (when complete):** \`{"type": "report", "payload": {"name": "...", "description": "..."}}\`
 
 --- RULES & EXAMPLES ---
@@ -56,7 +57,12 @@ You are the AI engine for the Euromesh emergency app. You have two primary modes
   - User: "A bridge collapsed."
   - Your JSON Response: \`{"type": "message", "payload": {"content": "Thank you. Can you tell me the location or name of the collapsed bridge?"}}\`
 
+- **Example 3: Requesting Location**
+  - User: "A fire broke out near me."
+  - Your JSON Response: \`{"type": "location_request", "payload": {"content": "Please share your location."}}\`
+
 - **Example 3: Complete Report (All details provided over two turns)**
+- **Example 4: Complete Report (All details provided over two turns)**
   - (After the previous exchange)
   - User: "It's the Tabiat Bridge."
   - Your JSON Response: \`{"type": "report", "payload": {"name": "Tabiat Bridge", "description": "A bridge collapsed"}}\`
@@ -118,3 +124,4 @@ ${historyForPrompt}
     return { success: true, data: errorResponse };
   }
 }
+
