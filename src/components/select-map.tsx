@@ -6,13 +6,15 @@ import { MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MapMarker } from "@/components/map-marker";
 import { useLocation } from "@/lib/state/location";
+import { cn } from "@/lib/utils";
 
 interface SelectMapProps {
-    onSave?: () => void;
+    onSave?: (loc: { lat: number; lng: number }) => void;
     zoom?: number;
+    className?: string;
 }
 
-export function SelectMap({ onSave, zoom = 12 }: SelectMapProps) {
+export function SelectMap({ onSave, zoom = 12, className }: SelectMapProps) {
     const { lastKnownLocation, setLastKnownLocation } = useLocation();
     const [selected, setSelected] = React.useState(lastKnownLocation);
 
@@ -28,11 +30,11 @@ export function SelectMap({ onSave, zoom = 12 }: SelectMapProps) {
 
     const handleSave = () => {
         setLastKnownLocation(selected);
-        onSave?.();
+        onSave?.(selected);
     };
 
     return (
-        <div className="relative h-72 w-full">
+        <div className={cn("relative h-72 w-full", className)}>
             <Map
                 initialViewState={{ longitude: lastKnownLocation.lng, latitude: lastKnownLocation.lat, zoom }}
                 mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}

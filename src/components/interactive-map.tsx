@@ -46,14 +46,15 @@ interface InteractiveMapProps {
     routes?: Route[];
     /** Optional route to display and animate */
     route?: LineString;
+    onAddLandmark?: (lm: Landmark) => void;
 }
 
-export function InteractiveMap({ landmarks = [], areas = [], routes = [], route }: InteractiveMapProps): React.ReactElement {
+export function InteractiveMap({ landmarks = [], areas = [], routes = [], route, onAddLandmark }: InteractiveMapProps): React.ReactElement {
     const [status, setStatus] = React.useState<SystemStatus>("Online");
     const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
 
     const { lastKnownLocation } = useLocation();
-    const [viewState, setViewState] = React.useState({
+    const [, setViewState] = React.useState({
         longitude: lastKnownLocation.lng,
         latitude: lastKnownLocation.lat,
         zoom: 12,
@@ -236,7 +237,7 @@ export function InteractiveMap({ landmarks = [], areas = [], routes = [], route 
                 )}
             </Map>
 
-            <MapOverlay status={status} landmarks={landmarks} areas={areas} />
+            <MapOverlay status={status} landmarks={landmarks} areas={areas} onAddLandmark={onAddLandmark} />
 
             <div className="absolute bottom-24 right-4 z-20 flex flex-col gap-2">
                 {(["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]).map((s) => (
