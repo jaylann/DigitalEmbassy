@@ -20,22 +20,6 @@ export default function Home() {
 
   // Load default data on first render
   React.useEffect(() => {
-    async function loadLandmarks() {
-      try {
-        const res = await fetch("/api/landmarks");
-        if (res.ok) {
-          const dynamic: Landmark[] = await res.json();
-          setLandmarks([...dynamic, ...staticLandmarks]);
-        } else {
-          setLandmarks([...staticLandmarks]);
-        }
-      } catch {
-        setLandmarks([...staticLandmarks]);
-      }
-    }
-
-    void loadLandmarks();
-
     setAreas(defaultAreas as Area[]);
     setRoutes(defaultRoutes as Route[]);
   }, []);
