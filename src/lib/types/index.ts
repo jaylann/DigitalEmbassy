@@ -46,7 +46,7 @@ export interface Message {
  * A discriminated union representing all possible structured responses from the LLM.
  * The 'type' field allows the client to route the response to the correct handler.
  */
-export type AssistantResponse = MessageResponse | ReportResponse;
+export type AssistantResponse = MessageResponse | ReportResponse | LocationRequestResponse;
 
 /**
  * The structure for a standard conversational message from the AI.
@@ -74,3 +74,14 @@ export interface ReportResponse {
     type: "report";
     payload: ReportPayload;
 }
+
+/**
+ * A special response requesting the user's precise location.
+ */
+export interface LocationRequestResponse {
+    type: "location_request";
+    payload: {
+        content: string;
+    };
+}
+

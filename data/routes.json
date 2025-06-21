@@ -16,5 +16,41 @@
     "description": "Safe path between checkpoint and medical center",
     "lineColor": "#2563EB",
     "lineWidth": 4
+  },
+  {
+    "id": "evac-route",
+    "name": "Evacuation Route",
+    "path": {
+      "type": "LineString",
+      "coordinates": [
+        [51.310, 35.710],
+        [51.315, 35.712],
+        [51.320, 35.715],
+        [51.325, 35.718],
+        [51.330, 35.720]
+      ]
+    },
+    "description": "Primary path from safe zone to evacuation point",
+    "lineColor": "#DC2626",
+    "lineWidth": 4
+  },
+  {
+    "id": "scout-path",
+    "name": "Scout Patrol",
+    "path": {
+      "type": "LineString",
+      "coordinates": [
+        [51.340, 35.720],
+        [51.345, 35.722],
+        [51.349, 35.726],
+        [51.350, 35.730],
+        [51.348, 35.732],
+        [51.344, 35.730],
+        [51.340, 35.725]
+      ]
+    },
+    "description": "Standard reconnaissance path",
+    "lineColor": "#16A34A",
+    "lineWidth": 4
   }
 ]
