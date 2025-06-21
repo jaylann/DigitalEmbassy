@@ -5,6 +5,8 @@ import type { FeatureCollection, Feature } from 'geojson';
 export interface Area {
     id: string;
     name: string;
+    /** Optional description of the area */
+    description?: string;
     /**
      * GeoJSON geometry describing this area. Allows a single Feature or a
      * FeatureCollection so both simple and complex shapes can be used.
