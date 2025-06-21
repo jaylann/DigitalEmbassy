@@ -18,31 +18,26 @@ export default function Home() {
   const [routes, setRoutes] = React.useState<Route[]>([]);
   const { route } = useDebug();
 
-  // Load default data and any stored user data on first render
+  // Load default data on first render
   React.useEffect(() => {
-
-    try {
-      const storedAreas = localStorage.getItem("areas");
-      if (storedAreas) {
-        setAreas(JSON.parse(storedAreas));
-      } else {
-        setAreas(defaultAreas as Area[]);
+    async function loadLandmarks() {
+      try {
+        const res = await fetch("/api/landmarks");
+        if (res.ok) {
+          const dynamic: Landmark[] = await res.json();
+          setLandmarks([...dynamic, ...staticLandmarks]);
+        } else {
+          setLandmarks([...staticLandmarks]);
+        }
+      } catch {
+        setLandmarks([...staticLandmarks]);
       }
-    } catch {
-      setAreas(defaultAreas as Area[]);
     }
 
-    try {
-      const storedRoutes = localStorage.getItem("routes");
-      if (storedRoutes) {
-        setRoutes(JSON.parse(storedRoutes));
-      } else {
-        setRoutes(defaultRoutes as Route[]);
-      }
-    } catch {
-      setRoutes(defaultRoutes as Route[]);
-    }
+    void loadLandmarks();
 
+    setAreas(defaultAreas as Area[]);
+    setRoutes(defaultRoutes as Route[]);
   }, []);
 
   React.useEffect(() => {

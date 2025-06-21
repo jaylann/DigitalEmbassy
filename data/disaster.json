@@ -3,12 +3,16 @@
     "id": "disaster-example",
     "name": "Flooded Street",
     "description": "Flash flood",
-    "location": { "lat": 35.72, "lng": 51.42 },
+    "location": {
+      "lat": 35.72,
+      "lng": 51.42
+    },
     "category": "disaster",
     "trustLevel": "high",
     "lastUpdated": "2025-06-21T14:53:39.836Z",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   }
 ]

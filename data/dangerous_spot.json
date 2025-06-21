@@ -12,12 +12,13 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "2d5e4d69-732d-42da-b23e-ec5f00fb43ad",
     "name": "Iran Drug Control Headquarters",
-    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u0645\u0646\u0637\u0642\u0647 \u06f3 \u062e\u06cc\u0627\u0628\u0627\u0646 \u0634\u0647\u06cc\u062f \u062f\u0633\u062a\u06af\u0631\u062f\u06cc (\u0638\u0641\u0631)-\u062e\u06cc\u0627\u0628\u0627\u0646 \u0646\u0641\u062a \u0634\u0645\u0627\u0644\u06cc-\u067e\u0644\u0627\u06a9 32\u0633\u062a\u0627\u062f \u0645\u0628\u0627\u0631\u0632\u0647 \u0628\u0627 \u0645\u0648\u0627\u062f\u0645\u062e\u062f\u0631 \u0631\u06cc\u0627\u0633\u062a \u062c\u0645\u0647\u0648\u0631\u06cc \u062e\u06cc\u0627\u0628\u0627\u0646 \u062f\u06a9\u062a\u0631 \u0645\u062d\u0645\u062f \u0645\u0635\u062f\u0642 \u0634\u0645\u0627\u0644\u06cc 19187\u060c 93511, Iran",
+    "description": "Tehran, استان تهران تهران منطقه ۳ خیابان شهید دستگردی (ظفر)-خیابان نفت شمالی-پلاک 32ستاد مبارزه با موادمخدر ریاست جمهوری خیابان دکتر محمد مصدق شمالی 19187، 93511, Iran",
     "location": {
       "lat": 35.76543830000001,
       "lng": 51.4291239
@@ -27,7 +28,8 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "c4e2a2ec-784e-40aa-9c41-010726b99a3a",
@@ -42,12 +44,13 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "803b86dd-0a09-4fd5-87e2-f15c8d5de7e2",
     "name": "General Provost of the Islamic Revolutionary Guard Corps",
-    "description": "Tehran, District 14, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646\u060c \u062a\u0647\u0631\u0627\u0646\u060c \u062f\u0648\u0634\u0627\u0646 \u062a\u067e\u0647\u060c \u0628\u0632\u0631\u06af\u0631\u0627\u0647 \u0647\u062c\u0631\u062a\u060c\u060c, MGH2+PV7, Iran",
+    "description": "Tehran, District 14, استان تهران، تهران، دوشان تپه، بزرگراه هجرت،،, MGH2+PV7, Iran",
     "location": {
       "lat": 35.6792951,
       "lng": 51.5021802
@@ -57,7 +60,8 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "e27cc768-8f24-402f-bcda-c76199073247",
@@ -72,7 +76,8 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "4f215d21-e30c-4b89-940c-53f3188a132f",
@@ -87,12 +92,13 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "f933ebb7-63cd-4e7a-af9f-811354966197",
     "name": "Road, Housing & Urban Development Research Center",
-    "description": "Tehran, Tehran Shahid Ali,Marvi St., Hekmat St Farhangian St\u060c Sheikh Fazlia Highway\u060c P9Q8+99J, Iran",
+    "description": "Tehran, Tehran Shahid Ali,Marvi St., Hekmat St Farhangian St، Sheikh Fazlia Highway، P9Q8+99J, Iran",
     "location": {
       "lat": 35.7384516,
       "lng": 51.3658861
@@ -102,12 +108,13 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "2556ddf4-d00c-47c5-b328-eb1dd75b553b",
     "name": "north east office Razi Metallurgical Research Center",
-    "description": "Tehran Province, Tehran, District 4, Tehran \u0627\u062a\u0648\u0628\u0627\u0646 \u0628\u0627\u0628\u0627\u06cc\u06cc\u060c \u0648\u0631\u0648\u062f\u06cc \u062d\u06a9\u06cc\u0645\u06cc\u0647\u060c \u0628\u0644\u0648\u0627\u0631 \u0628\u0627\u0628\u0627\u06cc\u06cc\u0627\u0646\u060c \u062e\u06cc\u0627\u0628\u0627\u0646 \u067e\u0646\u062c \u0634\u06cc\u062f\u0627\u06cc\u06cc\u060c \u067e\u0644\u0627\u06a9 22\u060c \u0637\u0628\u0642\u0647, \u0633\u0648\u0645, Iran",
+    "description": "Tehran Province, Tehran, District 4, Tehran اتوبان بابایی، ورودی حکیمیه، بلوار باباییان، خیابان پنج شیدایی، پلاک 22، طبقه, سوم, Iran",
     "location": {
       "lat": 35.7307926,
       "lng": 51.5760426
@@ -117,7 +124,8 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "d299d2de-ce26-49a2-921b-464ef7d0390d",
@@ -132,7 +140,8 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "678452e0-a35b-455c-9946-4f221326d3d8",
@@ -147,12 +156,13 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "873f7cc6-d729-4899-a42f-a678247e4154",
-    "name": "\u0633\u062a\u0627\u062f \u0633\u0627\u0632\u0645\u0627\u0646 \u0635\u0646\u0627\u06cc\u0639 \u0647\u0648\u0627\u0641\u0636\u0627 \u062a\u0647\u0631\u0627\u0646",
-    "description": "Tajrish, \u062a\u0647\u0631\u0627\u0646\u060c \u0645\u06cc\u062f\u0627\u0646 \u0646\u0648\u0628\u0646\u06cc\u0627\u062f\u060c \u062a\u0647\u0631\u0627\u0646\u060c \u0627\u06cc\u0631\u0627\u0646\u060c \u062e\u06cc\u0627\u0628\u0627\u0646 \u067e\u0627\u0633\u062f\u0627\u0631\u0627\u0646\u060c \u0633\u0627\u062e\u062a\u0645\u0627\u0646 \u0633\u062a\u0627\u062f \u0645\u0631\u06a9\u0632\u06cc \u0635\u0646\u0627\u06cc\u0639 \u0647\u0648\u0627\u0641\u0636\u0627\u060c\u060c QFRH+H3P, Iran",
+    "name": "ستاد سازمان صنایع هوافضا تهران",
+    "description": "Tajrish, تهران، میدان نوبنیاد، تهران، ایران، خیابان پاسداران، ساختمان ستاد مرکزی صنایع هوافضا،، QFRH+H3P, Iran",
     "location": {
       "lat": 35.7914588,
       "lng": 51.477689899999994
@@ -162,11 +172,12 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "a067e157-1dd3-4660-b49c-9c4eb1cf0dad",
-    "name": "\u0635\u0646\u0627\u06cc\u0639 \u0647\u0648\u0627\u06cc\u06cc \u0627\u0648\u062c",
+    "name": "صنایع هوایی اوج",
     "description": "M8JG+89R District 9, Tehran, Tehran Province, Iran",
     "location": {
       "lat": 35.6808658,
@@ -177,12 +188,13 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "4ce6af4b-bf52-4303-af6e-6253973ea1d6",
     "name": "Arak Heavy Water Reactor Facility",
-    "description": "96CR+5C8, Qameshl\u016b, Markazi Province, Iran",
+    "description": "96CR+5C8, Qameshlū, Markazi Province, Iran",
     "location": {
       "lat": 34.3704131,
       "lng": 49.241066800000006
@@ -192,7 +204,8 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "e5d0a3ec-2f2a-4259-8df8-fe4eeebc556c",
@@ -207,11 +220,12 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "8d3bdae6-d71d-4468-a5c1-343c0a85abb5",
-    "name": "\u062f\u0631\u0628 \u0631\u062c\u0628\u06cc \u067e\u0648\u0631",
+    "name": "درب رجبی پور",
     "description": "Tehran Province, Tehran, Dowshan Tappeh, Hejrat Hwy, MGH2+PV3, Iran",
     "location": {
       "lat": 35.6792537,
@@ -222,11 +236,12 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   },
   {
     "id": "50e8100a-09f5-4af1-90a8-510177679b62",
-    "name": "\u0622\u0634\u06cc\u0627\u0646\u0647 \u0628\u0645\u0628 \u0627\u0641\u06a9\u0646 \u0628\u0648\u0626\u06cc\u0646\u06af b-29 \u0646\u06cc\u0631\u0648\u06cc \u0647\u0648\u0627\u06cc\u06cc \u0627\u06cc\u0627\u0644\u062a \u0645\u062a\u062d\u062f\u0647",
+    "name": "آشیانه بمب افکن بوئینگ b-29 نیروی هوایی ایالت متحده",
     "description": "Tehran Province, Tehran, District 10, Mahboob Mojaz St, M9HH+W62, Iran",
     "location": {
       "lat": 35.679758899999996,
@@ -237,6 +252,7 @@
     "lastUpdated": "2025-06-21T14:53:39.836634",
     "addedBy": "system",
     "isVerified": false,
-    "visible": true
+    "visible": true,
+    "radius": 100
   }
 ]

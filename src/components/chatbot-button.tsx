@@ -200,7 +200,7 @@ export function ChatPanelContent(): React.ReactElement {
     const handleLocationSave = async (location: Location): Promise<void> => {
         setLastKnownLocation(location);
 
-        if (pendingReport) {
+            if (pendingReport) {
             const result = await saveReportToMesh(pendingReport, location);
             if (result.success && result.landmark) {
                 addLandmark(result.landmark);
