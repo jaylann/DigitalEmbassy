@@ -71,7 +71,7 @@ export async function getGeminiResponse(
     const fileContent = await fs.readFile(dbPath, 'utf-8');
     landmarks = JSON.parse(fileContent);
     console.log(`Loaded ${landmarks.length} landmarks from mesh database.`);
-  } catch (error) {
+  } catch {
     console.log("No mesh database found or it's empty. Starting with a clean context.");
   }
 

@@ -18,7 +18,7 @@ import {
     Clock,
 } from "lucide-react";
 
-import type { Landmark, LandmarkCategory } from "@/types/landmarks";
+import type { Landmark, LandmarkCategory } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { MapMarker } from "@/components/map-marker";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
@@ -142,7 +142,7 @@ export function LandmarkMarker({ landmark }: LandmarkMarkerProps): React.ReactEl
     const formatLastUpdated = (isoDate: string): string => {
         try {
             return formatDistanceToNow(new Date(isoDate), { addSuffix: true });
-        } catch (error) {
+        } catch {
             console.error("Invalid date format for lastUpdated:", isoDate);
             return "unknown";
         }

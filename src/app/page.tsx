@@ -2,7 +2,7 @@
 
 import type { FeatureCollection, LineString } from "geojson";
 import { InteractiveMap } from "@/components/interactive-map";
-import type { Landmark } from "@/types/landmarks";
+import type { Landmark } from "@/lib/types";
 import type { Area } from "@/types/areas";
 
 // Example restriction zones (centered on initial view at lon: 51.3347, lat: 35.7219)

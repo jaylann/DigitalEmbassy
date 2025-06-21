@@ -11,8 +11,9 @@ import { MapOverlay } from "@/components/map-overlay";
 import { CrisisWarningOverlay } from "@/components/crising-warning-oerlay";
 import { LandmarkMarker } from "@/components/landmark-marker";
 import { AnimatedRoute } from "@/components/animated-route";
+import { useLocation } from "@/lib/state/location";
 import { SystemStatus } from "@/types/status";
-import type { Landmark } from "@/types/landmarks";
+import type { Landmark } from "@/lib/types";
 import type { Area } from "@/types/areas";
 
 interface InteractiveMapProps {
@@ -25,6 +26,7 @@ interface InteractiveMapProps {
 export function InteractiveMap({ landmarks = [], areas = [], route }: InteractiveMapProps): React.ReactElement {
     const [status, setStatus] = React.useState<SystemStatus>("Online");
     const [isCrisisAcknowledged, setIsCrisisAcknowledged] = React.useState(false);
+    const { lastKnownLocation } = useLocation();
 
     React.useEffect(() => {
         if (status !== "Crisis") {
@@ -57,7 +59,7 @@ export function InteractiveMap({ landmarks = [], areas = [], route }: Interactiv
             />
 
             <Map
-                initialViewState={{ longitude: 51.3347, latitude: 35.7219, zoom: 12 }}
+                initialViewState={{ longitude: lastKnownLocation.lng, latitude: lastKnownLocation.lat, zoom: 12 }}
                 mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${MAPTILER_KEY}`}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
             >
