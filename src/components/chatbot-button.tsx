@@ -195,11 +195,21 @@ export function ChatPanelContent(): React.ReactElement {
      * Handles the location data returned from the SelectMap component.
      * @param {Location} location - The geographic coordinates selected by the user.
      */
-    const handleLocationSave = (location: Location): void => {
+    const handleLocationSave = async (location: Location): Promise<void> => {
         setLastKnownLocation(location);
 
         if (pendingReport) {
-            saveReportToMesh(pendingReport, location);
+            const result = await saveReportToMesh(pendingReport, location);
+            if (result.success && result.landmark) {
+                try {
+                    const stored = localStorage.getItem('landmarks');
+                    const landmarks = stored ? JSON.parse(stored) : [];
+                    landmarks.push(result.landmark);
+                    localStorage.setItem('landmarks', JSON.stringify(landmarks));
+                } catch {
+                    /* ignore */
+                }
+            }
             setMessages(prev => [
                 ...prev,
                 {

@@ -107,15 +107,30 @@ export function ChatInterface() {
             break;
 
           case "report":
-            saveReportToMesh(assistantResponse.payload, lastKnownLocation);
+            {
+              const result = await saveReportToMesh(
+                assistantResponse.payload,
+                lastKnownLocation,
+              );
+              if (result.success && result.landmark) {
+                try {
+                  const stored = localStorage.getItem("landmarks");
+                  const landmarks = stored ? JSON.parse(stored) : [];
+                  landmarks.push(result.landmark);
+                  localStorage.setItem("landmarks", JSON.stringify(landmarks));
+                } catch {
+                  /* ignore */
+                }
+              }
 
-            finalAssistantMessage = {
-              id: crypto.randomUUID(),
-              role: "assistant",
-              content:
-                "Thank you. Your report has been received and will be shared with the network.",
-            };
-            setMessages((prev) => [...prev, finalAssistantMessage]);
+              finalAssistantMessage = {
+                id: crypto.randomUUID(),
+                role: "assistant",
+                content:
+                  "Thank you. Your report has been received and will be shared with the network.",
+              };
+              setMessages((prev) => [...prev, finalAssistantMessage]);
+            }
             break;
 
           case "location_request":
@@ -185,9 +200,19 @@ export function ChatInterface() {
             setShowLocationPicker(false);
             setPendingReport(null);
           }}
-          onSave={(loc) => {
+          onSave={async (loc) => {
             if (pendingReport) {
-              saveReportToMesh(pendingReport, loc);
+              const result = await saveReportToMesh(pendingReport, loc);
+              if (result.success && result.landmark) {
+                try {
+                  const stored = localStorage.getItem("landmarks");
+                  const landmarks = stored ? JSON.parse(stored) : [];
+                  landmarks.push(result.landmark);
+                  localStorage.setItem("landmarks", JSON.stringify(landmarks));
+                } catch {
+                  /* ignore */
+                }
+              }
               setMessages((prev) => [
                 ...prev,
                 {

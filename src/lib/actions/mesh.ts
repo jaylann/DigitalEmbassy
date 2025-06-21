@@ -13,7 +13,7 @@ const dbPath = path.join(process.cwd(), "data", "landmarks.json");
 export async function saveReportToMesh(
   reportPayload: ReportPayload,
   userLocation: Location,
-): Promise<{ success: boolean }> {
+): Promise<{ success: boolean; landmark?: Landmark }> {
   try {
     const newLandmark: Landmark = {
       id: crypto.randomUUID(),
@@ -39,7 +39,7 @@ export async function saveReportToMesh(
     landmarks.push(newLandmark);
     await fs.writeFile(dbPath, JSON.stringify(landmarks, null, 2));
 
-    return { success: true };
+    return { success: true, landmark: newLandmark };
   } catch (error) {
     console.error("Failed to save Landmark report:", error);
     return { success: false };
