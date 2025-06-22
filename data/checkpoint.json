@@ -14,5 +14,35 @@
     "isVerified": false,
     "visible": true,
     "radius": 100
+  },
+  {
+    "id": "b4338b43-cc63-4678-9241-d0c15aa6231d",
+    "name": "Iranian Nuclear Society",
+    "description": "Tehran Province, Tehran, \u067e\u0644\u0627\u06a9 \u06f6\u06f0\u060c \u062a\u0647\u0631\u0627\u0646\u060c\u060c \u062e\u06cc\u0627\u0628\u0627\u0646 \u0642\u0631\u06cc\u0628 \u06f2\u06f1\u060c Iran",
+    "location": {
+      "lat": 35.7364471,
+      "lng": 51.392803099999995
+    },
+    "category": "checkpoint",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:16:00.578622",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "4094a3ca-7fdd-4589-8b17-b027e99e6c45",
+    "name": "Alborz Tehran border",
+    "description": "Tehran Province, Karaj, 2, P3WR+62F, Iran",
+    "location": {
+      "lat": 35.745559899999996,
+      "lng": 51.090062499999995
+    },
+    "category": "checkpoint",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:16:01.082321",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
   }
 ]

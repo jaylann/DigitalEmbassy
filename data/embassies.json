@@ -12,4 +12,124 @@
   "addedBy": "system",
   "isVerified": true,
   "visible": true
-}]
+},
+  {
+    "id": "86a90385-2652-426a-b359-15791292b819",
+    "name": "Embassy of The Federal Republic of Germany",
+    "description": "Tehran Province, Tehran, Ferdowsi Ave, No. 324, Ave, Iran",
+    "location": {
+      "lat": 35.6930967,
+      "lng": 51.4205046
+    },
+    "category": "embassy",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:16:01.546638",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "e9073f20-3b81-42cf-a556-fb859e0d45a0",
+    "name": "German Embassy Tehran/ Consulate and Visa Section",
+    "description": "Tehran, Tehran Province Tehran 8th St, No. 7 ,Arian Building, Ahmad Qasir Bokharest St, Iran",
+    "location": {
+      "lat": 35.732282,
+      "lng": 51.418864799999994
+    },
+    "category": "embassy",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:16:01.547818",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "f5c324f6-d985-4d2c-ae20-adc8a1d3410e",
+    "name": "Embassy of France",
+    "description": "Tehran Province, Tehran, District 11, \u062e\u06cc\u0627\u0628\u0627\u0646 \u0646\u0648\u0641\u0644 \u0644\u0648\u0634\u0627\u062a\u0648\u060c \u067e\u0644\u0627\u06a9 64-66\u060c Iran",
+    "location": {
+      "lat": 35.697075999999996,
+      "lng": 51.4105494
+    },
+    "category": "embassy",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:16:02.065446",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "3a9c928c-d446-4244-9b06-e6fc3d065b15",
+    "name": "Consulate General of The Italian Republic",
+    "description": "Tehran Province, Tehran, District 3, Nelson Mandela Blvd, QC8C+RCP, Iran",
+    "location": {
+      "lat": 35.7670822,
+      "lng": 51.4210826
+    },
+    "category": "embassy",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:16:02.432529",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "e7df53d7-6749-4f6e-b1b6-309889acc2d0",
+    "name": "Embassy of The Italian Republic",
+    "description": "Tehran, Nofel Loshato St, MCW5+PM7, Iran",
+    "location": {
+      "lat": 35.6967758,
+      "lng": 51.4091636
+    },
+    "category": "embassy",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:16:02.432529",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "9b2edb80-762e-478c-9e3e-3070d30b23ba",
+    "name": "Italian Embassy Garden",
+    "description": "QFX8+J58, Tajrish, Tehran Province, Iran",
+    "location": {
+      "lat": 35.7990385,
+      "lng": 51.4654525
+    },
+    "category": "embassy",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:16:02.432529",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "36a63ece-6cde-4b75-bcb1-ef022f390ec3",
+    "name": "Italian Embassy Trade and Promotion Section-ICE Tehran",
+    "description": "Tehran Province, Tehran, Nelson Mandela Blvd, No. Navak, Iran",
+    "location": {
+      "lat": 35.7555158,
+      "lng": 51.415020399999996
+    },
+    "category": "embassy",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:16:02.432529",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "384fe2cc-7bc7-41f2-bd4c-a309e1cd7e08",
+    "name": "Embassy of The Republic of Poland",
+    "description": "Tehran Province, Tehran, No. 2 Pirouz St., Africa Expressway (Nelson Mandela Ave.) 174\u060c Qanbari\u060c Iran",
+    "location": {
+      "lat": 35.765912,
+      "lng": 51.419556
+    },
+    "category": "embassy",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:16:02.861808",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  }]

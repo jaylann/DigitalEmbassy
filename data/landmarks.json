@@ -1,65 +1,17 @@
 [
   {
-    "id": "checkpoint-a",
-    "name": "Checkpoint A",
+    "id": "1600519f-ce1e-43cd-b1a9-36ae713a6911",
+    "name": "Unknown",
+    "description": "Huge bomb explosion in city center Berlin",
     "location": {
-      "lat": 35.722,
-      "lng": 51.335
-    },
-    "radius": 200,
-    "category": "checkpoint",
-    "description": "Primary checkpoint for authorized personnel only",
-    "trustLevel": "high",
-    "lastUpdated": "2025-06-21T10:00:00Z",
-    "addedBy": "user-admin-001",
-    "isVerified": true,
-    "visible": true
-  },
-  {
-    "id": "medical-1",
-    "name": "Medical Center",
-    "location": {
-      "lat": 35.725,
-      "lng": 51.34
-    },
-    "radius": 150,
-    "category": "medical",
-    "description": "On-site medical center providing emergency care",
-    "trustLevel": "medium",
-    "lastUpdated": "2025-06-20T15:30:00Z",
-    "addedBy": "user-medic-042",
-    "isVerified": false,
-    "visible": true
-  },
-  {
-    "id": "17436a31-97e1-4f1a-88d4-479630c50b58",
-    "name": "City of Belin Incident",
-    "description": "Bomb report in city center",
-    "location": {
-      "lat": 52.52173705484944,
-      "lng": 13.41911265726867
+      "lat": 35.68860011849884,
+      "lng": 51.29951559744018
     },
     "category": "explosion",
     "trustLevel": "low",
     "isVerified": false,
     "addedBy": "user_report",
-    "lastUpdated": "2025-06-21T18:08:25.186Z",
+    "lastUpdated": "2025-06-22T09:54:41.677Z",
     "visible": true
-  },
-  {
-    "id": "26ea2690-2aa2-427c-8b52-df3cf2a2924a",
-    "name": "Belin",
-    "description": "bomb threat in the city center",
-    "location": {
-      "lat": 35.7579216169879,
-      "lng": 51.46980995928902
-    },
-    "category": "explosion",
-    "trustLevel": "low",
-    "isVerified": false,
-    "addedBy": "user_report",
-    "lastUpdated": "2025-06-21T18:32:23.730Z",
-    "visible": true
-  },
-
+  }
 ]
