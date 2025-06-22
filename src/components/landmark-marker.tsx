@@ -20,7 +20,7 @@ import {
   LucideIcon,
   CheckCircle2,
   Signal,
-  Clock,
+  Clock, Building,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -111,6 +111,16 @@ const landmarkConfig: Record<
       text: "text-cyan-100",
       border: "border-cyan-400",
       badge: "bg-cyan-500/20 text-cyan-300 border-cyan-400/30",
+    },
+  },
+  embassy: {
+    icon: Building, // Example icon
+    label: "Embassy / Consulate",
+    styles: {
+      bg: "bg-slate-600", // Example color: Slate
+      text: "text-slate-100",
+      border: "border-slate-400",
+      badge: "bg-slate-500/20 text-slate-300 border-slate-400/30",
     },
   },
   explosion: {

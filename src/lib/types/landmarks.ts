@@ -5,6 +5,7 @@ export type LandmarkCategory =
   | "trusted_contact"
   | "medical"
   | "checkpoint"
+    | "embassy"
   | "explosion"
   | "attack"
   | "disaster";
