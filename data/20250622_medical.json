@@ -1,0 +1,302 @@
+[
+  {
+    "id": "e6498f8b-1811-4e57-960d-d98b6415d58f",
+    "name": "tehran hospital - \u0628\u06cc\u0645\u0627\u0631\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646",
+    "description": "PC99+4RF District 6, Tehran, Iran",
+    "location": {
+      "lat": 35.7178153,
+      "lng": 51.419556299999996
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "3169ec4e-b9a8-4f7f-9449-4da8ddf04b69",
+    "name": "Atieh Hospital",
+    "description": "Tehran, West Shahrak Qods (West),Shahid Dadman Intersection, Farahzadi Blvd, 6564-14151, Iran",
+    "location": {
+      "lat": 35.7654083,
+      "lng": 51.3616007
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "e34d32c2-c2b9-4243-a5a8-d3a44d4c8097",
+    "name": "Milad Hospital",
+    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u0627\u062a\u0648\u0628\u0627\u0646 \u0647\u0645\u062a \u062e\u0631\u0648\u062c\u06cc \u0627\u062e\u062a\u0635\u0627\u0635\u06cc \u0628\u0631\u062c \u0648 \u0628\u06cc\u0645\u0627\u0631\u0633\u062a\u0627\u0646 \u0645\u06cc\u0644\u0627\u062f\u060c P9WJ+6HH, Iran",
+    "location": {
+      "lat": 35.745565,
+      "lng": 51.3814979
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "7c530d85-da45-47a9-bef9-9c507cd432a7",
+    "name": "Arman Hospital",
+    "description": "Tehran Province, Tehran, District 3, Seoul St, Q9CW+GH3, Iran",
+    "location": {
+      "lat": 35.7712516,
+      "lng": 51.396423999999996
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "8e60a993-3743-45ce-b3d8-d4a5ff3223af",
+    "name": "Imam Khomeini Hospital",
+    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u0627\u0646\u062a\u0647\u0627\u06cc \u0628\u0644\u0648\u0627\u0631 \u06a9\u0634\u0627\u0648\u0631\u0632, 14197 33141, Iran",
+    "location": {
+      "lat": 35.708003399999996,
+      "lng": 51.3806272
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "7f1ab7cf-652f-4496-96f6-69eb4a36728e",
+    "name": "Mehr Hospital",
+    "description": "Tehran Province, Tehran, District 6, W Zartosht St, PC82+8VJ, Iran",
+    "location": {
+      "lat": 35.715826899999996,
+      "lng": 51.402140599999996
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "18c21920-ffb9-4922-b2aa-abb51274cf0d",
+    "name": "Jam Hospital",
+    "description": "Tehran Province, Tehran, Fajr St, PCFF+56J, Iran",
+    "location": {
+      "lat": 35.722960400000005,
+      "lng": 51.423002
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "1e32190e-921c-45e4-9535-284a1af569f7",
+    "name": "Sina Hospital",
+    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062e\u06cc\u0627\u0628\u0627\u0646 \u0627\u0645\u0627\u0645 \u062e\u0645\u06cc\u0646\u06cc(\u0631\u0647)- \u0646\u0631\u0633\u06cc\u062f\u0647 \u0628\u0647 \u0645\u06cc\u062f\u0627\u0646 \u062d\u0633\u0646 \u0622\u0628\u0627\u062f\u060c 11367 46911, Iran",
+    "location": {
+      "lat": 35.68763,
+      "lng": 51.41375250000001
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "3a2deb65-5e27-41c8-9933-8a6707e9ef69",
+    "name": "Laleh Hospital",
+    "description": "Tehran, Tehran Sima-ye-Iran Street Phase 5\u060c Iran",
+    "location": {
+      "lat": 35.752695599999996,
+      "lng": 51.3602887
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "ed1b54e3-ec82-43ae-9272-6071ec1f6aff",
+    "name": "Tehran Clinic Hospital",
+    "description": "Tehran Province, Tehran, \u0642\u0627\u0626\u0645 \u0645\u0642\u0627\u0645 \u0641\u0631\u0627\u0647\u0627\u0646\u06cc\u060c PCG9+87H, Iran",
+    "location": {
+      "lat": 35.7258201,
+      "lng": 51.4182452
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "618e4e77-bc48-4f00-b3ca-7e5f68cd1219",
+    "name": "Bahman Hospital",
+    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u0634\u0647\u0631\u06a9 \u063a\u0631\u0628\u060c\u060c Iran Zamin Blvd, Q98J+878, Iran",
+    "location": {
+      "lat": 35.7657834,
+      "lng": 51.3806896
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "a5141c74-ccd2-49cc-b3eb-d36981c629d8",
+    "name": "Iranshahr Hospital",
+    "description": "Tehran Province, Tehran, District 7, \u062a\u0647\u0631\u0627\u0646 - \u062e\u064a\u0627\u0628\u0627\u0646 \u0634\u0631\u064a\u0639\u062a\u064a \u0646\u0631\u0633\u064a\u062f\u0647 \u0628\u0647 \u0633\u0647 \u0631\u0627\u0647 \u0637\u0627\u0644\u0642\u0627\u0646\u064a \u062e\u064a\u0627\u0628\u0627\u0646 \u062c\u0648\u0627\u062f \u0643\u0627\u0631\u06af\u0631 \u0628\u064a\u0645\u0627\u0631\u0633\u062a\u0627\u0646 \u0627\u064a\u0631\u0627\u0646\u0634\u0647\u0631\u060c \u062e\u06cc\u0627\u0628\u0627\u0646 \u0634\u0647\u06cc\u062f \u062c\u0648\u0627\u062f \u06a9\u0627\u0631\u06af\u0631\u060c PC5M+M66, Iran",
+    "location": {
+      "lat": 35.7091695,
+      "lng": 51.4330309
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "c27529f3-5aaf-4d28-ac8a-c0eefb62a554",
+    "name": "Iranmehr Hospital",
+    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062e\u06cc\u0627\u0628\u0627\u0646 \u0634\u0631\u06cc\u0639\u062a\u06cc\u060c \u062f\u0648 \u0631\u0627\u0647\u06cc\u060c QC8R+XVJ, Iran",
+    "location": {
+      "lat": 35.767466,
+      "lng": 51.4421292
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "bed395a9-3cca-4a9d-b6b6-daa4158275dd",
+    "name": "Shariati Hospital",
+    "description": "Tehran Province, Tehran, N Kargar, P9CP+JP2, Iran",
+    "location": {
+      "lat": 35.721513099999996,
+      "lng": 51.3867658
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "ceb61c72-364c-4c44-a63a-f5f4822bc6df",
+    "name": "Torfeh Hospital",
+    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 Tehran \u062e\u06cc\u0627\u0628\u0627\u0646 \u0645\u0635\u0637\u0641\u06cc \u062e\u0645\u06cc\u0646\u06cc\u060c \u0645\u0642\u0627\u0628\u0644 \u0633\u0627\u0632\u0645\u0627\u0646 \u062a\u0628\u0644\u06cc\u063a\u0627\u062a \u0627\u0633\u0644\u0627\u0645\u06cc\u060c 11498 47514, Iran",
+    "location": {
+      "lat": 35.695612499999996,
+      "lng": 51.4348346
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "ab9e6a22-b20c-4dc6-b3aa-0d2c99cc67bc",
+    "name": "Apadana Hospital",
+    "description": "Tehran Province, Tehran, District 6, St No. 172, Qarani, PC69+Q94, Iran",
+    "location": {
+      "lat": 35.7118447,
+      "lng": 51.4184507
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "5d347774-b14e-48e8-9bfb-70940e90c9d1",
+    "name": "Farmaniyeh Hospital",
+    "description": "Tehran Province, Tajrish, Farmanieh Ave, Iran",
+    "location": {
+      "lat": 35.7990706,
+      "lng": 51.4726055
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "832d4ccc-fc56-45cd-867e-995c1a5ae463",
+    "name": "Yas Hospital",
+    "description": "Tehran Province, Tehran, District 7, N Villa Rd, PC97+9R2, Iran",
+    "location": {
+      "lat": 35.7183966,
+      "lng": 51.4145167
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "057f8f89-a142-44c6-bde4-f4765c7f8a9f",
+    "name": "Khatam Al-Anbiya Hospital",
+    "description": "Tehran Province, Tehran, Rashid Yasemi Street\u060c Upper than Mirdamad St.\u060c Vali- Asr St.\u060c QC95+J5G, Iran",
+    "location": {
+      "lat": 35.7690536,
+      "lng": 51.4079613
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "22b7eeed-5199-4320-bb8a-6066b61ce80a",
+    "name": "Pars Hospital",
+    "description": "Tehran Province, Tehran, 67\u060c \u0628\u0644\u0648\u0627\u0631 \u06a9\u0634\u0627\u0648\u0631\u0632\u060c Iran",
+    "location": {
+      "lat": 35.7100094,
+      "lng": 51.399569400000004
+    },
+    "category": "medical",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:55.577509",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  }
+]

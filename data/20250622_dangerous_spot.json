@@ -1,0 +1,1487 @@
+[
+  {
+    "id": "2b7f0756-e132-49ac-9b22-0cc4dd0495ea",
+    "name": "Marine Corps",
+    "description": "PG24+Q5Q Dowshan Tappeh, Tehran, Iran",
+    "location": {
+      "lat": 35.7019709,
+      "lng": 51.505478
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "751ccd3d-e366-4d14-ab9d-336f159eaede",
+    "name": "General Provost of the Islamic Revolutionary Guard Corps",
+    "description": "Tehran, District 14, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646\u060c \u062a\u0647\u0631\u0627\u0646\u060c \u062f\u0648\u0634\u0627\u0646 \u062a\u067e\u0647\u060c \u0628\u0632\u0631\u06af\u0631\u0627\u0647 \u0647\u062c\u0631\u062a\u060c\u060c, MGH2+PV7, Iran",
+    "location": {
+      "lat": 35.6792951,
+      "lng": 51.5021802
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "25b28d7c-f534-4c2a-bf1f-75aca4ba1364",
+    "name": "\u0635\u0646\u0627\u06cc\u0639 \u0647\u0648\u0627\u06cc\u06cc \u0627\u0648\u062c",
+    "description": "M8JG+89R District 9, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.6808658,
+      "lng": 51.3258766
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "3c78a2b2-506b-442e-b6bd-0dd90fca3dd2",
+    "name": "(Khatam Al-Anbia Air Defense Academy(of army of Islamic Republic of Iran",
+    "description": "MG62+6RC District 14, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.6605546,
+      "lng": 51.5020035
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "853766a8-00e6-48cb-852b-d6104fe18681",
+    "name": "Training Center 01 Martyrs of Nazaja Soldiers",
+    "description": "Tehran, District 14, Tahran Tehran \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646\u060c \u062a\u0647\u0631\u0627\u0646\u060c \u062f\u0648\u0634\u0627\u0646 \u062a\u067e\u0647\u060c\u060c \u062e\u06cc\u0627\u0628\u0627\u0646 \u0634\u0647\u06cc\u062f \u062d\u0628\u06cc\u0628\u06cc\u060c, MFQW+FCJ, Iran",
+    "location": {
+      "lat": 35.6887139,
+      "lng": 51.4960101
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "59993d92-b5ca-438b-9d03-90d15f99c6ec",
+    "name": "Shahid Soleimani military base",
+    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u0627\u06cc\u0631\u0627\u0646\u060c \u062a\u0647\u0631\u0627\u0646 \u0628\u0632\u0631\u06af\u060c \u062d\u0635\u0627\u0631\u06a9\u060c \u0628\u0644\u0648\u0627\u0631 \u062f\u0627\u0646\u0634\u06af\u0627\u0647\u060c\u060c Ferdos Blvd, Iran",
+    "location": {
+      "lat": 35.785713,
+      "lng": 51.3172771
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "b88860a0-f103-4da0-918a-17d896b1da2f",
+    "name": "\u067e\u0627\u062f\u06af\u0627\u0646 \u0646\u06cc\u0631\u0648\u06cc \u062f\u0631\u06cc\u0627\u06cc\u06cc \u06a9\u0648\u0647\u06a9 \u0633\u062a\u0627\u062f \u0646\u062f\u0627\u062c\u0627",
+    "description": "\u062a\u0647\u0631\u0627\u0646\u060c Resalat Square\u060c PFXR+F49, Iran",
+    "location": {
+      "lat": 35.7486683,
+      "lng": 51.4903214
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "466aa8cf-2ce8-4011-b659-0b1361d07606",
+    "name": "National Defense University",
+    "description": "QGMJ+JGV \u0645\u062e\u0628\u0631\u06cc\u060c \u062a\u062c\u0631\u06cc\u0634\u060c \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646\u060c Iran",
+    "location": {
+      "lat": 35.7841223,
+      "lng": 51.5312965
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "ee56c23b-b2da-4d80-9ed4-0ab0e62aa7dd",
+    "name": "\u062f\u0631\u0628 \u0631\u062c\u0628\u06cc \u067e\u0648\u0631",
+    "description": "Tehran Province, Tehran, Dowshan Tappeh, Hejrat Hwy, MGH2+PV3, Iran",
+    "location": {
+      "lat": 35.6792537,
+      "lng": 51.502156799999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "a0b477f4-6b29-46c9-bf60-6962b55475e6",
+    "name": "\u0627\u0646\u0628\u0627\u0631\u0647\u0627\u06cc \u0633\u067e\u0627\u0647 \u067e\u0627\u0633\u062f\u0627\u0631\u0627\u0646",
+    "description": "M6VH+9V, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.693411499999996,
+      "lng": 51.229698299999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "f2bab81a-c196-4243-b13f-7558e77610d3",
+    "name": "\u067e\u0627\u0633\u062f\u0627\u0631\u062e\u0627\u0646\u0647 \u062f\u0627\u0646\u0634\u06af\u0627\u0647 \u0647\u0648\u0627\u06cc\u06cc \u0634\u0647\u06cc\u062f \u0633\u062a\u0627\u0631\u06cc",
+    "description": "M8FP+M86 Kooy-e-Mehrzad, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.6741749,
+      "lng": 51.335760099999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "cdb45d49-d833-47e3-864b-ca84c161af25",
+    "name": "Mostafa Khomeyni Logistic Headquarters",
+    "description": "Alborz Province, Tehran, Vardavard, Saravan, P4XF+W86, Iran",
+    "location": {
+      "lat": 35.749791,
+      "lng": 51.1232614
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "10ff9329-377f-4871-ad52-6b811724a348",
+    "name": "Retired Military Personnel Club",
+    "description": "Tehran Province, Tehran, \u062e\u06cc\u0627\u0628\u0627\u0646 \u0641\u0627\u0637\u0645\u06cc \u063a\u0631\u0628\u06cc- \u0646\u0628\u0634 \u062e\u06cc\u0627\u0628\u0627\u0646 \u0627\u0639\u062a\u0645\u0640\u0640\u0627\u062f\u0632\u0627\u062f\u0647 \u06a9\u0627\u0646\u0648\u0646 \u0628\u0627\u0632\u0646\u0634\u0633\u062a\u06af\u0640\u0640\u0627\u0646 \u0622\u062c\u0627\u060c Etemadzadeh St, P97M+9QR, Iran",
+    "location": {
+      "lat": 35.7134882,
+      "lng": 51.384397799999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "8584c347-5fed-42d4-a01d-fd33ffebd5df",
+    "name": "Military armory",
+    "description": "Tehran Province, Tehran, Yakhchal St, QCFW+42J, Iran",
+    "location": {
+      "lat": 35.7728472,
+      "lng": 51.445018
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "a0df8008-7140-432f-92f1-10a11aa14834",
+    "name": "Radar and Communications Station of the Islamic Republic of Iran's Revolutionary Guard Corps",
+    "description": "HFXP+3C, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.5976471,
+      "lng": 51.4860964
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "13a6a055-0147-4e92-9015-7a18e8ec0c9a",
+    "name": "\u062a\u06cc\u067e \u06f6\u06f5 \u0646\u06cc\u0631\u0648\u0647\u0627\u06cc \u0648\u06cc\u0698\u0647 \u0647\u0648\u0627\u0628\u0631\u062f \u0627\u0631\u062a\u0634",
+    "description": "MG75+63G District 14, Tehran, Iran",
+    "location": {
+      "lat": 35.663053,
+      "lng": 51.5076989
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "95dca8ce-6fbe-4170-8016-83cd07817aa6",
+    "name": "\u05d1\u05e1\u05d9\u05e1 \u05de\u05e9\u05de\u05e8\u05d5\u05ea \u05d4\u05de\u05d4\u05e4\u05db\u05d4 \u05dc\u05e9\u05e2\u05d1\u05e8",
+    "description": "Q693+8R, Tehran, Iran",
+    "location": {
+      "lat": 35.768297,
+      "lng": 51.204589
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "63bc8a7c-32a0-496c-bf2f-ed5119857bd2",
+    "name": "\u0641\u0631\u0645\u0627\u0646\u062f\u0647\u06cc \u0622\u0645\u0627\u062f \u0648 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0633\u067e\u0627\u0647 \u067e\u0627\u0633\u062f\u0627\u0631\u0627\u0646",
+    "description": "M6WR+5FP, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.6952528,
+      "lng": 51.2397579
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "23243fe7-a0f4-4df7-9401-7d20d5bf571b",
+    "name": "\u06af\u0631\u062f\u0627\u0646 \u0628\u06cc\u062a \u0627\u0644\u0645\u0642\u062f\u0633 \u0633\u067e\u0627\u0647",
+    "description": "Tehran, \u06a9\u06cc\u0644\u0648\u0645\u062a\u0631 \u06f5\u060c \u0631\u0632\u0646\u060c \u0628\u0647 \u0633\u0645\u062a\u060c P8CM+PVW, Iran",
+    "location": {
+      "lat": 35.7218583,
+      "lng": 51.3346954
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "f5e5f7ea-a1fb-4ba5-bd6f-40763e4a9aad",
+    "name": "Mehrabad International Airport",
+    "description": "M8QH+R63, Tehran, Iran",
+    "location": {
+      "lat": 35.689518199999995,
+      "lng": 51.3280459
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.068293",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "8b2c89af-93e7-4462-9853-cb6f26142c43",
+    "name": "Iran Chemicals Prodcution Co. Polychem",
+    "description": "Tehran Province, Tehran, Qaleh-ye-Shams Abad, Khazayi, J7CQ+643, Iran",
+    "location": {
+      "lat": 35.620521100000005,
+      "lng": 51.287810699999994
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "35ba49b9-756f-4723-b967-c7dd5aae6f09",
+    "name": "Sepehr Afrooz Chemical Co",
+    "description": "Tehran Province, Tehran, Rajaei Expy, JCG6+V99, Iran",
+    "location": {
+      "lat": 35.6271556,
+      "lng": 51.4109884
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "1cc1e91d-0fea-401d-abcb-6fb9e36ad40d",
+    "name": "Arad Chemical Industries",
+    "description": "Tehran Province, Tehran, District 3, Unit 3, Soltani St, No. #18, 2nd Floor, Iran",
+    "location": {
+      "lat": 35.775414999999995,
+      "lng": 51.4201425
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "18fb0bad-98de-42ba-ab2e-9d9740414059",
+    "name": "Iranian Chemical",
+    "description": "Tehran, \u067e\u0627\u0645\u0646\u0627\u0631\u060c\u0645\u0646\u0637\u0642\u0647 \u06f1\u06f2\u060c \u062a\u0647\u0631\u0627\u0646\u060c \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646\u060c\u060c Iran",
+    "location": {
+      "lat": 35.6827628,
+      "lng": 51.4227511
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "a5394ff7-1512-4d79-8c56-a1d963e0d10a",
+    "name": "\u0635\u0646\u0627\u06cc\u0639 \u0634\u06cc\u0645\u06cc\u0627\u06cc\u06cc \u063a\u0641\u0627\u0631\u06cc",
+    "description": "M8H3+784 District 9, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.678136099999996,
+      "lng": 51.3033137
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "2ddbae9c-5952-48a7-b619-34cd80f26a1f",
+    "name": "Taba Chemie",
+    "description": "Tehran Province, Tehran, Sanat, PHGG+R3X, Iran",
+    "location": {
+      "lat": 35.7271028,
+      "lng": 51.5752252
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "51a11bb8-9309-4bd9-8d9e-790ff6d5df23",
+    "name": "Ivan Chemical Industry Complex 2451",
+    "description": "Tehran, No.25&26, Laleh Office Complex, Hafezi St, Iran",
+    "location": {
+      "lat": 35.770491,
+      "lng": 51.3493583
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "ea223069-b488-46ed-bf5b-42fcbdf0ca4f",
+    "name": "Fars chemical industries company",
+    "description": "Tehran Province, Tehran, District 3, Rahimi St, QCC8+VG4, Iran",
+    "location": {
+      "lat": 35.772141999999995,
+      "lng": 51.416315399999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "aefa06a5-fe2f-4ea7-aa5f-a84b86025c4c",
+    "name": "Behdash Chemical Co.",
+    "description": "Tehran, \u0627\u06cc\u0631\u0627\u0646 \u0632\u0645\u06cc\u0646 \u062c\u0646\u0648\u0628\u06cc\u060c\u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646\u060c \u062a\u0647\u0631\u0627\u0646\u060c\u060c Q84C+43F, Iran",
+    "location": {
+      "lat": 35.7553055,
+      "lng": 51.3201737
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "3726ed37-21b4-417d-bfd7-e88cc855f032",
+    "name": "TITAN Chemical Co.",
+    "description": "Tehran Province, Tehran, \u062e\u06cc\u0627\u0628\u0627\u0646 \u0642\u062f\u06cc\u0627\u0646\u06cc\u060c P8CQ+6WG, Iran",
+    "location": {
+      "lat": 35.7205546,
+      "lng": 51.339823800000005
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "c4ec75aa-8ffc-4a7c-8d34-05ab0c8d1304",
+    "name": "mayan shimi",
+    "description": "Tehran, Towhid St, No. \u0631\u0648\u0628\u0631\u0648\u06cc, \u0633\u0627\u0632\u0645\u0627\u0646 \u063a\u0630\u0627 \u0648 \u062f\u0627\u0631\u0648 - \u067e\u0644\u0627\u06a9 \u06f3\u06f7 \u0637\u0628\u0642\u0647 \u06f4 \u0648\u0627\u062d\u062f \u06f1\u06f0, Iran",
+    "location": {
+      "lat": 35.7015866,
+      "lng": 51.3781473
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "f321a162-8b7e-4d22-8575-e4fff8b06acd",
+    "name": "Rock Chemie Co.",
+    "description": "PC2C+V4P, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.702206,
+      "lng": 51.4203335
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "53138c37-cab9-48e3-80eb-3e44cacf4d0c",
+    "name": "Yashm Paint & Resin Company",
+    "description": "Tehran Province, Tehran, District 6, \u0628\u0646 \u0628\u0633\u062a \u06f6\u06f5-\u067e\u0644\u0627\u06a9 \u06f1\u06f2-\u0637\u0628\u0642\u0647 \u0627\u0648\u0644\u060c Asad Abadi St, 14349 65311, Iran",
+    "location": {
+      "lat": 35.7486532,
+      "lng": 51.40578
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "e6e91535-258d-452d-b8c8-d16a42e29041",
+    "name": "Tehran Bakhtar flour factory",
+    "description": "Tehran Province, Tehran, District 10, \u0642\u0632\u0648\u06cc\u0646 \u062e\u06cc\u0627\u0628\u0627\u0646, Imamzadeh Abdollah St, M9C3+RG7, Iran",
+    "location": {
+      "lat": 35.6720252,
+      "lng": 51.353794799999996
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "f82b648b-5190-494a-90e3-512db0629982",
+    "name": "Resingol Chemicals",
+    "description": "PHJC+2J9, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.730029699999996,
+      "lng": 51.5715967
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "20cb11c8-0e64-4051-9904-762c17190094",
+    "name": "\u0634\u0631\u06a9\u062a \u0646\u06cc\u062a\u0631\u0648\u0698\u0646 \u0634\u06cc\u0645\u06cc",
+    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646\u060c \u062a\u0647\u0631\u0627\u0646\u060c \u0645\u0646\u0637\u0642\u0647 \u06f1\u06f2\u060c \u062a\u0647\u0631\u0627\u0646 \u0645\u06cc\u062f\u0627\u0646 \u0627\u0645\u0627\u0645 \u062e\u0645\u06cc\u0646\u06cc \u062e \u0646\u0627\u0635\u0631\u062e\u0633\u0631\u0648 \u06a9\u0648\u0686\u0647 \u062e\u062f\u0627\u0628\u0646\u062f\u0647 \u0644\u0648 \u067e\u0627\u0633\u0627\u0698 \u0627\u062e\u0648\u062a \u0637\u0628\u0642\u0647 \u062f\u0648\u0645 \u067e\u0644\u0627\u06a9 2\u060c 1\u060c, Iran",
+    "location": {
+      "lat": 35.680955,
+      "lng": 51.423024899999994
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "4a295166-a72f-4a8e-98b4-cd57dfdad7d0",
+    "name": "Razi Chemical",
+    "description": "Tehran Province, Tehran, Hejab St, No. 22, Iran",
+    "location": {
+      "lat": 35.710422699999995,
+      "lng": 51.396651399999996
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "e00959a8-e5db-4258-8928-0fee123b6c38",
+    "name": "\u0634\u0631\u06a9\u062a \u0634\u06cc\u0645\u06cc\u0627\u06cc\u06cc \u0627\u0646\u0631\u0698\u06cc \u0633\u0645\u0646\u0627\u0646",
+    "description": "Tehran Province, Tehran, No. 60, St., Africa Ave.,\u060c Golfam, Iran",
+    "location": {
+      "lat": 35.7765425,
+      "lng": 51.425501499999996
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "8b16bf80-562b-494c-9438-43f0bd3e5d0b",
+    "name": "Kamel Petro Tech Chemical Company",
+    "description": "Tehran Province, Tajrish, Valiasr St, RC4G+QJC, Iran",
+    "location": {
+      "lat": 35.8069323,
+      "lng": 51.4265231
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "f5a1ed7c-fce4-4c17-b5d6-c9eac715e912",
+    "name": "Tehran Oil Refinery",
+    "description": "Tehran Province, Tehran, Esmail Abad-e-Moin, Anbar-e-Naft, GCQG+W7P, Iran",
+    "location": {
+      "lat": 35.5398442,
+      "lng": 51.4257086
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:56.570299",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "105ca904-18c2-41e9-b402-ba7573fe1799",
+    "name": "Islamic Republic of Iran Railways",
+    "description": "Tehran Province, Tehran, Nelson Mandela Blvd, PCV8+XG6, Iran",
+    "location": {
+      "lat": 35.7449133,
+      "lng": 51.4162557
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "ddc5eda3-6514-4224-835c-c1497b457953",
+    "name": "Tehran Municipality",
+    "description": "PC86+5J6, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.715415899999996,
+      "lng": 51.411520599999996
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "3ef397c5-1af3-4032-8fb3-ce465e6674fb",
+    "name": "Iran Ministry of Roads & Urban Development",
+    "description": "Tehran Province, Tehran, District 6, \u062e\u06cc\u0627\u0628\u0627\u0646 \u0622\u0641\u0631\u06cc\u0642\u0627 \u0648\u0632\u0627\u0631\u062a \u0631\u0627\u0647 \u0648 \u0634\u0647\u0631\u0633\u0627\u0632\u06cc\u060c Argentina Square\u060c Modares Hwy, PCWC+M7R, Iran",
+    "location": {
+      "lat": 35.746745000000004,
+      "lng": 51.420629
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "02e046e0-f4f8-4f0b-a791-c130293a0e18",
+    "name": "Iran Ministry of Foreign Affairs",
+    "description": "Tehran, \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u062a\u0647\u0631\u0627\u0646 \u0645\u0646\u0637\u0642\u0647 \u06f1\u06f2 Emam Khomeyni Street\u060c 11369 14811, Iran",
+    "location": {
+      "lat": 35.688213399999995,
+      "lng": 51.415841799999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "ddfa887b-b122-424f-8ebd-4132caf28249",
+    "name": "Tehran Disaster Mitigation and Management Organization",
+    "description": "P8GQ+5QQ District 2, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.7254596,
+      "lng": 51.339479499999996
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "18073f58-f4d1-43a9-8f3f-2444f5f6f4d4",
+    "name": "The Office of the Supreme Leader of the Islamic Republic of Iran",
+    "description": "Tehran Province, Tehran, District 11, Atarod, M9RX+QHV, Iran",
+    "location": {
+      "lat": 35.691976,
+      "lng": 51.3989118
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "b8125721-dafa-4d23-8fbd-10ce951ea81d",
+    "name": "Islamic Republic of Iran Customs Administration",
+    "description": "Tehran Province, Tehran, District 6, \u0646\u0628\u0634 \u06a9\u0648\u0686\u0647 \u0646\u0627\u0635\u0631\u060c Valiasr St, PC85+36M, Iran",
+    "location": {
+      "lat": 35.715203599999995,
+      "lng": 51.4080321
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "e4b18c58-483a-44c8-8421-ee9cce179c8a",
+    "name": "\u0633\u0627\u0632\u0645\u0627\u0646 \u0645\u062c\u0631\u06cc \u0633\u0627\u062e\u062a\u0645\u0627\u0646 \u0647\u0627 \u0648 \u062a\u0627\u0633\u064a\u0633\u0627\u062a \u062f\u0648\u0644\u062a\u06cc \u0648 \u0639\u0645\u0648\u0645\u06cc",
+    "description": "Tehran Province, Tehran, District 3, E Daneshvar, Q97W+GW4, Iran",
+    "location": {
+      "lat": 35.7637535,
+      "lng": 51.397314699999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "1570d350-ffa2-4631-99b4-25540cc1db7e",
+    "name": "Social, cultural deputy of Tehran",
+    "description": "P9FW+W4W, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.7248729,
+      "lng": 51.3953195
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "a9da5116-529e-4a1f-b027-4e05326eadd0",
+    "name": "Inspection Organization of Tehran Municipality",
+    "description": "Tehran Province, Tehran, District 13, Yasini Hwy, PG32+CVF, Iran",
+    "location": {
+      "lat": 35.703573,
+      "lng": 51.5021719
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "337a3283-f4be-4426-aa22-b843d97d5eda",
+    "name": "\u0633\u0627\u062e\u062a\u0645\u0627\u0646 \u0627\u062f\u0627\u0631\u0627\u062a \u0645\u0631\u06a9\u0632\u06cc \u0631\u0627\u0647 \u0622\u0647\u0646 \u062c\u0645\u0647\u0648\u0631\u06cc \u0627\u0633\u0644\u0627\u0645\u06cc \u0627\u06cc\u0631\u0627\u0646",
+    "description": "Tehran Province, Tehran, Nelson Mandela Blvd, PCV8+WJM, Iran",
+    "location": {
+      "lat": 35.7449133,
+      "lng": 51.4162557
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "7c3e8e2c-69a8-49ea-938c-3cce4d7289a0",
+    "name": "\u0634\u0648\u0631\u0627\u06cc \u0639\u0627\u0644\u06cc \u0627\u0633\u062a\u0627\u0646\u0647\u0627 - \u0633\u0627\u062e\u062a\u0645\u0627\u0646 \u0627\u0635\u0644\u06cc",
+    "description": "Tehran Province, Tehran, 16th St, PCM8+WFC, Iran",
+    "location": {
+      "lat": 35.7348078,
+      "lng": 51.416126399999996
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "2c9364ff-95ef-4f5b-873f-46d8ba259c20",
+    "name": "Construction Engineering Organization of Tehran Province",
+    "description": "Tehran Province, Tehran, District 2, 10 Mahestan St\u060c Q95G+QW6, Iran",
+    "location": {
+      "lat": 35.7598365,
+      "lng": 51.3770944
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "23db38fd-ee20-475c-969c-9b5d05e98a20",
+    "name": "Office of Industrial Property",
+    "description": "\u062a\u0647\u0631\u0627\u0646\u060c \u062e\u06cc\u0627\u0628\u0627\u0646 \u062c\u0631\u062f\u0646\u060c\u060c MCM8+VM7, Iran",
+    "location": {
+      "lat": 35.684661999999996,
+      "lng": 51.416669899999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "2f73473a-f4db-47ec-adf9-cc843617af3d",
+    "name": "Iranian Mines and Mining Industries Development and Renovation Organization",
+    "description": "Tehran Province, Tehran, Sharif, PC39+FJC, Iran",
+    "location": {
+      "lat": 35.7036752,
+      "lng": 51.4190221
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "6fd01f7b-2e19-4f6e-8c1b-b969609afa31",
+    "name": "Islamic City Council of Tehran",
+    "description": "Tehran Province, Tehran, Behesht St, MCJ7+FQC, Iran",
+    "location": {
+      "lat": 35.681177399999996,
+      "lng": 51.414405099999996
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "1b4bceb0-ff67-449f-a7cb-f3d038c2c23b",
+    "name": "\u0634\u0631\u06a9\u062a \u0628\u0647\u0631\u0647 \u0628\u0631\u062f\u0627\u0631\u06cc \u0631\u0627\u0647 \u0622\u0647\u0646 \u0634\u0647\u0631\u06cc \u062a\u0647\u0631\u0627\u0646 \u0648 \u062d\u0648\u0645\u0647 \u0633\u0627\u062e\u062a\u0645\u0627\u0646 \u0634\u0645\u0627\u0631\u0647 \u06f2",
+    "description": "Tehran, \u062f\u0631\u0648\u0627\u0632\u0647 \u0634\u0645\u06cc\u0631\u0627\u0646\u060c\u0645\u0646\u0637\u0642\u0647 \u06f1\u06f2\u060c \u062a\u0647\u0631\u0627\u0646\u060c \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646\u060c\u060c Iran",
+    "location": {
+      "lat": 35.6904173,
+      "lng": 51.447100299999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "42f81d21-5316-46df-b5f4-60e87d1cb090",
+    "name": "Expediency Discernment Council",
+    "description": "Tehran Province, Tehran, Imam Khomeini, M9QX+4R2, Iran",
+    "location": {
+      "lat": 35.6877617,
+      "lng": 51.3995135
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "3780121e-2c22-4359-9510-7187dc26fb0f",
+    "name": "Golestan Palace",
+    "description": "Tehran, Tehran District 12 Fifth Khordad Avenue Arg Sqr, Panzdah-e-Khordad St, Iran",
+    "location": {
+      "lat": 35.6797523,
+      "lng": 51.4205181
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "080735ef-5a30-469b-b94c-7d68d2216817",
+    "name": "District 21 of Tehran Municipality",
+    "description": "Tehran Province, Tehran, East Tehransar, Kamalolmolk Square, P734+266, Iran",
+    "location": {
+      "lat": 35.7025372,
+      "lng": 51.2555311
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.034381",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "70928c75-2748-4cbe-9ded-bf83eb9e9723",
+    "name": "Nuclear Medicine Center Alvand",
+    "description": "Tehran, \u0645\u06cc\u062f\u0627\u0646 \u0622\u0631\u0698\u0627\u0646\u062a\u06cc\u0646\u060c \u062e \u0627\u0644\u0648\u0646\u062f\u060c \u067e\u0644\u0627\u06a9 \u06f3\u06f1, Iran",
+    "location": {
+      "lat": 35.7399165,
+      "lng": 51.414649999999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "c3cf990d-3eb1-46dc-ac6a-eb228ddf5094",
+    "name": "Resalat Nuclear Medicine Center",
+    "description": "PFPQ+G9M, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.736347599999995,
+      "lng": 51.488430199999996
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "2860b1cd-2843-4cff-82a3-e2b6bd1e5584",
+    "name": "Thermal Power Plants Holding Company",
+    "description": "Tehran Province, Tehran, Internal path of NRI, Q88W+89W, Iran",
+    "location": {
+      "lat": 35.7658506,
+      "lng": 51.3459543
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "db008439-9f62-4d6c-b8de-0634636a648c",
+    "name": "Iranian Nuclear Society",
+    "description": "Tehran Province, Tehran, \u067e\u0644\u0627\u06a9 \u06f6\u06f0\u060c \u062a\u0647\u0631\u0627\u0646\u060c\u060c \u062e\u06cc\u0627\u0628\u0627\u0646 \u0642\u0631\u06cc\u0628 \u06f2\u06f1\u060c Iran",
+    "location": {
+      "lat": 35.7364471,
+      "lng": 51.392803099999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "1960ab02-bcd7-413f-8e1b-cc0f2d61ab0a",
+    "name": "\u067e\u0632\u0634\u06a9\u06cc \u0647\u0633\u062a\u0647 \u0627\u06cc \u0628\u06cc\u0645\u0627\u0631\u0633\u062a\u0627\u0646 \u067e\u0627\u0631\u0633",
+    "description": "Tehran Province, Tehran, Rastak St, No. 21, Iran",
+    "location": {
+      "lat": 35.7106279,
+      "lng": 51.3991349
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "18a35348-3ca8-49eb-9d55-0fbb2bd63b09",
+    "name": "\u0645\u0631\u0643\u0632 \u067e\u0632\u0634\u0643 \u0647\u0633\u062a\u0647 \u0627\u064a \u062b\u0646\u0627",
+    "description": "Tehran Province, Tehran, Abed Zadeh, P89P+R9V, Iran",
+    "location": {
+      "lat": 35.719616699999996,
+      "lng": 51.3359269
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "103b3faf-e2c6-4635-83e2-6ba7733543a4",
+    "name": "Yas Nuclear Medicine Center",
+    "description": "Tehran Province, Tehran, Raiszadeh, P9C7+533, Iran",
+    "location": {
+      "lat": 35.7203759,
+      "lng": 51.362664699999996
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "21a737ef-045c-4a07-b471-0545a47e5b57",
+    "name": "Golestan Park",
+    "description": "Tehran, \u0634\u0640\u0647\u0640\u0631\u06a9 \u0648\u0644\u0640\u06cc\u0640\u0639\u0640\u0635\u0640\u0631\u060c\u0645\u0646\u0637\u0642\u0647 \u06f1\u06f8\u060c \u062a\u0647\u0631\u0627\u0646\u060c \u0627\u0633\u062a\u0627\u0646 \u062a\u0647\u0631\u0627\u0646\u060c\u060c Iran",
+    "location": {
+      "lat": 35.6536312,
+      "lng": 51.3432369
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "86b849a9-2146-4f51-8ca0-382744469329",
+    "name": "Bushehr Nuclear Power Plant",
+    "description": "RVHP+W98 Heleylah, \u0628\u0648\u0634\u0647\u0631\u060c Bushehr Province, Iran",
+    "location": {
+      "lat": 28.8297793,
+      "lng": 50.8859682
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "5af66030-02e1-482e-8ebe-152a69dc5bc5",
+    "name": "Tehran Research Reactor",
+    "description": "P9QQ+965, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.738396,
+      "lng": 51.388112899999996
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "3a18600f-c948-4fe4-8a04-2f970ab6e871",
+    "name": "Razi nuclear medicine center",
+    "description": "Tehran Province, Tehran, Piroozi St, MFRJ+P7R, Iran",
+    "location": {
+      "lat": 35.6918639,
+      "lng": 51.48062540000001
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "65a8672a-6bd0-48ce-abdf-f47a9977b662",
+    "name": "Towhid Medical Building",
+    "description": "P92H+G3J, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.701330299999995,
+      "lng": 51.377651799999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "428cfcef-6ad2-428b-a21d-df912f179a16",
+    "name": "Markazi Nuclear Medicine",
+    "description": "Tehran Province, Tehran, Paknezhad Blvd, Q9C7+GHQ, Iran",
+    "location": {
+      "lat": 35.7713268,
+      "lng": 51.36399780000001
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "a9cfb6b1-8c91-4142-840a-1630fbac43a0",
+    "name": "Baharan Nuclear Medicine Center",
+    "description": "H64V+RVC, Eslamshahr, Tehran Province, Iran",
+    "location": {
+      "lat": 35.557051099999995,
+      "lng": 51.24463
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "719197a1-dd95-40ce-b9b2-1bacf3a6b0fd",
+    "name": "Nuclear Martyrs Garden",
+    "description": "Tehran Province, Andisheh New Town, Shohadaye Gomnam Square, M2MH+WXQ, Iran",
+    "location": {
+      "lat": 35.68484,
+      "lng": 51.0299924
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "d0d9be92-2186-456d-b1b6-e8b103a07474",
+    "name": "Kalan hydroelectric power plant",
+    "description": "RQ4R+PJG, Al\u0101in, Tehran Province, Iran",
+    "location": {
+      "lat": 35.806815799999995,
+      "lng": 51.7915893
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "ac8513e8-8703-47c1-ac7e-c14a7886b525",
+    "name": "Saheb Kosar Clinic",
+    "description": "Tehran Province, Tehran, East Tehransar, Laleh Blvd, M7W7+XVX, Iran",
+    "location": {
+      "lat": 35.6974795,
+      "lng": 51.2647474
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "9be68ada-d0ff-4206-90be-ad2a7b0d0c3a",
+    "name": "\u067e\u0632\u0634\u06a9\u06cc \u0647\u0633\u062a\u0647 \u0627\u06cc \u06cc\u0627\u0633",
+    "description": "Tehran Province, Tehran, District 2, Raiszadeh, P9C7+533, Iran",
+    "location": {
+      "lat": 35.7203808,
+      "lng": 51.3626637
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "5423d149-5ad0-49cb-b483-0f60edf8d546",
+    "name": "\u0627\u0633\u06a9\u0646 \u0637\u0628 | Scan Teb",
+    "description": "Tehran Province, Tehran, Valiasr St. st, Rajab Beygi, MCV3+MP5, Iran",
+    "location": {
+      "lat": 35.6941366,
+      "lng": 51.404367099999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "bf628db3-4352-44aa-ace3-3f07d2ecdd66",
+    "name": "\u0645\u0631\u06a9\u0632 \u062a\u062d\u0642\u06cc\u0642\u0627\u062a \u0628\u0647\u0631\u0647 \u0628\u0631\u062f\u0627\u0631\u06cc \u0627\u0632 \u062f\u0627\u0646\u0634 \u0633\u0644\u0627\u0645\u062a",
+    "description": "Tehran Province, Tehran, No 1547, 7th floor, apt7\u060c North Kargar\u060c Iran",
+    "location": {
+      "lat": 35.7067997,
+      "lng": 51.3905247
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:57.547301",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "d5a5d4c5-a02b-4554-bdf4-66b1c05ed1d9",
+    "name": "\u0631\u0627\u062f\u06cc\u0648\u0645\u0648\u0646",
+    "description": "M9QC+F56 District 10, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.688662099999995,
+      "lng": 51.3704039
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.019659",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "8120bece-528b-473b-b341-8035d59f1a88",
+    "name": "Radio Tooba",
+    "description": "P6JX+57Q District 22, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.7304695,
+      "lng": 51.2482494
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.019659",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "2c54301b-8c94-476a-8eed-4065b9daa1b6",
+    "name": "Amateur radio station",
+    "description": "P92P+3GX District 11, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.700234699999996,
+      "lng": 51.3863451
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.019659",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "6e921ef4-8b4c-4c51-9a46-8f2290d82d92",
+    "name": "Shohadaye Radio Building",
+    "description": "\u0633\u0627\u062e\u062a\u0645\u0627\u0646 \u0634\u0647\u062f\u0627\u06cc \u0631\u0627\u062f\u06cc\u0648\u060c Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.7870315,
+      "lng": 51.4117666
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.019659",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "e5fc4f30-bb78-4834-a5bd-95b2d02bcef2",
+    "name": "Beethoven Music Center",
+    "description": "Tehran Province, Tehran, District 6, Mirzaye Shirazi St, No. \u067e\u0644\u0627\u06a9 No. 69, PC98+CCH, Iran",
+    "location": {
+      "lat": 35.7186016,
+      "lng": 51.415993
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.019659",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "cbd1a068-da44-4d9e-9e37-87b0e66444b5",
+    "name": "Radio Namayesh",
+    "description": "Tehran Province, Tehran, District 12, Pamenar St, MCH9+M6X, Iran",
+    "location": {
+      "lat": 35.6792279,
+      "lng": 51.4180954
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.019659",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "e0c6a4bb-1542-4d43-988c-b9896769a1c5",
+    "name": "radiosedayebazaryabi",
+    "description": "P927+7W9 District 2, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.700658499999996,
+      "lng": 51.364869
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.019659",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "21c16968-107c-41c1-af72-1f3a0598bd01",
+    "name": "Tehran",
+    "description": "Tehran, Iran",
+    "location": {
+      "lat": 35.658051,
+      "lng": 51.397849
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.019659",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "ea65b6f0-64c5-4f80-a74e-6ce018ad9bc8",
+    "name": "Radio Kourosh",
+    "description": "Tehran Province, Tehran, District 5, Sattari Expy, P8Q7+CHM, Iran",
+    "location": {
+      "lat": 35.73858,
+      "lng": 51.313935099999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.019659",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "7e78ea71-164a-492f-95e1-7344be5e4b7a",
+    "name": "radio dopamine",
+    "description": "Q9PJ+GCQ District 2, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.7863269,
+      "lng": 51.3811045
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.021675",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "cbdf7dab-a473-40e8-899d-8f8c8d9ed957",
+    "name": "Tetra radio station",
+    "description": "P846+MCP Ekbatan Town, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.7067165,
+      "lng": 51.3110651
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.021675",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "32cc67a6-838f-45ab-8652-f2e8a5493361",
+    "name": "\u06a9\u0627\u0641\u0647 \u0639\u0645\u0627\u0631\u062a \u0627\u06cc\u0646 \u062e\u0627\u0646\u0647",
+    "description": "MCX4+GMF District 11, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.698591199999996,
+      "lng": 51.406650299999995
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.021675",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "a9fb9fbb-f32e-4f8e-9d5a-e51ed9715da3",
+    "name": "\u0627\u0633\u062a\u0648\u062f\u06cc\u0648 \u0631\u06cc\u0632\u0645\u0648\u062c",
+    "description": "Tehran, Adibi St, PC8R+9QV, Iran",
+    "location": {
+      "lat": 35.715984299999995,
+      "lng": 51.441926699999996
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.021675",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "1b5fa09d-3975-4cf8-b896-0829c33f4091",
+    "name": "Santoor Center",
+    "description": "Tehran Province, Tehran, District 7, Taqavi Alley, PCGQ+Q56, Iran",
+    "location": {
+      "lat": 35.7268969,
+      "lng": 51.4381097
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.021675",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "e74ac969-9747-438a-9126-3b9eb2e70b15",
+    "name": "Islamic Republic of Iran Broadcasting",
+    "description": "Tehran Province, Tehran, Alvand, PCW7+77X, Iran",
+    "location": {
+      "lat": 35.745728,
+      "lng": 51.4132234
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.021675",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "741ec78b-90a2-4e20-8a2b-99a34a7c4d36",
+    "name": "IRIB International Conference Center",
+    "description": "Tehran, \u0628\u0632\u0631\u06af\u0631\u0627\u0647 \u0686\u0645\u0631\u0627\u0646\u060c \u0645\u0646\u0637\u0642\u0647 \u06f3\u060c Iran",
+    "location": {
+      "lat": 35.7873928,
+      "lng": 51.4085376
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.021675",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "04330c1f-fcae-49f7-8406-a852eaaee201",
+    "name": "Radioplayer",
+    "description": "Tehran Province, Tehran, 4th St, QC6Q+4VW, Iran",
+    "location": {
+      "lat": 35.7603569,
+      "lng": 51.4396997
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.021675",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "ef499805-108a-4f74-a5d6-adb5beb3110a",
+    "name": "Fotovat Shopping Center",
+    "description": "MCPC+RG2 District 12, Tehran, Tehran Province, Iran",
+    "location": {
+      "lat": 35.6870197,
+      "lng": 51.4212652
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.021675",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  },
+  {
+    "id": "52f14ac2-5cb0-42c2-9031-a596bafafaf5",
+    "name": "\u062f\u0641\u062a\u0631 \u0645\u0631\u06a9\u0632\u06cc \u0631\u0627\u062f\u06cc\u0648 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\u06cc \u0631\u0627\u0632",
+    "description": "Tehran Province, Tehran, District 6, Aalaei Alley, PC67+RQJ, Iran",
+    "location": {
+      "lat": 35.7120813,
+      "lng": 51.4143865
+    },
+    "category": "dangerous_spot",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-22T10:15:58.021675",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true
+  }
+]
