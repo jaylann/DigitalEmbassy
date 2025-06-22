@@ -1,0 +1,15 @@
+[{
+  "id": "m-001-embassy-teh",
+  "name": "German Embassy in Teheran",
+  "description": "Offizielle Vertretung Deutschlands im Iran. Bietet konsularische Dienste und Nothilfe für deutsche Staatsbürger.",
+  "location": {
+    "lat": 35.69309,
+    "lng": 51.42029
+  },
+  "category": "embassy",
+  "trustLevel": "high",
+  "lastUpdated": "2025-06-21T14:44:54.915644",
+  "addedBy": "system",
+  "isVerified": true,
+  "visible": true
+}]

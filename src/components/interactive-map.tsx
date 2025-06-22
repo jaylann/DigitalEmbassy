@@ -31,6 +31,7 @@ const LANDMARK_AREA_MAP: Record<Landmark["category"], AreaCategory> = {
     communication: "safe",
     trusted_contact: "safe",
     medical: "safe",
+    embassy: "safe",
     checkpoint: "caution",
     explosion: "no_go",
     attack: "no_go",

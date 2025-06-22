@@ -14,6 +14,7 @@ interface DebugAction {
   key: string;
   label: string;
   handler: () => void;
+  metaRequired?: boolean;
 }
 
 export default function DebugMenu() {
@@ -26,14 +27,15 @@ export default function DebugMenu() {
   const actions = useMemo<DebugAction[]>(
     () => [
       {
-        key: "r",
-        label: "Toggle Route (R)",
+        key: "9",
+        label: "Toggle Route",
         handler: () =>
           setRoute((current) =>
             current && JSON.stringify(current) === JSON.stringify(animatedRouteA)
               ? (animatedRouteB as LineString)
               : (animatedRouteA as LineString)
           ),
+        metaRequired: true,
       },
       {
         key: "q",
@@ -41,20 +43,22 @@ export default function DebugMenu() {
         handler: () => setRoute(animatedRouteA as LineString),
       },
       {
-        key: "w",
-        label: "Start Landmark Change (W)",
+        key: "0",
+        label: "Start Landmark Change",
         handler: () => {
           addLandmark(landmarkChange as Landmark);
           setTimeout(() => {
             setRoute(animatedRouteB as LineString);
           }, 5000);
         },
+        metaRequired: true,
       },
       ...(["Online", "Transmitting", "Crisis", "Offline"] as SystemStatus[]).map(
         (s, idx) => ({
           key: String(idx + 1),
           label: `Set Status: ${s}`,
           handler: () => setStatus(s),
+          metaRequired: idx < 3,
         })
       ),
     ],
@@ -69,7 +73,7 @@ export default function DebugMenu() {
         return;
       }
       actions.forEach((action) => {
-        if (e.key === action.key) {
+        if (e.key === action.key && (!action.metaRequired || e.metaKey)) {
           e.preventDefault();
           action.handler();
         }
@@ -89,7 +93,7 @@ export default function DebugMenu() {
         <div className="bg-popover text-popover-foreground border rounded shadow-lg p-4 space-y-2">
           {actions.map((action) => (
             <Button key={action.key} onClick={action.handler} className="w-full">
-              {action.label} ({action.key})
+              {action.label}{action.metaRequired ? ` (⌘${action.key})` : ` (${action.key})`}
             </Button>
           ))}
           <Button variant="secondary" onClick={toggle} className="w-full">

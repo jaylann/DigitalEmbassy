@@ -11,6 +11,7 @@ import disasters from "../../../data/disaster.json";
 import hospitals from "../../../data/hospitals.json";
 import medical from "../../../data/medical.json";
 import safeSpaces from "../../../data/safe_space.json";
+import embassies from "../../../data/embassies.json";
 
 const staticLandmarks: Landmark[] = [
   ...(checkpoint as Landmark[]),
@@ -22,6 +23,7 @@ const staticLandmarks: Landmark[] = [
   ...(hospitals as Landmark[]),
   ...(medical as Landmark[]),
   ...(safeSpaces as Landmark[]),
+    ...(embassies as Landmark[])
 ];
 
 interface LandmarksContextType {
