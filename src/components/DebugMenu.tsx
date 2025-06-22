@@ -3,6 +3,7 @@ import { useEffect, useCallback, useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { useDebug } from "@/lib/state/debug";
 import { useLandmarks } from "@/lib/state/landmarks";
+import { useLocation } from "@/lib/state/location";
 import animatedRouteA from "../../data/animated_route.json";
 import animatedRouteB from "../../data/animated_route_alt.json";
 import landmarkChange from "../../data/landmark_change.json";
@@ -21,6 +22,7 @@ export default function DebugMenu() {
   const [open, setOpen] = useState(false);
   const { setStatus, setRoute } = useDebug();
   const { addLandmark } = useLandmarks();
+  const { setLastKnownLocation } = useLocation();
 
   const toggle = useCallback(() => setOpen((o) => !o), []);
 
@@ -40,7 +42,11 @@ export default function DebugMenu() {
       {
         key: "8",
         label: "Start Route",
-        handler: () => setRoute(animatedRouteA as LineString),
+        handler: () => {
+          setRoute(animatedRouteA as LineString);
+          const [lng, lat] = animatedRouteA.coordinates[0];
+          setLastKnownLocation({ lat, lng });
+        },
         metaRequired: true,
       },
       {
@@ -63,7 +69,7 @@ export default function DebugMenu() {
         })
       ),
     ],
-    [addLandmark, setRoute, setStatus]
+    [addLandmark, setRoute, setStatus, setLastKnownLocation]
   );
 
   const handleKey = useCallback(

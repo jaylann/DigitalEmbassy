@@ -8,7 +8,6 @@ import {
 
 import type { SystemStatus } from "@/types/status";
 import type { LineString } from "geojson";
-import animatedRouteA from "../../../data/animated_route.json";
 
 interface DebugContextType {
   status: SystemStatus;
@@ -21,7 +20,7 @@ const DebugContext = createContext<DebugContextType | undefined>(undefined);
 
 export function DebugProvider({ children }: { children: ReactNode }) {
   const [status, setStatus] = useState<SystemStatus>("Online");
-  const [route, setRoute] = useState<LineString | null>(animatedRouteA as LineString);
+  const [route, setRoute] = useState<LineString | null>(null);
 
 
   return (
