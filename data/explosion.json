@@ -14,5 +14,21 @@
     "isVerified": false,
     "visible": true,
     "radius": 100
+  },
+  {
+    "id": "fordo",
+    "name": "Fordo Bombardement",
+    "description": "Greetings from the USA",
+    "location": {
+      "lat": 34.260,
+      "lng": 50.902
+    },
+    "category": "explosion",
+    "trustLevel": "high",
+    "lastUpdated": "2025-06-21T14:53:39.836Z",
+    "addedBy": "system",
+    "isVerified": false,
+    "visible": true,
+    "radius": 700
   }
 ]
