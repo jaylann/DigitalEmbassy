@@ -38,9 +38,10 @@ export default function DebugMenu() {
         metaRequired: true,
       },
       {
-        key: "q",
-        label: "Start Route 1 (Q)",
+        key: "8",
+        label: "Start Route",
         handler: () => setRoute(animatedRouteA as LineString),
+        metaRequired: true,
       },
       {
         key: "0",
