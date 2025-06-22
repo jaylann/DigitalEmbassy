@@ -9,6 +9,7 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.ipynb_checkpoints/
 
 # testing
 /coverage
