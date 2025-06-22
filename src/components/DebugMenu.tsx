@@ -68,7 +68,7 @@ export default function DebugMenu() {
 
   const handleKey = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key.toLowerCase() === "d" && e.shiftKey) {
+      if (e.key.toLowerCase() === "d" && e.metaKey) {
         e.preventDefault();
         toggle();
         return;
@@ -90,7 +90,7 @@ export default function DebugMenu() {
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
-      {open ? (
+      {open && (
         <div className="bg-popover text-popover-foreground border rounded shadow-lg p-4 space-y-2">
           {actions.map((action) => (
             <Button key={action.key} onClick={action.handler} className="w-full">
@@ -98,13 +98,9 @@ export default function DebugMenu() {
             </Button>
           ))}
           <Button variant="secondary" onClick={toggle} className="w-full">
-            Close (Shift+D)
+            Close (⌘D)
           </Button>
         </div>
-      ) : (
-        <Button size="icon" onClick={toggle} aria-label="Open debug menu">
-          D
-        </Button>
       )}
     </div>
   );
