@@ -1,27 +1,32 @@
 export type LandmarkCategory =
-    | 'safe_space'
-    | 'dangerous_spot'
-    | 'communication'
-    | 'trusted_contact'
-    | 'medical'
-    | 'checkpoint';
+  | "safe_space"
+  | "dangerous_spot"
+  | "communication"
+  | "trusted_contact"
+  | "medical"
+  | "checkpoint"
+  | "explosion"
+  | "attack"
+  | "disaster";
 
 export interface Location {
-    lat: number;
-    lng: number;
+  lat: number;
+  lng: number;
 }
 
 export interface Landmark {
-    id: string; // UUID or hash
-    name: string;
-    description?: string;
-    location: Location;
-    category: LandmarkCategory;
+  id: string; // UUID or hash
+  name: string;
+  description?: string;
+  location: Location;
+  /** Radius around the landmark to automatically create an area, in meters */
+  radius?: number;
+  category: LandmarkCategory;
 
-    // Optional metadata
-    trustLevel?: 'high' | 'medium' | 'low'; // for crowd-sourced updates
-    lastUpdated?: string; // ISO date string
-    addedBy?: string; // public key or user id
-    isVerified?: boolean; // for trusted sources
-    visible?: boolean; // for toggling local visibility
+  // Optional metadata
+  trustLevel?: "high" | "medium" | "low"; // for crowd-sourced updates
+  lastUpdated?: string; // ISO date string
+  addedBy?: string; // public key or user id
+  isVerified?: boolean; // for trusted sources
+  visible?: boolean; // for toggling local visibility
 }

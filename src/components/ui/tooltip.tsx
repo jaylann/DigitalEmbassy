@@ -1,3 +1,7 @@
+/**
+ * Wrapper components around Radix tooltip primitives.
+ */
+
 "use client"
 
 import * as React from "react"
@@ -5,57 +9,45 @@ import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 
 import { cn } from "@/lib/utils"
 
-function TooltipProvider({
-  delayDuration = 0,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Provider>) {
-  return (
-    <TooltipPrimitive.Provider
-      data-slot="tooltip-provider"
-      delayDuration={delayDuration}
-      {...props}
-    />
-  )
-}
+/**
+ * A provider that supplies context for the tooltips.
+ * It is recommended to wrap your application root with this component.
+ * @param {React.ComponentProps<typeof TooltipPrimitive.Provider>} props - Props for the TooltipProvider.
+ */
+const TooltipProvider = TooltipPrimitive.Provider
 
-function Tooltip({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Root>) {
-  return (
-    <TooltipProvider>
-      <TooltipPrimitive.Root data-slot="tooltip" {...props} />
-    </TooltipProvider>
-  )
-}
+/**
+ * The root container for a tooltip.
+ * @param {React.ComponentProps<typeof TooltipPrimitive.Root>} props - Props for the Tooltip root.
+ */
+const Tooltip = TooltipPrimitive.Root
 
-function TooltipTrigger({
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
-  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
-}
+/**
+ * The element that triggers the tooltip to appear.
+ * @param {React.ComponentProps<typeof TooltipPrimitive.Trigger>} props - Props for the TooltipTrigger.
+ */
+const TooltipTrigger = TooltipPrimitive.Trigger
 
-function TooltipContent({
-  className,
-  sideOffset = 0,
-  children,
-  ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Content>) {
-  return (
+/**
+ * The content of the tooltip that is displayed.
+ * @param {React.ComponentProps<typeof TooltipPrimitive.Content>} props - Props for the TooltipContent.
+ */
+const TooltipContent = React.forwardRef<
+    React.ElementRef<typeof TooltipPrimitive.Content>,
+    React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
+>(({ className, sideOffset = 4, ...props }, ref) => (
     <TooltipPrimitive.Portal>
       <TooltipPrimitive.Content
-        data-slot="tooltip-content"
-        sideOffset={sideOffset}
-        className={cn(
-          "bg-primary text-primary-foreground animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-xs text-balance",
-          className
-        )}
-        {...props}
-      >
-        {children}
-        <TooltipPrimitive.Arrow className="bg-primary fill-primary z-50 size-2.5 translate-y-[calc(-50%_-_2px)] rotate-45 rounded-[2px]" />
-      </TooltipPrimitive.Content>
+          ref={ref}
+          sideOffset={sideOffset}
+          className={cn(
+              "z-50 overflow-hidden rounded-md border bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+              className
+          )}
+          {...props}
+      />
     </TooltipPrimitive.Portal>
-  )
-}
+))
+TooltipContent.displayName = TooltipPrimitive.Content.displayName
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }

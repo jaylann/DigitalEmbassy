@@ -1,0 +1,13 @@
+{
+  "id": "e74a44ce-f849-46be-858b-cfe04c2f3a85",
+  "name": "Bombed bridge",
+  "location": {"lat": 35.758, "lng": 51.420},
+  "radius": 300,
+  "category": "explosion",
+  "description": "Bridge got bombed and is now unusable.",
+  "trustLevel": "high",
+  "lastUpdated": "2025-06-20T00:00:00Z",
+  "addedBy": "Benjamin_Netanyahu",
+  "isVerified": false,
+  "visible": true
+}

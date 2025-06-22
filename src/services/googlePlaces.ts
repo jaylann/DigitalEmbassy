@@ -13,6 +13,13 @@ export interface RawPlaceResult {
   };
   place_id: string;
 }
+/**
+ * Fetches German embassies near a given city and country using the Google Places API.
+ *
+ * @param city - The city to search around.
+ * @param country - The country in which the city is located.
+ * @returns A list of embassy locations in a simplified format.
+ */
 
 async function searchGooglePlaces(query: string): Promise<RawPlaceResult[]> {
   if (!GOOGLE_PLACES_API_KEY) {

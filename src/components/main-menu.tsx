@@ -1,5 +1,7 @@
+/**
+ * Responsive popover menu for navigation links.
+ */
 
-// src/components/map-layout/main-menu.tsx
 
 "use client";
 

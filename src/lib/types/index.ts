@@ -4,23 +4,23 @@
  * the client-server boundary.
  */
 
+import type { LandmarkCategory } from "./landmarks";
 // Re-export core data models for easy access from other parts of the app.
-export type { Landmark, Location, LandmarkCategory } from './landmarks';
+export type { Landmark, Location, LandmarkCategory } from "./landmarks";
 
 // --- API Response Wrappers ---
 export type ApiResponse<T> =
-    | { success: true; data: T }
-    | { success: false; error: string };
+  | { success: true; data: T }
+  | { success: false; error: string };
 
 export type GeminiApiResponse = ApiResponse<AssistantResponse>;
-
 
 // --- Core Data & Domain Types ---
 
 /**
- * **THE MISSING TYPE IS HERE.**
- * Represents a generic JSON document provided as context to the AI. This is used
- * in getGeminiResponse to allow for a flexible mix of structured and unstructured data.
+ * Represents a generic JSON document used as context for the AI engine.
+ * This allows for a flexible mix of structured and unstructured data in
+ * the {@link getGeminiResponse} function.
  */
 export type ContextDocument = Record<string, unknown>;
 
@@ -33,12 +33,11 @@ export type MessageRole = "user" | "assistant";
  * Represents a single message object managed by the chat interface's state.
  */
 export interface Message {
-    id: string;
-    role: MessageRole;
-    content: string;
-    isError?: boolean;
+  id: string;
+  role: MessageRole;
+  content: string;
+  isError?: boolean;
 }
-
 
 // --- Structured LLM Response Payloads ---
 
@@ -46,16 +45,19 @@ export interface Message {
  * A discriminated union representing all possible structured responses from the LLM.
  * The 'type' field allows the client to route the response to the correct handler.
  */
-export type AssistantResponse = MessageResponse | ReportResponse;
+export type AssistantResponse =
+  | MessageResponse
+  | ReportResponse
+  | LocationRequestResponse;
 
 /**
  * The structure for a standard conversational message from the AI.
  */
 export interface MessageResponse {
-    type: "message";
-    payload: {
-        content: string;
-    };
+  type: "message";
+  payload: {
+    content: string;
+  };
 }
 
 /**
@@ -63,14 +65,26 @@ export interface MessageResponse {
  * Contains the text fields the LLM is responsible for extracting.
  */
 export interface ReportPayload {
-    name: string;
-    description: string;
+  name: string;
+  description: string;
+  category: LandmarkCategory;
 }
 
 /**
  * The structure for a completed danger report from the AI.
  */
 export interface ReportResponse {
-    type: "report";
-    payload: ReportPayload;
+  type: "report";
+  payload: ReportPayload;
+}
+
+/**
+ * A special response requesting the user's precise location.
+ */
+export interface LocationRequestResponse {
+  type: "location_request";
+  payload: {
+    content: string;
+    report: ReportPayload;
+  };
 }

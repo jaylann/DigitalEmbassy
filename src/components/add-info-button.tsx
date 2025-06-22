@@ -1,44 +1,50 @@
-// src/components/map-layout/add-info-button.tsx
+/**
+ * Floating button to submit new map information.
+ */
+
 "use client";
 
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip"; // Ensure this is the correct import for your Radix UI Tooltip
-import { motion } from "framer-motion";
 import * as React from "react";
+import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button"; // Path to your shadcn Button
+import { Button } from "@/components/ui/button";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-interface AddInfoButtonProps {
-    onClick: () => void;
-    isActive?: boolean;
-}
-
-export function AddInfoButton({ onClick, isActive }: AddInfoButtonProps): React.ReactElement {
+/**
+ * An icon button to allow users to add new information to the map.
+ * Includes a tooltip for better user experience.
+ *
+ * This component now assumes that a <TooltipProvider> exists higher up in the component tree.
+ *
+ * @returns {React.ReactElement} The rendered "Add Info" button.
+ */
+export function AddInfoButton(): React.ReactElement {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut", delay: 0.1 }}
-            className="pointer-events-auto" // Ensure button is clickable
+            className="pointer-events-auto"
         >
-            <TooltipProvider delayDuration={150}>
-                <Tooltip>
-                    <TooltipTrigger asChild>
-                        <Button
-                            variant={isActive ? "secondary" : "default"}
-                            size="icon"
-                            className="h-12 w-12 rounded-full bg-black/50 shadow-lg backdrop-blur-sm hover:bg-black/70 data-[state=active]:bg-primary/80"
-                            aria-label="Add Information to Map"
-                            onClick={onClick}
-                            data-state={isActive ? "active" : "inactive"}
-                        >
-                            <Plus className="h-6 w-6 text-white" />
-                        </Button>
-                    </TooltipTrigger>
-                    <TooltipContent side="top" className="bg-black/70 text-white border-none">
-                        <p>{isActive ? "Click on map to place marker" : "Add Information"}</p>
-                    </TooltipContent>
-                </Tooltip>
-            </TooltipProvider>
+            <Tooltip>
+                <TooltipTrigger asChild>
+                    <Button
+                        variant="default"
+                        size="icon"
+                        className="h-12 w-12 rounded-full bg-black/50 shadow-lg backdrop-blur-sm hover:bg-black/70"
+                        aria-label="Add Information to Map"
+                    >
+                        <Plus className="h-6 w-6 text-white" />
+                    </Button>
+                </TooltipTrigger>
+                <TooltipContent side="top" className="bg-black/70 text-white border-none">
+                    <p>Add Information</p>
+                </TooltipContent>
+            </Tooltip>
         </motion.div>
     );
 }

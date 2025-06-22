@@ -1,4 +1,6 @@
-// src/app/faq/page.tsx
+/**
+ * FAQ page with common questions and answers.
+ */
 
 import type { Metadata } from 'next';
 import faqStaticData from './faq-data.json';

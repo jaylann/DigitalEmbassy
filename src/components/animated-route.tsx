@@ -1,4 +1,6 @@
-// src/components/animated-route.tsx
+/**
+ * Animates a route being drawn on the map.
+ */
 
 "use client";
 

@@ -1,4 +1,6 @@
-// src/components/map-layout/map-legend.tsx
+/**
+ * Collapsible legend explaining map area categories.
+ */
 
 "use client";
 
@@ -24,15 +26,9 @@ export function MapLegend(): React.ReactElement {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        // --- THIS IS THE CRITICAL FIX ---
-                        // 'absolute': Positions the popup relative to the container above.
-                        // 'top-full': Pushes the popup's TOP edge to the BOTTOM of the container (i.e., below the button).
-                        // 'left-0': Aligns the popup's LEFT edge with the LEFT edge of the container.
-                        // 'mt-2': Adds a small gap between the button and the popup.
-                        // 'origin-top-left': Ensures the 'scale' animation grows from the top-left corner.
+                        /* Position the popup below the toggle button */
                         className="absolute top-full left-0 mt-2 w-48 origin-top-left rounded-lg border border-neutral-700 bg-black/70 p-3 shadow-xl backdrop-blur-md"
 
-                        // Animation now correctly moves downwards.
                         initial={{ opacity: 0, y: -10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -10, scale: 0.95 }}

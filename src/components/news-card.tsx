@@ -1,10 +1,12 @@
-// src/components/news/NewsCard.tsx
+/**
+ * Card component for displaying news items.
+ */
 
 "use client";
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Megaphone, Calendar, Info } from "lucide-react";
+import { ChevronDown, Megaphone, Calendar, Info, AlertTriangle, FileText, ShieldCheck, ClipboardList } from "lucide-react";
 
 import { cn, formatRelativeTime } from "@/lib/utils";
 import {NewsItem} from "@/types/news-item";
@@ -25,6 +27,22 @@ const tagConfig = {
     Info: {
         icon: <Info className="h-4 w-4" />,
         color: "bg-green-500/20 text-green-300 border-green-500/30",
+    },
+    Alert: {
+        icon: <AlertTriangle className="h-4 w-4" />,
+        color: "bg-red-500/20 text-red-300 border-red-500/30",
+    },
+    Report: {
+        icon: <FileText className="h-4 w-4" />,
+        color: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
+    },
+    Response: {
+        icon: <ShieldCheck className="h-4 w-4" />,
+        color: "bg-indigo-500/20 text-indigo-300 border-indigo-500/30",
+    },
+    Briefing: {
+        icon: <ClipboardList className="h-4 w-4" />,
+        color: "bg-teal-500/20 text-teal-300 border-teal-500/30",
     },
     Default: {
         icon: <Info className="h-4 w-4" />,

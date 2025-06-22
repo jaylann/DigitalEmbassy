@@ -1,4 +1,6 @@
-// src/components/landmark-marker.tsx
+/**
+ * Marker with detailed popover for a single landmark.
+ */
 
 "use client";
 
@@ -6,23 +8,30 @@ import * as React from "react";
 import { motion } from "framer-motion";
 import { formatDistanceToNow } from "date-fns";
 import {
-    ShieldCheck,
-    HeartPulse,
-    RadioTower,
-    ShieldAlert,
-    Siren,
-    UserCheck,
-    LucideIcon,
-    CheckCircle2,
-    Signal,
-    Clock,
+  ShieldCheck,
+  HeartPulse,
+  RadioTower,
+  ShieldAlert,
+  Siren,
+  Bomb,
+  Crosshair,
+  TriangleAlert,
+  UserCheck,
+  LucideIcon,
+  CheckCircle2,
+  Signal,
+  Clock,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { MapMarker } from "@/components/map-marker";
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/components/ui/popover";
 import { Badge } from "@/components/ui/badge";
-import {Landmark, LandmarkCategory} from "@/lib/types";
+import type { Landmark, LandmarkCategory } from "@/lib/types";
 
 /**
  * Configuration object for styling and icons of each landmark category.
@@ -37,73 +46,103 @@ import {Landmark, LandmarkCategory} from "@/lib/types";
  * @property {string} styles.badge - Class for the badge component.
  */
 const landmarkConfig: Record<
-    LandmarkCategory,
-    {
-        icon: LucideIcon;
-        label: string;
-        styles: { bg: string; text: string; border: string; badge: string };
-    }
+  LandmarkCategory,
+  {
+    icon: LucideIcon;
+    label: string;
+    styles: { bg: string; text: string; border: string; badge: string };
+  }
 > = {
-    safe_space: {
-        icon: ShieldCheck,
-        label: "Safe Space",
-        styles: {
-            bg: "bg-green-600",
-            text: "text-green-100",
-            border: "border-green-400",
-            badge: "bg-green-500/20 text-green-300 border-green-400/30",
-        },
+  safe_space: {
+    icon: ShieldCheck,
+    label: "Safe Space",
+    styles: {
+      bg: "bg-green-600",
+      text: "text-green-100",
+      border: "border-green-400",
+      badge: "bg-green-500/20 text-green-300 border-green-400/30",
     },
-    dangerous_spot: {
-        icon: Siren,
-        label: "Dangerous Spot",
-        styles: {
-            bg: "bg-red-600",
-            text: "text-red-100",
-            border: "border-red-400",
-            badge: "bg-red-500/20 text-red-300 border-red-400/30",
-        },
+  },
+  dangerous_spot: {
+    icon: Siren,
+    label: "Dangerous Spot",
+    styles: {
+      bg: "bg-red-600",
+      text: "text-red-100",
+      border: "border-red-400",
+      badge: "bg-red-500/20 text-red-300 border-red-400/30",
     },
-    medical: {
-        icon: HeartPulse,
-        label: "Medical Facility",
-        styles: {
-            bg: "bg-blue-600",
-            text: "text-blue-100",
-            border: "border-blue-400",
-            badge: "bg-blue-500/20 text-blue-300 border-blue-400/30",
-        },
+  },
+  medical: {
+    icon: HeartPulse,
+    label: "Medical Facility",
+    styles: {
+      bg: "bg-blue-600",
+      text: "text-blue-100",
+      border: "border-blue-400",
+      badge: "bg-blue-500/20 text-blue-300 border-blue-400/30",
     },
-    checkpoint: {
-        icon: ShieldAlert,
-        label: "Checkpoint",
-        styles: {
-            bg: "bg-yellow-600",
-            text: "text-yellow-100",
-            border: "border-yellow-400",
-            badge: "bg-yellow-500/20 text-yellow-300 border-yellow-400/30",
-        },
+  },
+  checkpoint: {
+    icon: ShieldAlert,
+    label: "Checkpoint",
+    styles: {
+      bg: "bg-yellow-600",
+      text: "text-yellow-100",
+      border: "border-yellow-400",
+      badge: "bg-yellow-500/20 text-yellow-300 border-yellow-400/30",
     },
-    communication: {
-        icon: RadioTower,
-        label: "Communication",
-        styles: {
-            bg: "bg-indigo-600",
-            text: "text-indigo-100",
-            border: "border-indigo-400",
-            badge: "bg-indigo-500/20 text-indigo-300 border-indigo-400/30",
-        },
+  },
+  communication: {
+    icon: RadioTower,
+    label: "Communication",
+    styles: {
+      bg: "bg-indigo-600",
+      text: "text-indigo-100",
+      border: "border-indigo-400",
+      badge: "bg-indigo-500/20 text-indigo-300 border-indigo-400/30",
     },
-    trusted_contact: {
-        icon: UserCheck,
-        label: "Trusted Contact",
-        styles: {
-            bg: "bg-cyan-600",
-            text: "text-cyan-100",
-            border: "border-cyan-400",
-            badge: "bg-cyan-500/20 text-cyan-300 border-cyan-400/30",
-        },
+  },
+  trusted_contact: {
+    icon: UserCheck,
+    label: "Trusted Contact",
+    styles: {
+      bg: "bg-cyan-600",
+      text: "text-cyan-100",
+      border: "border-cyan-400",
+      badge: "bg-cyan-500/20 text-cyan-300 border-cyan-400/30",
     },
+  },
+  explosion: {
+    icon: Bomb,
+    label: "Explosion",
+    styles: {
+      bg: "bg-orange-600",
+      text: "text-orange-100",
+      border: "border-orange-400",
+      badge: "bg-orange-500/20 text-orange-300 border-orange-400/30",
+    },
+  },
+  attack: {
+    icon: Crosshair,
+    label: "Attack",
+    styles: {
+      bg: "bg-rose-600",
+      text: "text-rose-100",
+      border: "border-rose-400",
+      badge: "bg-rose-500/20 text-rose-300 border-rose-400/30",
+    },
+  },
+  disaster: {
+    icon: TriangleAlert,
+    label: "Disaster",
+    styles: {
+      bg: "bg-purple-600",
+      text: "text-purple-100",
+      border: "border-purple-400",
+      badge: "bg-purple-500/20 text-purple-300 border-purple-400/30",
+    },
+  },
 };
 
 /**
@@ -112,7 +151,7 @@ const landmarkConfig: Record<
  * @property {Landmark} landmark - The landmark data object to display.
  */
 export interface LandmarkMarkerProps {
-    landmark: Landmark;
+  landmark: Landmark;
 }
 
 /**
@@ -123,112 +162,136 @@ export interface LandmarkMarkerProps {
  * @param {LandmarkMarkerProps} props - The component props.
  * @returns {React.ReactElement | null} The rendered landmark marker or null if visibility is false.
  */
-export function LandmarkMarker({ landmark }: LandmarkMarkerProps): React.ReactElement | null {
-    const { location, name, description, category, isVerified, trustLevel, lastUpdated } = landmark;
+export function LandmarkMarker({
+  landmark,
+}: LandmarkMarkerProps): React.ReactElement | null {
+  const {
+    location,
+    name,
+    description,
+    category,
+    isVerified,
+    trustLevel,
+    lastUpdated,
+  } = landmark;
 
-    // Do not render the marker if it's explicitly set to be invisible.
-    if (landmark.visible === false) {
-        return null;
+  // Do not render the marker if it's explicitly set to be invisible.
+  if (landmark.visible === false) {
+    return null;
+  }
+
+  const config = landmarkConfig[category];
+  const Icon = config.icon;
+
+  /**
+   * Formats an ISO date string into a human-readable relative time.
+   * @param {string} isoDate - The ISO date string to format.
+   * @returns {string} The formatted relative time string.
+   */
+  const formatLastUpdated = (isoDate: string): string => {
+    try {
+      return formatDistanceToNow(new Date(isoDate), { addSuffix: true });
+    } catch (error) {
+      console.error("Invalid date format for lastUpdated:", isoDate, error);
+      return "unknown";
     }
+  };
 
-    const config = landmarkConfig[category];
-    const Icon = config.icon;
+  return (
+    <Popover>
+      <MapMarker latitude={location.lat} longitude={location.lng}>
+        <PopoverTrigger asChild>
+          <motion.button
+            className="flex items-center justify-center cursor-pointer appearance-none bg-transparent border-none p-0"
+            whileHover={{ scale: 1.2, y: -2 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            aria-label={`Show details for ${name}`}
+          >
+            <div
+              className={cn(
+                "flex h-8 w-8 items-center justify-center rounded-full border-2 border-white/80 shadow-lg",
+                config.styles.bg,
+              )}
+              title={name}
+            >
+              <Icon className="h-4 w-4 text-white" />
+            </div>
+          </motion.button>
+        </PopoverTrigger>
+      </MapMarker>
 
-    /**
-     * Formats an ISO date string into a human-readable relative time.
-     * @param {string} isoDate - The ISO date string to format.
-     * @returns {string} The formatted relative time string.
-     */
-    const formatLastUpdated = (isoDate: string): string => {
-        try {
-            return formatDistanceToNow(new Date(isoDate), { addSuffix: true });
-        } catch (error) {
-            console.error(
-                "Invalid date format for lastUpdated:",
-                isoDate,
-                error
-            );
-            return "unknown";
-        }
-    };
+      <PopoverContent
+        className="w-72 border-neutral-700 bg-black/75 p-4 text-white shadow-xl backdrop-blur-lg"
+        sideOffset={12}
+      >
+        <div className="flex flex-col gap-3">
+          {/* Header */}
+          <div className="flex items-start gap-3">
+            <div
+              className={cn(
+                "mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md",
+                config.styles.bg,
+              )}
+            >
+              <Icon className="h-5 w-5 text-white" />
+            </div>
+            <div className="flex-grow">
+              <h3 className="text-base font-bold leading-tight text-white">
+                {name}
+              </h3>
+              <Badge
+                variant="outline"
+                className={cn("mt-1.5", config.styles.badge)}
+              >
+                {config.label}
+              </Badge>
+            </div>
+          </div>
 
-    return (
-        <MapMarker latitude={location.lat} longitude={location.lng}>
-            <Popover>
-                <PopoverTrigger asChild>
-                    <motion.div
-                        className="flex items-center justify-center"
-                        whileHover={{ scale: 1.2, y: -2 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    >
-                        <div
-                            className={cn(
-                                "flex h-8 w-8 items-center justify-center rounded-full border-2 border-white/80 shadow-lg",
-                                config.styles.bg
-                            )}
-                            title={name}
-                            aria-label={`Landmark: ${name}`}
-                        >
-                            <Icon className="h-4 w-4 text-white" />
-                        </div>
-                    </motion.div>
-                </PopoverTrigger>
-                <PopoverContent
-                    className="w-72 border-neutral-700 bg-black/75 p-4 text-white shadow-xl backdrop-blur-lg"
-                    sideOffset={12}
-                >
-                    <div className="flex flex-col gap-3">
-                        {/* Header */}
-                        <div className="flex items-start gap-3">
-                            <div
-                                className={cn(
-                                    "mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md",
-                                    config.styles.bg
-                                )}
-                            >
-                                <Icon className="h-5 w-5 text-white" />
-                            </div>
-                            <div className="flex-grow">
-                                <h3 className="text-base font-bold leading-tight text-white">{name}</h3>
-                                <Badge variant="outline" className={cn("mt-1.5", config.styles.badge)}>
-                                    {config.label}
-                                </Badge>
-                            </div>
-                        </div>
+          {/* Description */}
+          {description && (
+            <p className="text-sm leading-snug text-neutral-300">
+              {description}
+            </p>
+          )}
 
-                        {/* Description */}
-                        {description && (
-                            <p className="text-sm leading-snug text-neutral-300">{description}</p>
-                        )}
+          <hr className="border-t border-neutral-700" />
 
-                        <hr className="border-t border-neutral-700" />
-
-                        {/* Metadata */}
-                        <div className="space-y-2 text-xs text-neutral-400">
-                            {isVerified && (
-                                <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="h-4 w-4 text-green-400" />
-                                    <span className="font-medium text-neutral-200">Verified by Trusted Source</span>
-                                </div>
-                            )}
-                            {trustLevel && (
-                                <div className="flex items-center gap-2">
-                                    <Signal className="h-4 w-4" />
-                                    <span>
-                                        Trust Level: <span className="font-semibold capitalize text-neutral-200">{trustLevel}</span>
-                                    </span>
-                                </div>
-                            )}
-                            {lastUpdated && (
-                                <div className="flex items-center gap-2">
-                                    <Clock className="h-4 w-4" />
-                                    <span>Last Updated: <span className="font-semibold text-neutral-200">{formatLastUpdated(lastUpdated)}</span></span>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </PopoverContent>
-            </Popover>
-        </MapMarker>
-    );
+          {/* Metadata */}
+          <div className="space-y-2 text-xs text-neutral-400">
+            {isVerified && (
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                <span className="font-medium text-neutral-200">
+                  Verified by Trusted Source
+                </span>
+              </div>
+            )}
+            {trustLevel && (
+              <div className="flex items-center gap-2">
+                <Signal className="h-4 w-4" />
+                <span>
+                  Trust Level:{" "}
+                  <span className="font-semibold capitalize text-neutral-200">
+                    {trustLevel}
+                  </span>
+                </span>
+              </div>
+            )}
+            {lastUpdated && (
+              <div className="flex items-center gap-2">
+                <Clock className="h-4 w-4" />
+                <span>
+                  Last Updated:{" "}
+                  <span className="font-semibold text-neutral-200">
+                    {formatLastUpdated(lastUpdated)}
+                  </span>
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
 }
