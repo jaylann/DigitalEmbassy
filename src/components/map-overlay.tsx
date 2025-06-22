@@ -1,4 +1,6 @@
-// src/components/map-overlay.tsx
+/**
+ * Overlay showing map controls and status indicators.
+ */
 
 import * as React from "react";
 import { ChatbotButton } from "./chatbot-button";

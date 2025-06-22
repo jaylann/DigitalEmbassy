@@ -1,4 +1,6 @@
-// src/app/wallet/page.tsx
+/**
+ * Digital wallet demo page.
+ */
 
 "use client";
 

@@ -1,4 +1,6 @@
-// src/components/MobileLayout.tsx
+/**
+ * Mobile-friendly layout with bottom navigation.
+ */
 
 "use client";
 

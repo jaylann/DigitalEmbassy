@@ -1,4 +1,6 @@
-// src/app/page.tsx
+/**
+ * Home page displaying the interactive map.
+ */
 
 "use client";
 

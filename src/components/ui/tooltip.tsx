@@ -1,4 +1,6 @@
-// src/components/ui/tooltip.tsx
+/**
+ * Wrapper components around Radix tooltip primitives.
+ */
 
 "use client"
 

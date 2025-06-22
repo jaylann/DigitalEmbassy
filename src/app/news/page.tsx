@@ -1,4 +1,6 @@
-// src/app/news/page.tsx
+/**
+ * News feed displaying recent updates.
+ */
 
 "use client";
 

@@ -1,4 +1,6 @@
-// src/components/news-card.tsx
+/**
+ * Card component for displaying news items.
+ */
 
 "use client";
 

@@ -1,5 +1,7 @@
+/**
+ * Experimental map view showing a sample route layer.
+ */
 
-// src/components/route-layout.tsx
 'use client';
 import { useState, useEffect } from 'react';
 import Map, { Source, Layer } from 'react-map-gl/maplibre'; // works identically with Mapbox

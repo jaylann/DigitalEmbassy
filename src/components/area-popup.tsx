@@ -1,4 +1,6 @@
-// src/components/area-popup.tsx
+/**
+ * Map popup displayed when selecting an area.
+ */
 
 "use client";
 

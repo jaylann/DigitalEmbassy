@@ -1,4 +1,6 @@
-// src/components/landmark-marker.tsx
+/**
+ * Marker with detailed popover for a single landmark.
+ */
 
 "use client";
 

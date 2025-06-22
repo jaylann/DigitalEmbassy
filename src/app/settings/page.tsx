@@ -1,4 +1,6 @@
-// src/app/settings/page.tsx
+/**
+ * User settings page.
+ */
 
 "use client";
 

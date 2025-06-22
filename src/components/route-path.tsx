@@ -1,4 +1,6 @@
-// src/components/route-path.tsx
+/**
+ * Static route polyline display.
+ */
 "use client";
 
 import * as React from "react";
